@@ -52,6 +52,7 @@
 		"build": "",
 		"pipe": "yarn clear && yarn build",
 		"start": "node index.js",
+		"start:dev": "env-cmd node dist/server.js",
 		"dev": "env-cmd tsnd -r tsconfig-paths/register --respawn -T --ignore-watch node_modules --no-notify src/server.ts",
 		"upgrade-dependencies": "yarn upgrade-interactive --latest",
 		"test": "jest",
