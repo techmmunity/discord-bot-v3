@@ -1,10 +1,10 @@
-// Server
-
-export const SERVER_ID = "784050272263471145";
-
 // Guild
 
 export const GUILD_ID = "784050272263471145";
+
+// Channels
+
+export const CHALLENGE_CHANNEL_ID = "887757627122126889";
 
 // Bots
 
@@ -14,3 +14,4 @@ export const BOT_ID = "874389051581554718";
 
 export const STAFF_ROLE_ID = "888761007432933497";
 export const MOD_ROLE_ID = "785116737971683368";
+export const CHALLENGE_ROLE_ID = "889846828693061644";
