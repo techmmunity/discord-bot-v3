@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { sleep } from "@techmmunity/utils";
 import { REST } from "@discordjs/rest";
-import { GUILD_ID } from "config/ids";
-import { Interaction } from "types/interactions";
+import { GUILD_ID } from "./config/ids";
+import { Interaction } from "./types/interactions";
 
 interface RegisterCommandsParams {
 	commands: Array<Interaction>;

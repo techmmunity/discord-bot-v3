@@ -1,13 +1,13 @@
 import "reflect-metadata";
 
-import { DiscordClient } from "client";
-import { commands, setInteractions } from "interactions";
-import { setJobs } from "jobs";
-
 import { setGlobalConnection } from "@techmmunity/symbiosis";
 import { Connection } from "@techmmunity/symbiosis-dynamodb";
-import { ChallengeEntity } from "entities/challenge";
-import { registerCommands } from "register-commands";
+import { DiscordClient } from "./client";
+import { commands, setInteractions } from "./interactions";
+import { setJobs } from "./jobs";
+
+import { ChallengeEntity } from "./entities/challenge";
+import { registerCommands } from "./register-commands";
 
 // eslint-disable-next-line require-await
 const bootstrap = async () => {

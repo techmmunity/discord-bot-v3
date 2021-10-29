@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import { DiscordClient } from "client";
 import { Guild, TextChannel } from "discord.js";
 
 import {
@@ -7,11 +6,12 @@ import {
 	LessThanOrEqual,
 	MoreThanOrEqual,
 } from "@techmmunity/symbiosis";
-import { ChallengeEntity } from "entities/challenge";
 import { Repository } from "@techmmunity/symbiosis-dynamodb";
-import { getTitle } from "utils/get-title";
-import { GUILD_ID, SERVER_ID } from "config/ids";
-import { makeChallengeEmbed } from "interactions/create-challenge/make-embed";
+import { ChallengeEntity } from "../../entities/challenge";
+import { DiscordClient } from "../../client";
+import { getTitle } from "../../utils/get-title";
+import { GUILD_ID, SERVER_ID } from "../../config/ids";
+import { makeChallengeEmbed } from "../../interactions/create-challenge/make-embed";
 
 const getLevel = () => {
 	const dayOfWeek = new Date().getDay();

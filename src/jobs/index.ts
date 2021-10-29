@@ -1,6 +1,6 @@
 import cron from "node-cron";
 
-import { JobsRecurrence } from "config/jobs-recurrence";
+import { JobsRecurrence } from "../config/jobs-recurrence";
 
 import { sendChallenge } from "./challenges";
 

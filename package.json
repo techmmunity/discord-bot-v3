@@ -3,10 +3,10 @@
 	"version": "1.0.0",
 	"main": "lib/server.js",
 	"license": "MIT",
-  "engines": {
-    "node": ">=16.6.0",
-    "npm": ">=7.0.0"
-  },
+	"engines": {
+		"node": ">=16.6.0",
+		"npm": ">=7.0.0"
+	},
 	"lint-staged": {
 		"*.{ts,tsx}": [
 			"npx prettier --write",
@@ -49,9 +49,10 @@
 	"scripts": {
 		"prepare": "husky install",
 		"clear": "rm -rf lib && rm -rf dist",
-		"build": "ncc build src/server.ts -o dist -s -m",
+		"build": "tsc --build --force",
 		"pipe": "yarn clear && yarn build",
 		"start": "node index.js",
+		"start:dev": "env-cmd node dist/server.js",
 		"dev": "env-cmd tsnd -r tsconfig-paths/register --respawn -T --ignore-watch node_modules --no-notify src/server.ts",
 		"upgrade-dependencies": "yarn upgrade-interactive --latest",
 		"test": "jest",

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { Colors } from "assets/colors";
-import { Images } from "assets/images";
-import { MOD_ROLE_ID, STAFF_ROLE_ID } from "config/ids";
 import { CommandInteraction } from "discord.js";
-import { Interaction } from "types/interactions";
-import { PermissionTypeEnum } from "types/permission-type";
+import { Colors } from "../../assets/colors";
+import { Images } from "../../assets/images";
+import { MOD_ROLE_ID, STAFF_ROLE_ID } from "../../config/ids";
+import { Interaction } from "../../types/interactions";
+import { PermissionTypeEnum } from "../../types/permission-type";
 
 const calcMemory = (memory: number) =>
 	Math.round((memory / 1024 / 1024) * 100) / 100;

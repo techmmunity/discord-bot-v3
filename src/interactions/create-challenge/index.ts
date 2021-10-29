@@ -2,13 +2,13 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import { getGlobalRepository } from "@techmmunity/symbiosis";
 import { Repository } from "@techmmunity/symbiosis-dynamodb";
 import { getTypeof } from "@techmmunity/utils";
-import { Colors } from "assets/colors";
-import { MOD_ROLE_ID, STAFF_ROLE_ID } from "config/ids";
 import { CommandInteraction } from "discord.js";
-import { ChallengeEntity } from "entities/challenge";
-import { Interaction } from "types/interactions";
-import { PermissionTypeEnum } from "types/permission-type";
-import { getTitle } from "utils/get-title";
+import { Colors } from "../../assets/colors";
+import { MOD_ROLE_ID, STAFF_ROLE_ID } from "../../config/ids";
+import { ChallengeEntity } from "../../entities/challenge";
+import { Interaction } from "../../types/interactions";
+import { PermissionTypeEnum } from "../../types/permission-type";
+import { getTitle } from "../../utils/get-title";
 import { makeChallengeEmbed } from "./make-embed";
 
 export const createChallenge = async (interaction: CommandInteraction) => {

@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { Colors } from "assets/colors";
 import { CommandInteraction } from "discord.js";
-import { Interaction } from "types/interactions";
+import { Colors } from "../../assets/colors";
+import { Interaction } from "../../types/interactions";
 
 export const ping = (interaction: CommandInteraction) =>
 	interaction.reply({

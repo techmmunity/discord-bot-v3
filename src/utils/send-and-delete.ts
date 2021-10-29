@@ -1,6 +1,6 @@
 import { Message, MessageOptions } from "discord.js";
 
-import { TimeUtil } from "utils/time";
+import { TimeUtil } from "../utils/time";
 
 export const sendAndDelete = (
 	message: Message,

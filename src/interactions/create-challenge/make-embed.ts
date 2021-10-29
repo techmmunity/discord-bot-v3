@@ -1,5 +1,5 @@
-import { Colors } from "assets/colors";
-import { ChallengeEntity } from "entities/challenge";
+import { Colors } from "../../assets/colors";
+import { ChallengeEntity } from "../../entities/challenge";
 
 interface MakeChallengeEmbedParams {
 	title: string;
