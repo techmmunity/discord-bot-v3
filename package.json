@@ -19,6 +19,7 @@
     "@techmmunity/symbiosis-dynamodb": "^0.0.14",
     "@techmmunity/utils": "^1.5.0",
     "@types/node-cron": "^3.0.0",
+    "canvas": "^2.8.0",
     "discord-api-types": "^0.24.0",
     "discord.js": "^13.2.0",
     "get-title-at-url": "1.1.8",
