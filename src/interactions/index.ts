@@ -7,6 +7,7 @@ import {
 	getRandomChallenge,
 	getRandomChallengeCommand,
 } from "./random-challenge";
+import { welcomeImg, welcomeImgCommand } from "./welcome-img";
 
 export const setInteractions = (client: Client) => {
 	client.on("ready", () => {
@@ -26,6 +27,8 @@ export const setInteractions = (client: Client) => {
 				return ram(interaction);
 			case "get-random-challenge":
 				return getRandomChallenge(interaction);
+			case "welcome-image":
+				return welcomeImg(interaction);
 			default:
 				return;
 		}
@@ -37,4 +40,5 @@ export const commands = [
 	pingCommand,
 	ramCommand,
 	getRandomChallengeCommand,
+	welcomeImgCommand,
 ];

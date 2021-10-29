@@ -1,21 +1,15 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import { Guild, TextChannel } from "discord.js";
 
 import { getGlobalRepository, Plus } from "@techmmunity/symbiosis";
 import { Repository } from "@techmmunity/symbiosis-dynamodb";
-import { DiscordClient } from "../../client";
-import {
-	CHALLENGE_ROLE_ID,
-	GUILD_ID,
-	CHALLENGE_CHANNEL_ID,
-} from "../../config/ids";
+
+import { CHALLENGE_ROLE_ID, CHALLENGE_CHANNEL_ID } from "../../config/ids";
 import { getRandomChallengeEmbed } from "../../interactions/random-challenge/get-random-challenge";
 import { ChallengeEntity } from "../../entities/challenge";
+import { getTextChannel } from "../../utils/get-channel";
 
 export const sendChallenge = async () => {
-	const channel = (
-		DiscordClient.guilds.cache.get(GUILD_ID) as Guild
-	).channels.cache.get(CHALLENGE_CHANNEL_ID) as TextChannel;
+	const channel = getTextChannel(CHALLENGE_CHANNEL_ID);
 
 	const challengeEmbed = await getRandomChallengeEmbed();
 
