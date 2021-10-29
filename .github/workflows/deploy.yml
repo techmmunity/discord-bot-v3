@@ -35,7 +35,7 @@ jobs:
 
       - name: Add Procfile
         run: |
-          echo "worker: node index.js" > dist/Procfile
+          echo "worker: yarn start" > dist/Procfile
 
       - name: Remove "prepare" and "build scripts
         # This script must be removed because it uses
