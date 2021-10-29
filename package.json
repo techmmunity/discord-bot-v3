@@ -3,6 +3,9 @@
 	"version": "1.0.0",
 	"main": "lib/server.js",
 	"license": "MIT",
+	"engines": {
+		"node": "16.x"
+	},
 	"lint-staged": {
 		"*.{ts,tsx}": [
 			"npx prettier --write",
