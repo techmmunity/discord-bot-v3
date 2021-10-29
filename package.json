@@ -1,0 +1,56 @@
+{
+	"name": "bity-discord-bot",
+	"version": "1.0.0",
+	"main": "lib/server.js",
+	"license": "MIT",
+	"lint-staged": {
+		"*.{ts,tsx}": [
+			"npx prettier --write",
+			"eslint src/**/*.ts --fix-dry-run"
+		]
+	},
+	"dependencies": {
+		"@discordjs/builders": "^0.8.1",
+		"@discordjs/rest": "^0.1.0-canary.0",
+		"@techmmunity/symbiosis": "^0.0.25",
+		"@techmmunity/symbiosis-dynamodb": "^0.0.14",
+		"@techmmunity/utils": "^1.5.0",
+		"@types/node-cron": "^3.0.0",
+		"discord-api-types": "^0.24.0",
+		"discord.js": "^13.2.0",
+		"get-title-at-url": "^1.1.8",
+		"moment-timezone": "^0.5.33",
+		"node-cron": "^3.0.0",
+		"node-fetch": "^3.0.0",
+		"reflect-metadata": "^0.1.13"
+	},
+	"devDependencies": {
+		"@techmmunity/eslint-config": "^5.1.2",
+		"@types/jest": "^27.0.2",
+		"@types/moment-timezone": "^0.5.30",
+		"@types/node": "^16.11.6",
+		"@types/node-fetch": "^3.0.3",
+		"@vercel/ncc": "^0.31.1",
+		"env-cmd": "^10.1.0",
+		"eslint": "^8.1.0",
+		"husky": "^7.0.4",
+		"jest": "^27.3.1",
+		"lint-staged": "^11.2.6",
+		"prettier": "^2.4.1",
+		"ts-jest": "^27.0.7",
+		"ts-node-dev": "^1.1.8",
+		"tsconfig-paths": "^3.11.0",
+		"typescript": "^4.4.4"
+	},
+	"scripts": {
+		"prepare": "",
+		"clear": "rm -rf lib && rm -rf dist",
+		"build": "",
+		"pipe": "yarn clear && yarn build",
+		"start": "node index.js",
+		"dev": "env-cmd tsnd -r tsconfig-paths/register --respawn -T --ignore-watch node_modules --no-notify src/server.ts",
+		"upgrade-dependencies": "yarn upgrade-interactive --latest",
+		"test": "jest",
+		"husky:pre-commit": "tsc && lint-staged"
+	}
+}
