@@ -1,0 +1,11 @@
+{
+	"root": true,
+	"extends": [
+		"@techmmunity/eslint-config/common",
+		"@techmmunity/eslint-config/typescript"
+	],
+	"rules": {
+		"capitalized-comments": "off",
+		"multiline-comment-style": "off"
+	}
+}

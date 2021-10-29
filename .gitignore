@@ -1,0 +1,18 @@
+# Etc
+node_modules/
+
+# Lint & Build
+lib/
+dist/
+
+# Core
+src/core
+
+# DB Local Data
+mongo-volume/
+
+# Logs
+*.log
+
+# Env
+*.env*
