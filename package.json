@@ -10,7 +10,7 @@
 		]
 	},
 	"dependencies": {
-		"@discordjs/builders": "^0.7.0",
+		"@discordjs/builders": "^0.8.1",
 		"@discordjs/rest": "^0.1.0-canary.0",
 		"@techmmunity/symbiosis": "^0.0.25",
 		"@techmmunity/symbiosis-dynamodb": "^0.0.14",
@@ -45,7 +45,7 @@
 	"scripts": {
 		"prepare": "husky install",
 		"clear": "rm -rf lib && rm -rf dist",
-		"build": "ncc build src/server.ts -o dist -s -m && cp package.json dist/package.json",
+		"build": "ncc build src/server.ts -o dist -s -m",
 		"pipe": "yarn clear && yarn build",
 		"start": "node index.js",
 		"dev": "env-cmd tsnd -r tsconfig-paths/register --respawn -T --ignore-watch node_modules --no-notify src/server.ts",

@@ -1,0 +1,53 @@
+name: Deploy To Heroku
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn build
+
+      - name: Copy files
+        run: |
+          cp package.json dist/package.json
+          cp yarn.lock dist/yarn.lock
+
+      - name: Add Procfile
+        run: |
+          echo "worker: node index.js" > dist/Procfile
+
+      - name: Remove "prepare" and "build scripts
+        # This script must be removed because it uses
+        # a devDependency and they doesn't exist in this context
+        run: |
+          cd ./dist
+          npm set-script prepare ""
+          npm set-script build ""
+          cd ..
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: release # The branch the action should deploy to.
+          folder: dist # The folder the action should deploy.
