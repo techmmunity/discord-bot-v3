@@ -6,6 +6,7 @@ const notifications_1 = require("./notifications");
 const ping_1 = require("./ping");
 const ram_1 = require("./ram");
 const random_challenge_1 = require("./random-challenge");
+const send_pre_defined_messages_1 = require("./send-pre-defined-messages");
 const suggest_1 = require("./suggest");
 const welcome_img_1 = require("./welcome-img");
 const setInteractions = (client) => {
@@ -30,6 +31,8 @@ const setInteractions = (client) => {
                 return (0, suggest_1.suggest)(interaction);
             case "notifications":
                 return (0, notifications_1.notifications)(interaction);
+            case "send-pre-defined-messages":
+                return (0, send_pre_defined_messages_1.sendPreDefinedMessages)(interaction);
             default:
                 return;
         }
@@ -44,4 +47,5 @@ exports.commands = [
     welcome_img_1.welcomeImgCommand,
     suggest_1.suggestCommand,
     notifications_1.notificationsCommand,
+    send_pre_defined_messages_1.sendPreDefinedMessagesCommand,
 ];

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.notificationsCommand = exports.notifications = void 0;
+exports.notificationsCommand = exports.notifications = exports.makeNotificationsEmbed = void 0;
 const builders_1 = require("@discordjs/builders");
 const utils_1 = require("@techmmunity/utils");
 const colors_1 = require("../../assets/colors");
@@ -67,12 +67,13 @@ const makeNotificationsEmbed = () => {
     };
     return embed;
 };
+exports.makeNotificationsEmbed = makeNotificationsEmbed;
 const notifications = async (interaction) => {
     await interaction.deferReply();
     const options = getOptions(interaction);
     if ((0, utils_1.isEmptyArray)(options)) {
         await interaction.editReply({
-            embeds: [makeNotificationsEmbed()],
+            embeds: [(0, exports.makeNotificationsEmbed)()],
         });
         return;
     }
