@@ -2573,6 +2573,11 @@ globrex@^0.1.2:
   resolved "https://registry.yarnpkg.com/globrex/-/globrex-0.1.2.tgz#dd5d9ec826232730cd6793a5e33a9302985e6098"
   integrity sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==
 
+google-search-results-nodejs@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/google-search-results-nodejs/-/google-search-results-nodejs-2.0.1.tgz#af9a06c431efb2be853423fdc93f4e951c6b870e"
+  integrity sha512-DfiqawBwliUfdy//OUtbIxaU2r7f2frwbCedr6GLZoP5ucZKFiSDvmb1xyXRng744ElHpeSxmhnwDTwVQTk5zw==
+
 graceful-fs@^4.1.2:
   version "4.2.8"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.8.tgz#e412b8d33f5e006593cbd3cee6df9f2cebbe802a"

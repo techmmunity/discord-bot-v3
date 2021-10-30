@@ -23,6 +23,7 @@
     "discord-api-types": "^0.24.0",
     "discord.js": "^13.2.0",
     "get-title-at-url": "1.1.8",
+    "google-search-results-nodejs": "^2.0.1",
     "moment-timezone": "^0.5.33",
     "node-cron": "^3.0.0",
     "node-fetch": "^3.0.0",

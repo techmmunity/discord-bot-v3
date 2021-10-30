@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.commands = exports.setInteractions = void 0;
 const create_challenge_1 = require("./create-challenge");
+const get_job_1 = require("./get-job");
 const notifications_1 = require("./notifications");
 const ping_1 = require("./ping");
 const ram_1 = require("./ram");
@@ -33,6 +34,8 @@ const setInteractions = (client) => {
                 return (0, notifications_1.notifications)(interaction);
             case "send-pre-defined-messages":
                 return (0, send_pre_defined_messages_1.sendPreDefinedMessages)(interaction);
+            case "get-job":
+                return (0, get_job_1.getJob)(interaction);
             default:
                 return;
         }
@@ -48,4 +51,5 @@ exports.commands = [
     suggest_1.suggestCommand,
     notifications_1.notificationsCommand,
     send_pre_defined_messages_1.sendPreDefinedMessagesCommand,
+    get_job_1.getJobCommand,
 ];

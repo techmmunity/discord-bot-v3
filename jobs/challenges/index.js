@@ -9,11 +9,10 @@ const get_channel_1 = require("../../utils/get-channel");
 const sendChallenge = async () => {
     const channel = (0, get_channel_1.getTextChannel)(ids_1.CHALLENGE_CHANNEL_ID);
     const challengeEmbed = await (0, get_random_challenge_1.getRandomChallengeEmbed)();
-    const message = await channel.send({
+    await channel.send({
         content: `<@&${ids_1.CHALLENGE_ROLE_ID}>`,
         embeds: [challengeEmbed],
     });
-    await message.crosspost();
     const challengeRepository = (0, symbiosis_1.getGlobalRepository)(challenge_1.ChallengeEntity);
     await challengeRepository.save({
         url: challengeEmbed.description,
