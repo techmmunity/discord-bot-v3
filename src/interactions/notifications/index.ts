@@ -75,7 +75,7 @@ const getOptions = (interaction: CommandInteraction) => {
 	);
 };
 
-const makeNotificationsEmbed = () => {
+export const makeNotificationsEmbed = () => {
 	const values = Object.entries(notificationsOptions);
 
 	const fields = values.map(([key, val]) => ({

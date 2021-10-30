@@ -8,6 +8,10 @@ import {
 	getRandomChallenge,
 	getRandomChallengeCommand,
 } from "./random-challenge";
+import {
+	sendPreDefinedMessages,
+	sendPreDefinedMessagesCommand,
+} from "./send-pre-defined-messages";
 import { suggest, suggestCommand } from "./suggest";
 import { welcomeImg, welcomeImgCommand } from "./welcome-img";
 
@@ -35,6 +39,8 @@ export const setInteractions = (client: Client) => {
 				return suggest(interaction);
 			case "notifications":
 				return notifications(interaction);
+			case "send-pre-defined-messages":
+				return sendPreDefinedMessages(interaction);
 			default:
 				return;
 		}
@@ -49,4 +55,5 @@ export const commands = [
 	welcomeImgCommand,
 	suggestCommand,
 	notificationsCommand,
+	sendPreDefinedMessagesCommand,
 ];
