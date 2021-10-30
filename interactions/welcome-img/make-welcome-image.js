@@ -5,6 +5,7 @@ const canvas_1 = require("canvas");
 const discord_js_1 = require("discord.js");
 const path_1 = require("path");
 const images_1 = require("../../assets/images");
+const get_member_img_1 = require("../../utils/get-member-img");
 const canvasWidth = 1015;
 const canvasHeight = 362;
 const userImgSize = 250;
@@ -46,15 +47,8 @@ const makeWelcomeImg = async (member) => {
     context.arc(181, 181, 125, 0, Math.PI * 2, true);
     context.closePath();
     context.clip();
-    const userImgUrl = member.user.avatarURL({
-        format: "png",
-        size: 256,
-    });
-    const guildImgUrl = member.guild.iconURL({
-        format: "png",
-        size: 256,
-    });
-    const userImg = await (0, canvas_1.loadImage)(userImgUrl || guildImgUrl);
+    const userImgUrl = (0, get_member_img_1.getMemberImgUrl)(member);
+    const userImg = await (0, canvas_1.loadImage)(userImgUrl);
     context.drawImage(userImg, userImgMargin, userImgMargin, userImgSize, userImgSize);
     const welcomeImg = new discord_js_1.MessageAttachment(canvas.toBuffer(), "welcome.png");
     return welcomeImg;

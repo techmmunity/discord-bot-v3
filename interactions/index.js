@@ -5,6 +5,7 @@ const create_challenge_1 = require("./create-challenge");
 const ping_1 = require("./ping");
 const ram_1 = require("./ram");
 const random_challenge_1 = require("./random-challenge");
+const suggest_1 = require("./suggest");
 const welcome_img_1 = require("./welcome-img");
 const setInteractions = (client) => {
     client.on("ready", () => {
@@ -24,6 +25,8 @@ const setInteractions = (client) => {
                 return (0, random_challenge_1.getRandomChallenge)(interaction);
             case "welcome-image":
                 return (0, welcome_img_1.welcomeImg)(interaction);
+            case "suggest":
+                return (0, suggest_1.suggest)(interaction);
             default:
                 return;
         }
@@ -36,4 +39,5 @@ exports.commands = [
     ram_1.ramCommand,
     random_challenge_1.getRandomChallengeCommand,
     welcome_img_1.welcomeImgCommand,
+    suggest_1.suggestCommand,
 ];
