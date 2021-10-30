@@ -7,6 +7,7 @@ import {
 	getRandomChallenge,
 	getRandomChallengeCommand,
 } from "./random-challenge";
+import { suggest, suggestCommand } from "./suggest";
 import { welcomeImg, welcomeImgCommand } from "./welcome-img";
 
 export const setInteractions = (client: Client) => {
@@ -29,6 +30,8 @@ export const setInteractions = (client: Client) => {
 				return getRandomChallenge(interaction);
 			case "welcome-image":
 				return welcomeImg(interaction);
+			case "suggest":
+				return suggest(interaction);
 			default:
 				return;
 		}
@@ -41,4 +44,5 @@ export const commands = [
 	ramCommand,
 	getRandomChallengeCommand,
 	welcomeImgCommand,
+	suggestCommand,
 ];

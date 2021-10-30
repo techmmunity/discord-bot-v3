@@ -41,13 +41,13 @@ const bootstrap = async () => {
 			commands,
 		});
 
+		setJobs();
+
 		setEvents(DiscordClient);
 
 		setInteractions(DiscordClient);
 
 		DiscordClient.login(process.env.DISCORD_BOT_TOKEN);
-
-		setJobs();
 	} catch (e) {
 		// eslint-disable-next-line no-console
 		console.error(e);

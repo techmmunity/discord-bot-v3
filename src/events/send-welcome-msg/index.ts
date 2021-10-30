@@ -8,9 +8,9 @@ import { makeWelcomeImg } from "../../interactions/welcome-img/make-welcome-imag
 export const sendWelcomeMsg = async (member: GuildMember) => {
 	const welcomeImg = await makeWelcomeImg(member);
 
-	const channel = getTextChannel(GENERAL_CHANNEL_ID);
+	const generalChannel = getTextChannel(GENERAL_CHANNEL_ID);
 
-	await channel.send({
+	await generalChannel.send({
 		content: `<@${member.user.id}>`,
 		files: [welcomeImg],
 	});

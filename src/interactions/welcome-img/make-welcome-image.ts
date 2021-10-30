@@ -10,6 +10,7 @@ import {
 import { GuildMember, MessageAttachment } from "discord.js";
 import { resolve } from "path";
 import { Images } from "../../assets/images";
+import { getMemberImgUrl } from "../../utils/get-member-img";
 
 const canvasWidth = 1015;
 const canvasHeight = 362;
@@ -78,18 +79,9 @@ export const makeWelcomeImg = async (member: GuildMember) => {
 	context.closePath();
 	context.clip();
 
-	const userImgUrl = member.user.avatarURL({
-		format: "png",
-		size: 256,
-	});
+	const userImgUrl = getMemberImgUrl(member);
 
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-	const guildImgUrl = member.guild.iconURL({
-		format: "png",
-		size: 256,
-	})!;
-
-	const userImg = await loadImage(userImgUrl || guildImgUrl);
+	const userImg = await loadImage(userImgUrl);
 
 	context.drawImage(
 		userImg,
