@@ -1,6 +1,7 @@
 import { Client } from "discord.js";
 
 import { createChallenge, createChallengeCommand } from "./create-challenge";
+import { notifications, notificationsCommand } from "./notifications";
 import { ping, pingCommand } from "./ping";
 import { ram, ramCommand } from "./ram";
 import {
@@ -32,6 +33,8 @@ export const setInteractions = (client: Client) => {
 				return welcomeImg(interaction);
 			case "suggest":
 				return suggest(interaction);
+			case "notifications":
+				return notifications(interaction);
 			default:
 				return;
 		}
@@ -45,4 +48,5 @@ export const commands = [
 	getRandomChallengeCommand,
 	welcomeImgCommand,
 	suggestCommand,
+	notificationsCommand,
 ];

@@ -37,9 +37,9 @@ const bootstrap = async () => {
 
 		setGlobalConnection(connection);
 
-		registerCommands({
-			commands,
-		});
+		// registerCommands({
+		// 	commands,
+		// });
 
 		setJobs();
 
