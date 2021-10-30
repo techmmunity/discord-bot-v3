@@ -41,7 +41,9 @@ const bootstrap = async () => {
 			commands,
 		});
 
-		setJobs();
+		if (process.env.NODE_ENV !== "dev") {
+			setJobs();
+		}
 
 		setEvents(DiscordClient);
 

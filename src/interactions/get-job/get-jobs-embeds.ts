@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
 import { MessageEmbedOptions } from "discord.js";
 import { JobsOutput } from "../../utils/google-jobs";
 
@@ -5,7 +6,7 @@ export const getJobsEmbeds = (
 	jobs: Array<JobsOutput>,
 ): Array<MessageEmbedOptions> =>
 	jobs.map(job => ({
-		title: job.title,
+		title: `${job.title.slice(0, 253)}...`,
 		thumbnail: {
 			url: job.thumbnail,
 		},

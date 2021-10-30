@@ -9,6 +9,7 @@ import {
 	getRandomChallenge,
 	getRandomChallengeCommand,
 } from "./random-challenge";
+import { sendEmbed, sendEmbedCommand } from "./send-embed";
 import {
 	sendPreDefinedMessages,
 	sendPreDefinedMessagesCommand,
@@ -44,6 +45,8 @@ export const setInteractions = (client: Client) => {
 				return sendPreDefinedMessages(interaction);
 			case "get-job":
 				return getJob(interaction);
+			case "send-embed":
+				return sendEmbed(interaction);
 			default:
 				return;
 		}
@@ -60,4 +63,5 @@ export const commands = [
 	notificationsCommand,
 	sendPreDefinedMessagesCommand,
 	getJobCommand,
+	sendEmbedCommand,
 ];
