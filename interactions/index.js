@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.commands = exports.setInteractions = void 0;
 const create_challenge_1 = require("./create-challenge");
+const notifications_1 = require("./notifications");
 const ping_1 = require("./ping");
 const ram_1 = require("./ram");
 const random_challenge_1 = require("./random-challenge");
@@ -27,6 +28,8 @@ const setInteractions = (client) => {
                 return (0, welcome_img_1.welcomeImg)(interaction);
             case "suggest":
                 return (0, suggest_1.suggest)(interaction);
+            case "notifications":
+                return (0, notifications_1.notifications)(interaction);
             default:
                 return;
         }
@@ -40,4 +43,5 @@ exports.commands = [
     random_challenge_1.getRandomChallengeCommand,
     welcome_img_1.welcomeImgCommand,
     suggest_1.suggestCommand,
+    notifications_1.notificationsCommand,
 ];
