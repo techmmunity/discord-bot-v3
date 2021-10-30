@@ -8,6 +8,7 @@ import { setJobs } from "./jobs";
 
 import { ChallengeEntity } from "./entities/challenge";
 import { registerCommands } from "./register-commands";
+import { setEvents } from "./events";
 
 // eslint-disable-next-line require-await
 const bootstrap = async () => {
@@ -39,6 +40,8 @@ const bootstrap = async () => {
 		registerCommands({
 			commands,
 		});
+
+		setEvents(DiscordClient);
 
 		setInteractions(DiscordClient);
 

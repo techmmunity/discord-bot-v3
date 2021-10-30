@@ -3,7 +3,7 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { CommandInteraction, GuildMember } from "discord.js";
 import { MOD_ROLE_ID, STAFF_ROLE_ID } from "../../config/ids";
-import { makeWelcomeImg } from "../../events/send-welcome-msg/make-welcome-image";
+import { makeWelcomeImg } from "./make-welcome-image";
 import { Interaction } from "../../types/interactions";
 import { PermissionTypeEnum } from "../../types/permission-type";
 

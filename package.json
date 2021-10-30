@@ -45,7 +45,7 @@
   "scripts": {
     "prepare": "husky install",
     "clear": "rm -rf lib && rm -rf dist",
-    "build": "tsc --build --force",
+    "build": "tsc --build --force && cp -r src/assets/fonts dist/assets/fonts",
     "pipe": "yarn clear && yarn build",
     "start": "node server.js",
     "start:dev": "env-cmd node dist/server.js",

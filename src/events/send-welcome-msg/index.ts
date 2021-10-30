@@ -3,7 +3,7 @@
 import { GuildMember } from "discord.js";
 import { GENERAL_CHANNEL_ID } from "../../config/ids";
 import { getTextChannel } from "../../utils/get-channel";
-import { makeWelcomeImg } from "./make-welcome-image";
+import { makeWelcomeImg } from "../../interactions/welcome-img/make-welcome-image";
 
 export const sendWelcomeMsg = async (member: GuildMember) => {
 	const welcomeImg = await makeWelcomeImg(member);
