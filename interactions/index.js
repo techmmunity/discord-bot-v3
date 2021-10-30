@@ -7,6 +7,7 @@ const notifications_1 = require("./notifications");
 const ping_1 = require("./ping");
 const ram_1 = require("./ram");
 const random_challenge_1 = require("./random-challenge");
+const send_embed_1 = require("./send-embed");
 const send_pre_defined_messages_1 = require("./send-pre-defined-messages");
 const suggest_1 = require("./suggest");
 const welcome_img_1 = require("./welcome-img");
@@ -36,6 +37,8 @@ const setInteractions = (client) => {
                 return (0, send_pre_defined_messages_1.sendPreDefinedMessages)(interaction);
             case "get-job":
                 return (0, get_job_1.getJob)(interaction);
+            case "send-embed":
+                return (0, send_embed_1.sendEmbed)(interaction);
             default:
                 return;
         }
@@ -52,4 +55,5 @@ exports.commands = [
     notifications_1.notificationsCommand,
     send_pre_defined_messages_1.sendPreDefinedMessagesCommand,
     get_job_1.getJobCommand,
+    send_embed_1.sendEmbedCommand,
 ];

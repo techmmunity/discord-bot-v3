@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getJobsEmbeds = void 0;
 const getJobsEmbeds = (jobs) => jobs.map(job => ({
-    title: job.title,
+    title: `${job.title.slice(0, 253)}...`,
     thumbnail: {
         url: job.thumbnail,
     },

@@ -35,7 +35,9 @@ const bootstrap = async () => {
         (0, register_commands_1.registerCommands)({
             commands: interactions_1.commands,
         });
-        (0, jobs_1.setJobs)();
+        if (process.env.NODE_ENV !== "dev") {
+            (0, jobs_1.setJobs)();
+        }
         (0, events_1.setEvents)(client_1.DiscordClient);
         (0, interactions_1.setInteractions)(client_1.DiscordClient);
         client_1.DiscordClient.login(process.env.DISCORD_BOT_TOKEN);
