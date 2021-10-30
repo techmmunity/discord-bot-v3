@@ -9,6 +9,7 @@ declare global {
 			DISCORD_CLIENT_SECRET: string;
 			DYNAMODB_ACCESS_KEY_ID: string;
 			DYNAMODB_SECRET_ACCESS_KEY: string;
+			SERP_API_SECRET_KEY: string;
 		}
 	}
 }

@@ -1,6 +1,7 @@
 import { Client } from "discord.js";
 
 import { createChallenge, createChallengeCommand } from "./create-challenge";
+import { getJob, getJobCommand } from "./get-job";
 import { notifications, notificationsCommand } from "./notifications";
 import { ping, pingCommand } from "./ping";
 import { ram, ramCommand } from "./ram";
@@ -41,6 +42,8 @@ export const setInteractions = (client: Client) => {
 				return notifications(interaction);
 			case "send-pre-defined-messages":
 				return sendPreDefinedMessages(interaction);
+			case "get-job":
+				return getJob(interaction);
 			default:
 				return;
 		}
@@ -56,4 +59,5 @@ export const commands = [
 	suggestCommand,
 	notificationsCommand,
 	sendPreDefinedMessagesCommand,
+	getJobCommand,
 ];

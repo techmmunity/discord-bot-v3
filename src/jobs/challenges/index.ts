@@ -13,12 +13,10 @@ export const sendChallenge = async () => {
 
 	const challengeEmbed = await getRandomChallengeEmbed();
 
-	const message = await channel.send({
+	await channel.send({
 		content: `<@&${CHALLENGE_ROLE_ID}>`,
 		embeds: [challengeEmbed],
 	});
-
-	await message.crosspost();
 
 	const challengeRepository = getGlobalRepository(
 		ChallengeEntity,

@@ -109,12 +109,12 @@ export const createChallengeCommand: Interaction = {
 		.setDefaultPermission(false),
 	permissions: [
 		{
-			id: STAFF_ROLE_ID, // Staff
+			id: STAFF_ROLE_ID,
 			type: PermissionTypeEnum.ROLE,
 			permission: true,
 		},
 		{
-			id: MOD_ROLE_ID, // Mod
+			id: MOD_ROLE_ID,
 			type: PermissionTypeEnum.ROLE,
 			permission: true,
 		},

@@ -49,7 +49,6 @@ const bootstrap = async () => {
 
 		DiscordClient.login(process.env.DISCORD_BOT_TOKEN);
 	} catch (e) {
-		// eslint-disable-next-line no-console
 		console.error(e);
 	}
 };
