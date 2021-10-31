@@ -8,4 +8,5 @@ export const Colors = {
 	blue: "#4287f5" as HexColorString,
 	twitch: "#9146FF" as HexColorString,
 	codewars: "#b33319" as HexColorString,
+	pink: "#ff73fa" as HexColorString,
 };

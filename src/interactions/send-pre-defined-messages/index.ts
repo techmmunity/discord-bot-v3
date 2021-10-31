@@ -5,9 +5,13 @@ import { Colors } from "../../assets/colors";
 import { STAFF_ROLE_ID, MOD_ROLE_ID } from "../../config/ids";
 import { Interaction } from "../../types/interactions";
 import { PermissionTypeEnum } from "../../types/permission-type";
+import { sendBoosterEmbed } from "./booster-embed";
 import { sendNotificationsEmbed } from "./notifications-embed";
 
-const notificationsOptions = [["notifications", "Notifications Channel"]];
+const messagesOptions = [
+	["notifications", "Notifications Channel"],
+	["booster", "Booster Benefits"],
+];
 
 const makeCommand = () => {
 	const command = new SlashCommandBuilder()
@@ -15,7 +19,7 @@ const makeCommand = () => {
 		.setDescription("Send pre-defined messages to specific channels")
 		.setDefaultPermission(true);
 
-	notificationsOptions.forEach(([key, value]) => {
+	messagesOptions.forEach(([key, value]) => {
 		command.addBooleanOption(option =>
 			option.setName(key).setDescription(value),
 		);
@@ -25,7 +29,7 @@ const makeCommand = () => {
 };
 
 const getOptions = (interaction: CommandInteraction) =>
-	notificationsOptions
+	messagesOptions
 		// eslint-disable-next-line array-callback-return
 		.map(([key]) => {
 			if (interaction.options.getBoolean(key)) {
@@ -37,10 +41,12 @@ const getOptions = (interaction: CommandInteraction) =>
 export const sendPreDefinedMessages = async (
 	interaction: CommandInteraction,
 ) => {
+	await interaction.deferReply();
+
 	const options = getOptions(interaction);
 
 	if (isEmptyArray(options)) {
-		await interaction.reply({
+		await interaction.editReply({
 			embeds: [
 				{
 					title: "Passe pelo menos um canal para que as msgs sejam enviadas!",
@@ -53,10 +59,14 @@ export const sendPreDefinedMessages = async (
 	}
 
 	if (options.includes("notifications")) {
-		return sendNotificationsEmbed();
+		await sendNotificationsEmbed();
 	}
 
-	await interaction.reply({
+	if (options.includes("booster")) {
+		await sendBoosterEmbed();
+	}
+
+	await interaction.editReply({
 		embeds: [
 			{
 				title: "Done!",
