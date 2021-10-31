@@ -5,4 +5,5 @@ exports.JobsRecurrence = {
     SEND_CHALLENGE: "0 11 * * 1,2,3,4,5",
     SEND_JOBS_TYPESCRIPT: "0 11 * * 1",
     SEND_JOBS_REACT: "0 11 * * 4",
+    SEND_TECH_TIP: "0 15 * * *",
 };
