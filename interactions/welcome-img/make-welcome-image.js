@@ -30,7 +30,7 @@ const applyText = (initialSize, height, canvas, text, originalContext) => {
     originalContext.fillText(text, xText, canvas.height / height);
 };
 const makeWelcomeImg = async (member) => {
-    (0, canvas_1.registerFont)((0, path_1.resolve)("src/assets/fonts/Cyberpunks.ttf"), {
+    (0, canvas_1.registerFont)((0, path_1.resolve)(__dirname, "../../assets/fonts/Cyberpunks.ttf"), {
         family: "cyberpunk",
     });
     const canvas = (0, canvas_1.createCanvas)(canvasWidth, canvasHeight);

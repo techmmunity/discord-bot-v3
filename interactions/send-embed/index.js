@@ -11,7 +11,10 @@ const sendEmbed = async (interaction) => {
     const description = interaction.options.getString("description");
     const thumbnail = interaction.options.getString("thumbnail");
     const color = interaction.options.getString("color");
-    await channel.send({
+    const crosspost = interaction.options.getBoolean("crosspost");
+    const notification = interaction.options.getRole("notification");
+    const message = await channel.send({
+        content: notification ? `<@&${notification.id}>` : undefined,
         embeds: [
             {
                 title,
@@ -23,6 +26,9 @@ const sendEmbed = async (interaction) => {
             },
         ],
     });
+    if (crosspost) {
+        await message.crosspost();
+    }
     await interaction.reply({
         embeds: [
             {
@@ -51,6 +57,8 @@ exports.sendEmbedCommand = {
         .setRequired(true))
         .addStringOption(option => option.setName("color").setDescription("Color of the embed"))
         .addStringOption(option => option.setName("thumbnail").setDescription("Thumbnail of the embed"))
+        .addBooleanOption(option => option.setName("crosspost").setDescription("Crosspost message"))
+        .addRoleOption(option => option.setName("notification").setDescription("Role to notify"))
         .setDefaultPermission(false),
     permissions: [
         {
