@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.commands = exports.setInteractions = void 0;
 const create_challenge_1 = require("./create-challenge");
 const get_job_1 = require("./get-job");
+const get_tech_tip_1 = require("./get-tech-tip");
 const notifications_1 = require("./notifications");
 const ping_1 = require("./ping");
 const ram_1 = require("./ram");
@@ -39,6 +40,8 @@ const setInteractions = (client) => {
                 return (0, get_job_1.getJob)(interaction);
             case "send-embed":
                 return (0, send_embed_1.sendEmbed)(interaction);
+            case "get-tech-tip":
+                return (0, get_tech_tip_1.getTechTip)(interaction);
             default:
                 return;
         }
@@ -56,4 +59,5 @@ exports.commands = [
     send_pre_defined_messages_1.sendPreDefinedMessagesCommand,
     get_job_1.getJobCommand,
     send_embed_1.sendEmbedCommand,
+    get_tech_tip_1.getTechTipCommand,
 ];
