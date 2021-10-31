@@ -6,19 +6,23 @@ const utils_1 = require("@techmmunity/utils");
 const colors_1 = require("../../assets/colors");
 const ids_1 = require("../../config/ids");
 const permission_type_1 = require("../../types/permission-type");
+const booster_embed_1 = require("./booster-embed");
 const notifications_embed_1 = require("./notifications-embed");
-const notificationsOptions = [["notifications", "Notifications Channel"]];
+const messagesOptions = [
+    ["notifications", "Notifications Channel"],
+    ["booster", "Booster Benefits"],
+];
 const makeCommand = () => {
     const command = new builders_1.SlashCommandBuilder()
         .setName("send-pre-defined-messages")
         .setDescription("Send pre-defined messages to specific channels")
         .setDefaultPermission(true);
-    notificationsOptions.forEach(([key, value]) => {
+    messagesOptions.forEach(([key, value]) => {
         command.addBooleanOption(option => option.setName(key).setDescription(value));
     });
     return command;
 };
-const getOptions = (interaction) => notificationsOptions
+const getOptions = (interaction) => messagesOptions
     .map(([key]) => {
     if (interaction.options.getBoolean(key)) {
         return key;
@@ -26,9 +30,10 @@ const getOptions = (interaction) => notificationsOptions
 })
     .filter(Boolean);
 const sendPreDefinedMessages = async (interaction) => {
+    await interaction.deferReply();
     const options = getOptions(interaction);
     if ((0, utils_1.isEmptyArray)(options)) {
-        await interaction.reply({
+        await interaction.editReply({
             embeds: [
                 {
                     title: "Passe pelo menos um canal para que as msgs sejam enviadas!",
@@ -39,9 +44,12 @@ const sendPreDefinedMessages = async (interaction) => {
         return;
     }
     if (options.includes("notifications")) {
-        return (0, notifications_embed_1.sendNotificationsEmbed)();
+        await (0, notifications_embed_1.sendNotificationsEmbed)();
     }
-    await interaction.reply({
+    if (options.includes("booster")) {
+        await (0, booster_embed_1.sendBoosterEmbed)();
+    }
+    await interaction.editReply({
         embeds: [
             {
                 title: "Done!",

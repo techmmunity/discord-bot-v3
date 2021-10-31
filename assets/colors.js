@@ -9,4 +9,5 @@ exports.Colors = {
     blue: "#4287f5",
     twitch: "#9146FF",
     codewars: "#b33319",
+    pink: "#ff73fa",
 };
