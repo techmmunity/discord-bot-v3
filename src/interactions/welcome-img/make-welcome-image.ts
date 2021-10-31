@@ -54,7 +54,7 @@ const applyText = (
 };
 
 export const makeWelcomeImg = async (member: GuildMember) => {
-	registerFont(resolve("src/assets/fonts/Cyberpunks.ttf"), {
+	registerFont(resolve(__dirname, "../../assets/fonts/Cyberpunks.ttf"), {
 		family: "cyberpunk",
 	});
 
