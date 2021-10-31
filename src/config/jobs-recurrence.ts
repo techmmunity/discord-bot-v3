@@ -7,4 +7,6 @@ export const JobsRecurrence = {
 	SEND_JOBS_TYPESCRIPT: "0 11 * * 1",
 	// Every Thursday, 8AM
 	SEND_JOBS_REACT: "0 11 * * 4",
+	// Every day, noon
+	SEND_TECH_TIP: "0 15 * * *",
 };
