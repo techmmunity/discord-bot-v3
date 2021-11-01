@@ -21,7 +21,7 @@ export const sendBoosterEmbed = async () => {
 
 **3** - Liberado o uso de TTS
 
-**4** - Liberado a troca do seu nickname
+**4** - Liberado a criação de threads
 
 **5** - Voz prioritária nas calls
 
