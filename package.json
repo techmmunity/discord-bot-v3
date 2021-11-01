@@ -51,6 +51,8 @@
     "start": "node server.js",
     "start:dev": "env-cmd node dist/server.js",
     "dev": "env-cmd tsnd --respawn -T --ignore-watch node_modules --no-notify src/server.ts",
+    "format": "eslint . --fix --quiet",
+    "lint": "eslint . --quiet",
     "upgrade-dependencies": "yarn upgrade-interactive --latest",
     "husky:pre-commit": "tsc && lint-staged"
   }
