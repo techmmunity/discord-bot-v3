@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Colors = void 0;
-exports.Colors = {
+exports.COLORS = void 0;
+exports.COLORS = {
     turquoise: "#2BA097",
     green: "#07ed1e",
     yellow: "#ffc800",

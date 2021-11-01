@@ -13,7 +13,7 @@ const sendNotificationsEmbed = async () => {
             {
                 title: "Escolha as notificações que você quer receber!",
                 description: "Para receber as notificacoes, basta usar o comando `/notitifications` e passar as as opções como `True`.\n\nPara saber mais sobre como usar os comandos, assista o video abaixo:\nhttps://www.youtube.com/watch?v=4XxcpBxSCiU&t=44s\n\n**Notificações disponiveis:**",
-                color: colors_1.Colors.turquoise,
+                color: colors_1.COLORS.turquoise,
                 fields,
             },
         ],

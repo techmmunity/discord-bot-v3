@@ -8,7 +8,7 @@ const ping = (interaction) => interaction.reply({
         {
             title: "Pong!",
             description: `Bot Latency ${Date.now() - interaction.createdTimestamp}ms`,
-            color: colors_1.Colors.red,
+            color: colors_1.COLORS.red,
         },
     ],
 });

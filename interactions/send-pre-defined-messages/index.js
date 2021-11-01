@@ -18,7 +18,7 @@ const makeCommand = () => {
         .setDescription("Send pre-defined messages to specific channels")
         .setDefaultPermission(true);
     messagesOptions.forEach(([key, value]) => {
-        command.addBooleanOption(option => option.setName(key).setDescription(value));
+        command.addBooleanOption((option) => option.setName(key).setDescription(value));
     });
     return command;
 };
@@ -37,7 +37,7 @@ const sendPreDefinedMessages = async (interaction) => {
             embeds: [
                 {
                     title: "Passe pelo menos um canal para que as msgs sejam enviadas!",
-                    color: colors_1.Colors.red,
+                    color: colors_1.COLORS.red,
                 },
             ],
         });
@@ -53,7 +53,7 @@ const sendPreDefinedMessages = async (interaction) => {
         embeds: [
             {
                 title: "Done!",
-                color: colors_1.Colors.green,
+                color: colors_1.COLORS.green,
             },
         ],
     });

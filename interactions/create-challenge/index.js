@@ -18,7 +18,7 @@ const createChallenge = async (interaction) => {
                 {
                     title: "Error!",
                     description: "The challenge must be from CodeWars!",
-                    color: colors_1.Colors.red,
+                    color: colors_1.COLORS.red,
                 },
             ],
         });
@@ -32,7 +32,7 @@ const createChallenge = async (interaction) => {
                 {
                     title: "Error!",
                     description: "Invalid challenge title!",
-                    color: colors_1.Colors.red,
+                    color: colors_1.COLORS.red,
                 },
             ],
         });
@@ -49,7 +49,7 @@ const createChallenge = async (interaction) => {
                 {
                     title: "Error!",
                     description: "Challenge already exists!",
-                    color: colors_1.Colors.red,
+                    color: colors_1.COLORS.red,
                 },
             ],
         });
@@ -65,7 +65,7 @@ const createChallenge = async (interaction) => {
             {
                 title: "Success!",
                 description: "Challenge successfully created!",
-                color: colors_1.Colors.green,
+                color: colors_1.COLORS.green,
             },
             (0, make_embed_1.makeChallengeEmbed)({
                 title,
@@ -79,11 +79,11 @@ exports.createChallengeCommand = {
     command: new builders_1.SlashCommandBuilder()
         .setName("create-challenge")
         .setDescription("Creates a new challenge")
-        .addStringOption(option => option
+        .addStringOption((option) => option
         .setName("url")
         .setDescription("CodeWars Challenge URL")
         .setRequired(true))
-        .addNumberOption(option => option
+        .addNumberOption((option) => option
         .setName("level")
         .setDescription("CodeWars Challenge Level")
         .setRequired(true))

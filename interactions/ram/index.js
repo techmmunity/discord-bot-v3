@@ -9,10 +9,10 @@ const permission_type_1 = require("../../types/permission-type");
 const calcMemory = (memory) => Math.round((memory / 1024 / 1024) * 100) / 100;
 const getColor = (memoryUsage) => {
     if (memoryUsage < 30)
-        return colors_1.Colors.green;
+        return colors_1.COLORS.green;
     if (memoryUsage < 50)
-        return colors_1.Colors.yellow;
-    return colors_1.Colors.red;
+        return colors_1.COLORS.yellow;
+    return colors_1.COLORS.red;
 };
 const ram = (interaction) => {
     const memoryUsage = process.memoryUsage();

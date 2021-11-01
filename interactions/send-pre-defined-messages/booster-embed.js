@@ -29,7 +29,7 @@ const sendBoosterEmbed = async () => {
 **8** - Fazer com que os vídeos do seu canal sejam **automaticamente enviados** assim que forem postados no <#${ids_1.VIDEOS_CHANNEL_ID}>, e a criação de uma role especial para notificar a galera!
 
 O que está esperando? Vem ser um <@&${ids_1.TECH_BOOSTER_ROLE_ID}>! :star_struck:`,
-                color: colors_1.Colors.pink,
+                color: colors_1.COLORS.pink,
             },
         ],
     });

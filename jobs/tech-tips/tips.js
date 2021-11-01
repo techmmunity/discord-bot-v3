@@ -119,7 +119,7 @@ const tips = [
 ];
 const getTip = (dayOfTheMonth) => {
     const embed = tips[dayOfTheMonth] || tips[0];
-    return Object.assign(Object.assign({}, embed), { color: colors_1.Colors.turquoise, thumbnail: {
+    return Object.assign(Object.assign({}, embed), { color: colors_1.COLORS.turquoise, thumbnail: {
             url: "https://github.com/techmmunity/eslint-config/raw/master/resources/logo.gif",
         } });
 };
