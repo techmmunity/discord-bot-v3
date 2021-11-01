@@ -6,4 +6,5 @@ exports.JobsRecurrence = {
     SEND_JOBS_TYPESCRIPT: "0 11 * * 1",
     SEND_JOBS_REACT: "0 11 * * 4",
     SEND_TECH_TIP: "0 15 * * *",
+    SEND_MINECRAFT: "0 15 * * 3",
 };

@@ -7,6 +7,7 @@ const get_tech_tip_1 = require("./get-tech-tip");
 const notifications_1 = require("./notifications");
 const ping_1 = require("./ping");
 const ram_1 = require("./ram");
+const clean_1 = require("./clean");
 const random_challenge_1 = require("./random-challenge");
 const send_embed_1 = require("./send-embed");
 const send_pre_defined_messages_1 = require("./send-pre-defined-messages");
@@ -16,7 +17,7 @@ const setInteractions = (client) => {
     client.on("ready", () => {
         console.log("Bot is ready!");
     });
-    client.on("interactionCreate", interaction => {
+    client.on("interactionCreate", (interaction) => {
         if (!interaction.isCommand())
             return;
         switch (interaction.commandName) {
@@ -42,6 +43,8 @@ const setInteractions = (client) => {
                 return (0, send_embed_1.sendEmbed)(interaction);
             case "get-tech-tip":
                 return (0, get_tech_tip_1.getTechTip)(interaction);
+            case "clean":
+                return (0, clean_1.clean)(interaction);
             default:
                 return;
         }
@@ -60,4 +63,5 @@ exports.commands = [
     get_job_1.getJobCommand,
     send_embed_1.sendEmbedCommand,
     get_tech_tip_1.getTechTipCommand,
+    clean_1.cleanCommand,
 ];
