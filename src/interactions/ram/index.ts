@@ -6,7 +6,7 @@ import { COLORS } from "../../assets/colors";
 import { Images } from "../../assets/images";
 import { MOD_ROLE_ID, STAFF_ROLE_ID } from "../../config/ids";
 import { Interaction } from "../../types/interactions";
-import { PermissionTypeEnum } from "../../types/permission-type";
+import { PermissionTypeEnum } from "../../enums/permission-type";
 
 const calcMemory = (memory: number) =>
   Math.round((memory / 1024 / 1024) * 100) / 100;

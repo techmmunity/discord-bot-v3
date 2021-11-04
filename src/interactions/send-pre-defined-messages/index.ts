@@ -4,7 +4,7 @@ import { CommandInteraction } from "discord.js";
 import { COLORS } from "../../assets/colors";
 import { STAFF_ROLE_ID, MOD_ROLE_ID } from "../../config/ids";
 import { Interaction } from "../../types/interactions";
-import { PermissionTypeEnum } from "../../types/permission-type";
+import { PermissionTypeEnum } from "../../enums/permission-type";
 import { sendBoosterEmbed } from "./booster-embed";
 import { sendNotificationsEmbed } from "./notifications-embed";
 

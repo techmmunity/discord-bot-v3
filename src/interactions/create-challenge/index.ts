@@ -7,7 +7,7 @@ import { COLORS } from "../../assets/colors";
 import { MOD_ROLE_ID, STAFF_ROLE_ID } from "../../config/ids";
 import { ChallengeEntity } from "../../entities/challenge";
 import { Interaction } from "../../types/interactions";
-import { PermissionTypeEnum } from "../../types/permission-type";
+import { PermissionTypeEnum } from "../../enums/permission-type";
 import { getTitle } from "../../utils/get-title";
 import { makeChallengeEmbed } from "./make-embed";
 

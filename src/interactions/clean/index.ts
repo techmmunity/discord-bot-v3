@@ -4,7 +4,7 @@ import { CommandInteraction, TextChannel } from "discord.js";
 import { COLORS } from "../../assets/colors";
 import { RAZAL_ID } from "../../config/ids";
 import { Interaction } from "../../types/interactions";
-import { PermissionTypeEnum } from "../../types/permission-type";
+import { PermissionTypeEnum } from "../../enums/permission-type";
 
 export const clean = async (interaction: CommandInteraction) => {
   await interaction.deferReply();
