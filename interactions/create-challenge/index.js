@@ -7,7 +7,7 @@ const utils_1 = require("@techmmunity/utils");
 const colors_1 = require("../../assets/colors");
 const ids_1 = require("../../config/ids");
 const challenge_1 = require("../../entities/challenge");
-const permission_type_1 = require("../../types/permission-type");
+const permission_type_1 = require("../../enums/permission-type");
 const get_title_1 = require("../../utils/get-title");
 const make_embed_1 = require("./make-embed");
 const createChallenge = async (interaction) => {

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getRandomChallengeCommand = exports.getRandomChallenge = void 0;
 const builders_1 = require("@discordjs/builders");
 const ids_1 = require("../../config/ids");
-const permission_type_1 = require("../../types/permission-type");
+const permission_type_1 = require("../../enums/permission-type");
 const get_random_challenge_1 = require("./get-random-challenge");
 const getRandomChallenge = async (interaction) => {
     const randomChallengeEmbed = await (0, get_random_challenge_1.getRandomChallengeEmbed)();

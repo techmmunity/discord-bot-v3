@@ -15,8 +15,8 @@
   "dependencies": {
     "@discordjs/builders": "^0.8.1",
     "@discordjs/rest": "^0.1.0-canary.0",
-    "@techmmunity/symbiosis": "^0.0.25",
-    "@techmmunity/symbiosis-dynamodb": "^0.0.14",
+    "@techmmunity/symbiosis": "^0.0.26",
+    "@techmmunity/symbiosis-dynamodb": "^0.0.15",
     "@techmmunity/utils": "^1.5.0",
     "@types/node-cron": "^3.0.0",
     "canvas": "^2.8.0",

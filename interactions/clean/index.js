@@ -5,7 +5,7 @@ const builders_1 = require("@discordjs/builders");
 const utils_1 = require("@techmmunity/utils");
 const colors_1 = require("../../assets/colors");
 const ids_1 = require("../../config/ids");
-const permission_type_1 = require("../../types/permission-type");
+const permission_type_1 = require("../../enums/permission-type");
 const clean = async (interaction) => {
     await interaction.deferReply();
     const channel = interaction.options.getChannel("channel");

@@ -4,7 +4,7 @@ exports.sendEmbedCommand = exports.sendEmbed = void 0;
 const builders_1 = require("@discordjs/builders");
 const colors_1 = require("../../assets/colors");
 const ids_1 = require("../../config/ids");
-const permission_type_1 = require("../../types/permission-type");
+const permission_type_1 = require("../../enums/permission-type");
 const sendEmbed = async (interaction) => {
     const channel = interaction.options.getChannel("channel");
     const title = interaction.options.getString("title");

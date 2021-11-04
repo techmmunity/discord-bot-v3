@@ -4,7 +4,7 @@ exports.welcomeImgCommand = exports.welcomeImg = void 0;
 const builders_1 = require("@discordjs/builders");
 const ids_1 = require("../../config/ids");
 const make_welcome_image_1 = require("./make-welcome-image");
-const permission_type_1 = require("../../types/permission-type");
+const permission_type_1 = require("../../enums/permission-type");
 const welcomeImg = async (interaction) => {
     const member = interaction.member;
     const welcomeImgAtt = await (0, make_welcome_image_1.makeWelcomeImg)(member);

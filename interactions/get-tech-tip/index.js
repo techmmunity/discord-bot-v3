@@ -4,7 +4,7 @@ exports.getTechTipCommand = exports.getTechTip = void 0;
 const builders_1 = require("@discordjs/builders");
 const ids_1 = require("../../config/ids");
 const tips_1 = require("../../jobs/tech-tips/tips");
-const permission_type_1 = require("../../types/permission-type");
+const permission_type_1 = require("../../enums/permission-type");
 const getTechTip = async (interaction) => {
     const day = interaction.options.getNumber("day-of-month");
     const idx = (day || new Date().getDate()) - 1;
@@ -18,7 +18,7 @@ exports.getTechTipCommand = {
     command: new builders_1.SlashCommandBuilder()
         .setName("get-tech-tip")
         .setDescription("Gets a tech tip")
-        .addNumberOption(option => option
+        .addNumberOption((option) => option
         .setName("day-of-month")
         .setDescription("Day of the month to get the tip"))
         .setDefaultPermission(false),

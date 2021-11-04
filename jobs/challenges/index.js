@@ -14,8 +14,9 @@ const sendChallenge = async () => {
         embeds: [challengeEmbed],
     });
     const challengeRepository = (0, symbiosis_1.getGlobalRepository)(challenge_1.ChallengeEntity);
-    await challengeRepository.save({
+    await challengeRepository.upsert({
         url: challengeEmbed.description,
+    }, {
         count: (0, symbiosis_1.Plus)(1),
     });
 };

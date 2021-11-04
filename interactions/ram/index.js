@@ -5,7 +5,7 @@ const builders_1 = require("@discordjs/builders");
 const colors_1 = require("../../assets/colors");
 const images_1 = require("../../assets/images");
 const ids_1 = require("../../config/ids");
-const permission_type_1 = require("../../types/permission-type");
+const permission_type_1 = require("../../enums/permission-type");
 const calcMemory = (memory) => Math.round((memory / 1024 / 1024) * 100) / 100;
 const getColor = (memoryUsage) => {
     if (memoryUsage < 30)

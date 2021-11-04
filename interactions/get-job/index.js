@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getJobCommand = exports.getJob = void 0;
 const builders_1 = require("@discordjs/builders");
 const ids_1 = require("../../config/ids");
-const permission_type_1 = require("../../types/permission-type");
+const permission_type_1 = require("../../enums/permission-type");
 const google_jobs_1 = require("../../utils/google-jobs");
 const get_jobs_embeds_1 = require("./get-jobs-embeds");
 const getJob = async (interaction) => {
@@ -20,11 +20,11 @@ exports.getJobCommand = {
     command: new builders_1.SlashCommandBuilder()
         .setName("get-job")
         .setDescription("Get a job")
-        .addStringOption(option => option
+        .addStringOption((option) => option
         .setName("query")
         .setDescription("Query to search for jobs")
         .setRequired(true))
-        .addNumberOption(option => option
+        .addNumberOption((option) => option
         .setName("qtd")
         .setDescription("Qtd of jobs to return")
         .setRequired(true))
