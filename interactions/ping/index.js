@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.pingCommand = exports.ping = void 0;
 const builders_1 = require("@discordjs/builders");
 const colors_1 = require("../../assets/colors");
+const get_command_name_1 = require("../../utils/get-command-name");
 const ping = (interaction) => interaction.reply({
     embeds: [
         {
@@ -15,6 +16,6 @@ const ping = (interaction) => interaction.reply({
 exports.ping = ping;
 exports.pingCommand = {
     command: new builders_1.SlashCommandBuilder()
-        .setName("ping")
+        .setName((0, get_command_name_1.getCommandName)("ping"))
         .setDescription("Checks the bot latency"),
 };

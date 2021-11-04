@@ -5,6 +5,7 @@ const builders_1 = require("@discordjs/builders");
 const colors_1 = require("../../assets/colors");
 const ids_1 = require("../../config/ids");
 const permission_type_1 = require("../../enums/permission-type");
+const get_command_name_1 = require("../../utils/get-command-name");
 const sendEmbed = async (interaction) => {
     const channel = interaction.options.getChannel("channel");
     const title = interaction.options.getString("title");
@@ -41,7 +42,7 @@ const sendEmbed = async (interaction) => {
 exports.sendEmbed = sendEmbed;
 exports.sendEmbedCommand = {
     command: new builders_1.SlashCommandBuilder()
-        .setName("send-embed")
+        .setName((0, get_command_name_1.getCommandName)("send-embed"))
         .setDescription("Send a embed message")
         .addChannelOption((option) => option
         .setName("channel")

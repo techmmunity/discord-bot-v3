@@ -6,6 +6,7 @@ const ids_1 = require("../../config/ids");
 const permission_type_1 = require("../../enums/permission-type");
 const google_jobs_1 = require("../../utils/google-jobs");
 const get_jobs_embeds_1 = require("./get-jobs-embeds");
+const get_command_name_1 = require("../../utils/get-command-name");
 const getJob = async (interaction) => {
     interaction.deferReply();
     const query = interaction.options.getString("query");
@@ -18,7 +19,7 @@ const getJob = async (interaction) => {
 exports.getJob = getJob;
 exports.getJobCommand = {
     command: new builders_1.SlashCommandBuilder()
-        .setName("get-job")
+        .setName((0, get_command_name_1.getCommandName)("get-job"))
         .setDescription("Get a job")
         .addStringOption((option) => option
         .setName("query")

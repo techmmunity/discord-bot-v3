@@ -13,6 +13,8 @@ const send_embed_1 = require("./send-embed");
 const send_pre_defined_messages_1 = require("./send-pre-defined-messages");
 const suggest_1 = require("./suggest");
 const welcome_img_1 = require("./welcome-img");
+const qce_1 = require("./qce");
+const minecraft_1 = require("./minecraft");
 const setInteractions = (client) => {
     client.on("ready", () => {
         console.log("Bot is ready!");
@@ -45,6 +47,10 @@ const setInteractions = (client) => {
                 return (0, get_tech_tip_1.getTechTip)(interaction);
             case "clean":
                 return (0, clean_1.clean)(interaction);
+            case "qce":
+                return (0, qce_1.qce)(interaction);
+            case "minecraft":
+                return (0, minecraft_1.minecraft)(interaction);
             default:
                 return;
         }
@@ -64,4 +70,6 @@ exports.commands = [
     send_embed_1.sendEmbedCommand,
     get_tech_tip_1.getTechTipCommand,
     clean_1.cleanCommand,
+    qce_1.qceCommand,
+    minecraft_1.minecraftCommand,
 ];

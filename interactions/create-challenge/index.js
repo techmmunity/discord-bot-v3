@@ -10,6 +10,7 @@ const challenge_1 = require("../../entities/challenge");
 const permission_type_1 = require("../../enums/permission-type");
 const get_title_1 = require("../../utils/get-title");
 const make_embed_1 = require("./make-embed");
+const get_command_name_1 = require("../../utils/get-command-name");
 const createChallenge = async (interaction) => {
     const url = interaction.options.getString("url");
     if (!url.startsWith("https://www.codewars.com/kata/")) {
@@ -77,7 +78,7 @@ const createChallenge = async (interaction) => {
 exports.createChallenge = createChallenge;
 exports.createChallengeCommand = {
     command: new builders_1.SlashCommandBuilder()
-        .setName("create-challenge")
+        .setName((0, get_command_name_1.getCommandName)("create-challenge"))
         .setDescription("Creates a new challenge")
         .addStringOption((option) => option
         .setName("url")

@@ -6,6 +6,7 @@ const utils_1 = require("@techmmunity/utils");
 const colors_1 = require("../../assets/colors");
 const ids_1 = require("../../config/ids");
 const permission_type_1 = require("../../enums/permission-type");
+const get_command_name_1 = require("../../utils/get-command-name");
 const clean = async (interaction) => {
     await interaction.deferReply();
     const channel = interaction.options.getChannel("channel");
@@ -27,7 +28,7 @@ const clean = async (interaction) => {
 exports.clean = clean;
 exports.cleanCommand = {
     command: new builders_1.SlashCommandBuilder()
-        .setName("clean")
+        .setName((0, get_command_name_1.getCommandName)("clean"))
         .setDescription("Checks the bot latency")
         .addChannelOption((option) => option
         .setName("channel")

@@ -12,7 +12,7 @@ exports.DiscordClient = new discord_js_1.Client({
             },
         ],
     },
-    partials: ["MESSAGE", "REACTION", "GUILD_MEMBER"],
+    partials: ["MESSAGE", "REACTION", "GUILD_MEMBER", "MESSAGE"],
     intents: [
         discord_js_1.Intents.FLAGS.GUILD_MESSAGES,
         discord_js_1.Intents.FLAGS.GUILDS,

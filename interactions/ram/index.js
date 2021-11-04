@@ -6,6 +6,7 @@ const colors_1 = require("../../assets/colors");
 const images_1 = require("../../assets/images");
 const ids_1 = require("../../config/ids");
 const permission_type_1 = require("../../enums/permission-type");
+const get_command_name_1 = require("../../utils/get-command-name");
 const calcMemory = (memory) => Math.round((memory / 1024 / 1024) * 100) / 100;
 const getColor = (memoryUsage) => {
     if (memoryUsage < 30)
@@ -63,7 +64,7 @@ const ram = (interaction) => {
 exports.ram = ram;
 exports.ramCommand = {
     command: new builders_1.SlashCommandBuilder()
-        .setName("ram")
+        .setName((0, get_command_name_1.getCommandName)("ram"))
         .setDescription("Checks the bot ram usage")
         .setDefaultPermission(false),
     permissions: [

@@ -5,6 +5,7 @@ const builders_1 = require("@discordjs/builders");
 const utils_1 = require("@techmmunity/utils");
 const colors_1 = require("../../assets/colors");
 const ids_1 = require("../../config/ids");
+const get_command_name_1 = require("../../utils/get-command-name");
 const notificationsOptions = {
     techmmunity: {
         description: "Notificações oficiais da Techmmunity",
@@ -34,7 +35,7 @@ const notificationsOptions = {
 };
 const makeCommand = () => {
     const command = new builders_1.SlashCommandBuilder()
-        .setName("notifications")
+        .setName((0, get_command_name_1.getCommandName)("notifications"))
         .setDescription("Add, Removes or show all notifications available")
         .setDefaultPermission(true);
     const entries = Object.entries(notificationsOptions);

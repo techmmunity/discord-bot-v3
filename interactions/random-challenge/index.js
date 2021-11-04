@@ -5,6 +5,7 @@ const builders_1 = require("@discordjs/builders");
 const ids_1 = require("../../config/ids");
 const permission_type_1 = require("../../enums/permission-type");
 const get_random_challenge_1 = require("./get-random-challenge");
+const get_command_name_1 = require("../../utils/get-command-name");
 const getRandomChallenge = async (interaction) => {
     const randomChallengeEmbed = await (0, get_random_challenge_1.getRandomChallengeEmbed)();
     await interaction.reply({
@@ -14,7 +15,7 @@ const getRandomChallenge = async (interaction) => {
 exports.getRandomChallenge = getRandomChallenge;
 exports.getRandomChallengeCommand = {
     command: new builders_1.SlashCommandBuilder()
-        .setName("get-random-challenge")
+        .setName((0, get_command_name_1.getCommandName)("get-random-challenge"))
         .setDescription("Get a random challenge")
         .setDefaultPermission(false),
     permissions: [

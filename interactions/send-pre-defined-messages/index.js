@@ -8,13 +8,14 @@ const ids_1 = require("../../config/ids");
 const permission_type_1 = require("../../enums/permission-type");
 const booster_embed_1 = require("./booster-embed");
 const notifications_embed_1 = require("./notifications-embed");
+const get_command_name_1 = require("../../utils/get-command-name");
 const messagesOptions = [
     ["notifications", "Notifications Channel"],
     ["booster", "Booster Benefits"],
 ];
 const makeCommand = () => {
     const command = new builders_1.SlashCommandBuilder()
-        .setName("send-pre-defined-messages")
+        .setName((0, get_command_name_1.getCommandName)("send-pre-defined-messages"))
         .setDescription("Send pre-defined messages to specific channels")
         .setDefaultPermission(true);
     messagesOptions.forEach(([key, value]) => {
