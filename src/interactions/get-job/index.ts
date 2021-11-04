@@ -5,42 +5,43 @@ import { Interaction } from "../../types/interactions";
 import { PermissionTypeEnum } from "../../enums/permission-type";
 import { getJobs } from "../../utils/google-jobs";
 import { getJobsEmbeds } from "./get-jobs-embeds";
+import { getCommandName } from "../../utils/get-command-name";
 
 export const getJob = async (interaction: CommandInteraction) => {
-  interaction.deferReply();
+	interaction.deferReply();
 
-  const query = interaction.options.getString("query")!;
-  const max = interaction.options.getNumber("qtd")!;
+	const query = interaction.options.getString("query")!;
+	const max = interaction.options.getNumber("qtd")!;
 
-  const jobs = await getJobs(query, max);
+	const jobs = await getJobs(query, max);
 
-  await interaction.editReply({
-    embeds: getJobsEmbeds(jobs),
-  });
+	await interaction.editReply({
+		embeds: getJobsEmbeds(jobs),
+	});
 };
 
 export const getJobCommand: Interaction = {
-  command: new SlashCommandBuilder()
-    .setName("get-job")
-    .setDescription("Get a job")
-    .addStringOption((option) =>
-      option
-        .setName("query")
-        .setDescription("Query to search for jobs")
-        .setRequired(true)
-    )
-    .addNumberOption((option) =>
-      option
-        .setName("qtd")
-        .setDescription("Qtd of jobs to return")
-        .setRequired(true)
-    )
-    .setDefaultPermission(false),
-  permissions: [
-    {
-      id: RAZAL_ID,
-      type: PermissionTypeEnum.USER,
-      permission: true,
-    },
-  ],
+	command: new SlashCommandBuilder()
+		.setName(getCommandName("get-job"))
+		.setDescription("Get a job")
+		.addStringOption((option) =>
+			option
+				.setName("query")
+				.setDescription("Query to search for jobs")
+				.setRequired(true)
+		)
+		.addNumberOption((option) =>
+			option
+				.setName("qtd")
+				.setDescription("Qtd of jobs to return")
+				.setRequired(true)
+		)
+		.setDefaultPermission(false),
+	permissions: [
+		{
+			id: RAZAL_ID,
+			type: PermissionTypeEnum.USER,
+			permission: true,
+		},
+	],
 };
