@@ -19,7 +19,7 @@ exports.getTechTipCommand = {
     command: new builders_1.SlashCommandBuilder()
         .setName((0, get_command_name_1.getCommandName)("get-tech-tip"))
         .setDescription("Gets a tech tip")
-        .addNumberOption((option) => option
+        .addNumberOption(option => option
         .setName("day-of-month")
         .setDescription("Day of the month to get the tip"))
         .setDefaultPermission(false),

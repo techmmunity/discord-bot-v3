@@ -21,11 +21,11 @@ exports.getJobCommand = {
     command: new builders_1.SlashCommandBuilder()
         .setName((0, get_command_name_1.getCommandName)("get-job"))
         .setDescription("Get a job")
-        .addStringOption((option) => option
+        .addStringOption(option => option
         .setName("query")
         .setDescription("Query to search for jobs")
         .setRequired(true))
-        .addNumberOption((option) => option
+        .addNumberOption(option => option
         .setName("qtd")
         .setDescription("Qtd of jobs to return")
         .setRequired(true))

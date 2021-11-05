@@ -19,7 +19,7 @@ const makeCommand = () => {
         .setDescription("Send pre-defined messages to specific channels")
         .setDefaultPermission(true);
     messagesOptions.forEach(([key, value]) => {
-        command.addBooleanOption((option) => option.setName(key).setDescription(value));
+        command.addBooleanOption(option => option.setName(key).setDescription(value));
     });
     return command;
 };

@@ -38,11 +38,11 @@ exports.suggestCommand = {
     command: new builders_1.SlashCommandBuilder()
         .setName((0, get_command_name_1.getCommandName)("suggest"))
         .setDescription("Creates a new suggestion")
-        .addStringOption((option) => option
+        .addStringOption(option => option
         .setName("suggestion")
         .setDescription("A suggestion to make the server a better place for the community!")
         .setRequired(true))
-        .addStringOption((option) => option
+        .addStringOption(option => option
         .setName("image_url")
         .setDescription("A image to help to to explain your suggestion"))
         .setDefaultPermission(true),

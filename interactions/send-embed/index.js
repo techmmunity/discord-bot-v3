@@ -44,22 +44,22 @@ exports.sendEmbedCommand = {
     command: new builders_1.SlashCommandBuilder()
         .setName((0, get_command_name_1.getCommandName)("send-embed"))
         .setDescription("Send a embed message")
-        .addChannelOption((option) => option
+        .addChannelOption(option => option
         .setName("channel")
         .setDescription("Channel where the embed will be sent")
         .setRequired(true))
-        .addStringOption((option) => option
+        .addStringOption(option => option
         .setName("title")
         .setDescription("Title of the embed")
         .setRequired(true))
-        .addStringOption((option) => option
+        .addStringOption(option => option
         .setName("description")
         .setDescription("Description of the embed")
         .setRequired(true))
-        .addStringOption((option) => option.setName("color").setDescription("Color of the embed"))
-        .addStringOption((option) => option.setName("thumbnail").setDescription("Thumbnail of the embed"))
-        .addBooleanOption((option) => option.setName("crosspost").setDescription("Crosspost message"))
-        .addRoleOption((option) => option.setName("notification").setDescription("Role to notify"))
+        .addStringOption(option => option.setName("color").setDescription("Color of the embed"))
+        .addStringOption(option => option.setName("thumbnail").setDescription("Thumbnail of the embed"))
+        .addBooleanOption(option => option.setName("crosspost").setDescription("Crosspost message"))
+        .addRoleOption(option => option.setName("notification").setDescription("Role to notify"))
         .setDefaultPermission(false),
     permissions: [
         {

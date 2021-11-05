@@ -14,7 +14,7 @@ const clean = async (interaction) => {
     const messages = await channel.messages.fetch({
         limit: (0, utils_1.isBetween)(qtd, 0, 100) ? qtd : 100,
     });
-    const messagesToDelete = messages.filter((message) => !message.pinned);
+    const messagesToDelete = messages.filter(message => !message.pinned);
     await channel.bulkDelete(messagesToDelete);
     await interaction.editReply({
         embeds: [
@@ -30,11 +30,11 @@ exports.cleanCommand = {
     command: new builders_1.SlashCommandBuilder()
         .setName((0, get_command_name_1.getCommandName)("clean"))
         .setDescription("Checks the bot latency")
-        .addChannelOption((option) => option
+        .addChannelOption(option => option
         .setName("channel")
         .setDescription("Channel to clean the messages")
         .setRequired(true))
-        .addNumberOption((option) => option
+        .addNumberOption(option => option
         .setName("qtd")
         .setDescription("Qtd of messages (Max: 100)")
         .setRequired(true))

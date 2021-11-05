@@ -40,14 +40,14 @@ const makeCommand = () => {
         .setDefaultPermission(true);
     const entries = Object.entries(notificationsOptions);
     entries.forEach(([key, value]) => {
-        command.addBooleanOption((option) => option.setName(key).setDescription(value.description));
+        command.addBooleanOption(option => option.setName(key).setDescription(value.description));
     });
     return command;
 };
 const getOptions = (interaction) => {
     const keys = Object.keys(notificationsOptions);
     return keys
-        .map((key) => {
+        .map(key => {
         if (interaction.options.getBoolean(key)) {
             return key;
         }
@@ -79,8 +79,8 @@ const notifications = async (interaction) => {
         return;
     }
     const member = interaction.member;
-    const rolesToAdd = options.filter((option) => !member.roles.cache.has(notificationsOptions[option].role));
-    const rolesToRemove = options.filter((option) => member.roles.cache.has(notificationsOptions[option].role));
+    const rolesToAdd = options.filter(option => !member.roles.cache.has(notificationsOptions[option].role));
+    const rolesToRemove = options.filter(option => member.roles.cache.has(notificationsOptions[option].role));
     rolesToAdd.forEach(async (option) => {
         const role = notificationsOptions[option].role;
         await member.roles.add(role);
@@ -92,10 +92,10 @@ const notifications = async (interaction) => {
         await (0, utils_1.sleep)(0.2);
     });
     const rolesAddedDescription = `**Roles adicionadas:** ${rolesToAdd
-        .map((option) => `\`${option}\``)
+        .map(option => `\`${option}\``)
         .join(", ")}`;
     const rolesRemovedDescription = `**Roles removidas:** ${rolesToRemove
-        .map((option) => `\`${option}\``)
+        .map(option => `\`${option}\``)
         .join(", ")}`;
     await interaction.editReply({
         embeds: [

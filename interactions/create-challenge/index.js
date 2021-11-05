@@ -80,11 +80,11 @@ exports.createChallengeCommand = {
     command: new builders_1.SlashCommandBuilder()
         .setName((0, get_command_name_1.getCommandName)("create-challenge"))
         .setDescription("Creates a new challenge")
-        .addStringOption((option) => option
+        .addStringOption(option => option
         .setName("url")
         .setDescription("CodeWars Challenge URL")
         .setRequired(true))
-        .addNumberOption((option) => option
+        .addNumberOption(option => option
         .setName("level")
         .setDescription("CodeWars Challenge Level")
         .setRequired(true))
