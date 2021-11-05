@@ -30,7 +30,7 @@ export const createChallenge = async (interaction: CommandInteraction) => {
 	}
 
 	const challengeRepository = getGlobalRepository(
-		ChallengeEntity
+		ChallengeEntity,
 	) as Repository<ChallengeEntity>;
 
 	const title = await getTitle(url);
@@ -95,17 +95,17 @@ export const createChallengeCommand: Interaction = {
 	command: new SlashCommandBuilder()
 		.setName(getCommandName("create-challenge"))
 		.setDescription("Creates a new challenge")
-		.addStringOption((option) =>
+		.addStringOption(option =>
 			option
 				.setName("url")
 				.setDescription("CodeWars Challenge URL")
-				.setRequired(true)
+				.setRequired(true),
 		)
-		.addNumberOption((option) =>
+		.addNumberOption(option =>
 			option
 				.setName("level")
 				.setDescription("CodeWars Challenge Level")
-				.setRequired(true)
+				.setRequired(true),
 		)
 		.setDefaultPermission(false),
 	permissions: [

@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const Images = {
+export const IMAGES = {
 	latency: "https://cdn.picpng.com/ping_pong/ping-pong-image-36284.png",
 	bityGif: "https://media.giphy.com/media/PGJPqkTcK1Vk0cIxgw/giphy.gif",
 	trashCan:
@@ -12,4 +11,6 @@ export const Images = {
 		"https://pngimg.com/uploads/treasure_chest/treasure_chest_PNG117.png",
 	welcomeImageBanner:
 		"https://cdn.discordapp.com/attachments/903650212596293642/903790823366344744/banner_1.png",
+	techmmunityLogoGif:
+		"https://github.com/techmmunity/eslint-config/raw/master/resources/logo.gif",
 };

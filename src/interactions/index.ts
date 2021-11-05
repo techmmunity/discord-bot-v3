@@ -20,6 +20,9 @@ import { suggest, suggestCommand } from "./suggest";
 import { welcomeImg, welcomeImgCommand } from "./welcome-img";
 import { qce, qceCommand } from "./qce";
 import { minecraft, minecraftCommand } from "./minecraft";
+import { youtube, youtubeCommand } from "./youtube";
+import { getCommandName } from "../utils/get-command-name";
+import { mentorship, mentorshipCommand } from "./mentorship";
 
 export const setInteractions = (client: Client) => {
 	client.on("ready", () => {
@@ -27,38 +30,42 @@ export const setInteractions = (client: Client) => {
 		console.log("Bot is ready!");
 	});
 
-	client.on("interactionCreate", (interaction) => {
+	client.on("interactionCreate", interaction => {
 		if (!interaction.isCommand()) return;
 
 		switch (interaction.commandName) {
-			case "create-challenge":
+			case getCommandName("create-challenge"):
 				return createChallenge(interaction);
-			case "ping":
+			case getCommandName("ping"):
 				return ping(interaction);
-			case "ram":
+			case getCommandName("ram"):
 				return ram(interaction);
-			case "get-random-challenge":
+			case getCommandName("get-random-challenge"):
 				return getRandomChallenge(interaction);
-			case "welcome-image":
+			case getCommandName("welcome-image"):
 				return welcomeImg(interaction);
-			case "suggest":
+			case getCommandName("suggest"):
 				return suggest(interaction);
-			case "notifications":
+			case getCommandName("notifications"):
 				return notifications(interaction);
-			case "send-pre-defined-messages":
+			case getCommandName("send-pre-defined-messages"):
 				return sendPreDefinedMessages(interaction);
-			case "get-job":
+			case getCommandName("get-job"):
 				return getJob(interaction);
-			case "send-embed":
+			case getCommandName("send-embed"):
 				return sendEmbed(interaction);
-			case "get-tech-tip":
+			case getCommandName("get-tech-tip"):
 				return getTechTip(interaction);
-			case "clean":
+			case getCommandName("clean"):
 				return clean(interaction);
-			case "qce":
+			case getCommandName("qce"):
 				return qce(interaction);
-			case "minecraft":
+			case getCommandName("minecraft"):
 				return minecraft(interaction);
+			case getCommandName("youtube"):
+				return youtube(interaction);
+			case getCommandName("mentorship"):
+				return mentorship(interaction);
 			default:
 				return;
 		}
@@ -80,4 +87,6 @@ export const commands = [
 	cleanCommand,
 	qceCommand,
 	minecraftCommand,
+	youtubeCommand,
+	mentorshipCommand,
 ];

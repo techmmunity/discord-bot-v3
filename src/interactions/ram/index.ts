@@ -3,7 +3,7 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { CommandInteraction } from "discord.js";
 import { COLORS } from "../../assets/colors";
-import { Images } from "../../assets/images";
+import { IMAGES } from "../../assets/images";
 import { MOD_ROLE_ID, STAFF_ROLE_ID } from "../../config/ids";
 import { Interaction } from "../../types/interactions";
 import { PermissionTypeEnum } from "../../enums/permission-type";
@@ -35,7 +35,7 @@ export const ram = (interaction: CommandInteraction) => {
 				title: "I use about:",
 				color: getColor(heapTotal),
 				thumbnail: {
-					url: Images.performance,
+					url: IMAGES.performance,
 				},
 				fields: [
 					{

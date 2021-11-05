@@ -9,7 +9,7 @@ import {
 } from "canvas";
 import { GuildMember, MessageAttachment } from "discord.js";
 import { resolve } from "path";
-import { Images } from "../../assets/images";
+import { IMAGES } from "../../assets/images";
 import { getMemberImgUrl } from "../../utils/get-member-img";
 
 const canvasWidth = 1015;
@@ -60,7 +60,7 @@ export const makeWelcomeImg = async (member: GuildMember) => {
 
 	const canvas = createCanvas(canvasWidth, canvasHeight);
 	const context = canvas.getContext("2d");
-	const background = await loadImage(Images.welcomeImageBanner);
+	const background = await loadImage(IMAGES.welcomeImageBanner);
 	context.drawImage(background, 0, 0, canvas.width, canvas.height);
 
 	context.fillStyle = "#ffffff";

@@ -24,17 +24,17 @@ export const getJobCommand: Interaction = {
 	command: new SlashCommandBuilder()
 		.setName(getCommandName("get-job"))
 		.setDescription("Get a job")
-		.addStringOption((option) =>
+		.addStringOption(option =>
 			option
 				.setName("query")
 				.setDescription("Query to search for jobs")
-				.setRequired(true)
+				.setRequired(true),
 		)
-		.addNumberOption((option) =>
+		.addNumberOption(option =>
 			option
 				.setName("qtd")
 				.setDescription("Qtd of jobs to return")
-				.setRequired(true)
+				.setRequired(true),
 		)
 		.setDefaultPermission(false),
 	permissions: [

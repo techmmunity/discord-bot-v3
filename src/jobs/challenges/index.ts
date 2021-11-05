@@ -9,25 +9,25 @@ import { ChallengeEntity } from "../../entities/challenge";
 import { getTextChannel } from "../../utils/get-channel";
 
 export const sendChallenge = async () => {
-  const channel = getTextChannel(CHALLENGE_CHANNEL_ID);
+	const channel = getTextChannel(CHALLENGE_CHANNEL_ID);
 
-  const challengeEmbed = await getRandomChallengeEmbed();
+	const challengeEmbed = await getRandomChallengeEmbed();
 
-  await channel.send({
-    content: `<@&${CHALLENGE_ROLE_ID}>`,
-    embeds: [challengeEmbed],
-  });
+	await channel.send({
+		content: `<@&${CHALLENGE_ROLE_ID}>`,
+		embeds: [challengeEmbed],
+	});
 
-  const challengeRepository = getGlobalRepository(
-    ChallengeEntity
-  ) as Repository<ChallengeEntity>;
+	const challengeRepository = getGlobalRepository(
+		ChallengeEntity,
+	) as Repository<ChallengeEntity>;
 
-  await challengeRepository.upsert(
-    {
-      url: challengeEmbed.description,
-    },
-    {
-      count: Plus(1),
-    }
-  );
+	await challengeRepository.upsert(
+		{
+			url: challengeEmbed.description,
+		},
+		{
+			count: Plus(1),
+		},
+	);
 };

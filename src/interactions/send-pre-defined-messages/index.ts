@@ -21,8 +21,8 @@ const makeCommand = () => {
 		.setDefaultPermission(true);
 
 	messagesOptions.forEach(([key, value]) => {
-		command.addBooleanOption((option) =>
-			option.setName(key).setDescription(value)
+		command.addBooleanOption(option =>
+			option.setName(key).setDescription(value),
 		);
 	});
 
@@ -40,7 +40,7 @@ const getOptions = (interaction: CommandInteraction) =>
 		.filter(Boolean) as Array<string>;
 
 export const sendPreDefinedMessages = async (
-	interaction: CommandInteraction
+	interaction: CommandInteraction,
 ) => {
 	await interaction.deferReply();
 

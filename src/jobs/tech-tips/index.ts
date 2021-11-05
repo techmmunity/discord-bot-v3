@@ -5,15 +5,15 @@ import { getTextChannel } from "../../utils/get-channel";
 import { getTip } from "./tips";
 
 export const sendTechTip = async () => {
-  const channel = getTextChannel(TECH_TIP_CHANNEL_ID);
+	const channel = getTextChannel(TECH_TIP_CHANNEL_ID);
 
-  const today = new Date().getDate() - 1;
+	const today = new Date().getDate() - 1;
 
-  const embed = getTip(today);
+	const embed = getTip(today);
 
-  const message = await channel.send({
-    embeds: [embed],
-  });
+	const message = await channel.send({
+		embeds: [embed],
+	});
 
-  await message.crosspost();
+	await message.crosspost();
 };

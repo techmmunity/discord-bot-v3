@@ -30,8 +30,8 @@ export const qceCommand: Interaction = {
 	command: new SlashCommandBuilder()
 		.setName(getCommandName("qce"))
 		.setDescription("Question + Code + Error")
-		.addUserOption((option) =>
-			option.setName("user").setDescription("User to mention")
+		.addUserOption(option =>
+			option.setName("user").setDescription("User to mention"),
 		)
 		.setDefaultPermission(true),
 };

@@ -23,10 +23,10 @@ export const getTechTipCommand: Interaction = {
 	command: new SlashCommandBuilder()
 		.setName(getCommandName("get-tech-tip"))
 		.setDescription("Gets a tech tip")
-		.addNumberOption((option) =>
+		.addNumberOption(option =>
 			option
 				.setName("day-of-month")
-				.setDescription("Day of the month to get the tip")
+				.setDescription("Day of the month to get the tip"),
 		)
 		.setDefaultPermission(false),
 	permissions: [

@@ -18,7 +18,7 @@ export const clean = async (interaction: CommandInteraction) => {
 		limit: isBetween(qtd, 0, 100) ? qtd : 100,
 	});
 
-	const messagesToDelete = messages.filter((message) => !message.pinned);
+	const messagesToDelete = messages.filter(message => !message.pinned);
 
 	await channel.bulkDelete(messagesToDelete);
 
@@ -36,17 +36,17 @@ export const cleanCommand: Interaction = {
 	command: new SlashCommandBuilder()
 		.setName(getCommandName("clean"))
 		.setDescription("Checks the bot latency")
-		.addChannelOption((option) =>
+		.addChannelOption(option =>
 			option
 				.setName("channel")
 				.setDescription("Channel to clean the messages")
-				.setRequired(true)
+				.setRequired(true),
 		)
-		.addNumberOption((option) =>
+		.addNumberOption(option =>
 			option
 				.setName("qtd")
 				.setDescription("Qtd of messages (Max: 100)")
-				.setRequired(true)
+				.setRequired(true),
 		)
 		.setDefaultPermission(false),
 	permissions: [

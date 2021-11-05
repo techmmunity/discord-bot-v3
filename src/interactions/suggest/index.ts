@@ -44,18 +44,18 @@ export const suggestCommand: Interaction = {
 	command: new SlashCommandBuilder()
 		.setName(getCommandName("suggest"))
 		.setDescription("Creates a new suggestion")
-		.addStringOption((option) =>
+		.addStringOption(option =>
 			option
 				.setName("suggestion")
 				.setDescription(
-					"A suggestion to make the server a better place for the community!"
+					"A suggestion to make the server a better place for the community!",
 				)
-				.setRequired(true)
+				.setRequired(true),
 		)
-		.addStringOption((option) =>
+		.addStringOption(option =>
 			option
 				.setName("image_url")
-				.setDescription("A image to help to to explain your suggestion")
+				.setDescription("A image to help to to explain your suggestion"),
 		)
 		.setDefaultPermission(true),
 };

@@ -8,18 +8,18 @@ import { getTextChannel } from "../../utils/get-channel";
 import { getJobs } from "../../utils/google-jobs";
 
 export const sendJobOffer = (query: string) => async () => {
-  const channel = getTextChannel(JOBS_CHANNEL_ID);
+	const channel = getTextChannel(JOBS_CHANNEL_ID);
 
-  const jobs = await getJobs(query, 10);
+	const jobs = await getJobs(query, 10);
 
-  const embeds = getJobsEmbeds(jobs);
+	const embeds = getJobsEmbeds(jobs);
 
-  for (const embed of embeds) {
-    await channel.send({
-      content: `<@&${JOB_ROLE_ID}>`,
-      embeds: [embed],
-    });
+	for (const embed of embeds) {
+		await channel.send({
+			content: `<@&${JOB_ROLE_ID}>`,
+			embeds: [embed],
+		});
 
-    await sleep(0.3);
-  }
+		await sleep(0.3);
+	}
 };

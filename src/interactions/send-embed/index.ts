@@ -48,35 +48,35 @@ export const sendEmbedCommand: Interaction = {
 	command: new SlashCommandBuilder()
 		.setName(getCommandName("send-embed"))
 		.setDescription("Send a embed message")
-		.addChannelOption((option) =>
+		.addChannelOption(option =>
 			option
 				.setName("channel")
 				.setDescription("Channel where the embed will be sent")
-				.setRequired(true)
+				.setRequired(true),
 		)
-		.addStringOption((option) =>
+		.addStringOption(option =>
 			option
 				.setName("title")
 				.setDescription("Title of the embed")
-				.setRequired(true)
+				.setRequired(true),
 		)
-		.addStringOption((option) =>
+		.addStringOption(option =>
 			option
 				.setName("description")
 				.setDescription("Description of the embed")
-				.setRequired(true)
+				.setRequired(true),
 		)
-		.addStringOption((option) =>
-			option.setName("color").setDescription("Color of the embed")
+		.addStringOption(option =>
+			option.setName("color").setDescription("Color of the embed"),
 		)
-		.addStringOption((option) =>
-			option.setName("thumbnail").setDescription("Thumbnail of the embed")
+		.addStringOption(option =>
+			option.setName("thumbnail").setDescription("Thumbnail of the embed"),
 		)
-		.addBooleanOption((option) =>
-			option.setName("crosspost").setDescription("Crosspost message")
+		.addBooleanOption(option =>
+			option.setName("crosspost").setDescription("Crosspost message"),
 		)
-		.addRoleOption((option) =>
-			option.setName("notification").setDescription("Role to notify")
+		.addRoleOption(option =>
+			option.setName("notification").setDescription("Role to notify"),
 		)
 		.setDefaultPermission(false),
 	permissions: [

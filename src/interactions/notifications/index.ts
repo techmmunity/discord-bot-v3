@@ -53,8 +53,8 @@ const makeCommand = () => {
 	const entries = Object.entries(notificationsOptions);
 
 	entries.forEach(([key, value]) => {
-		command.addBooleanOption((option) =>
-			option.setName(key).setDescription(value.description)
+		command.addBooleanOption(option =>
+			option.setName(key).setDescription(value.description),
 		);
 	});
 
@@ -67,7 +67,7 @@ const getOptions = (interaction: CommandInteraction) => {
 	return (
 		keys
 			// eslint-disable-next-line array-callback-return
-			.map((key) => {
+			.map(key => {
 				if (interaction.options.getBoolean(key)) {
 					return key;
 				}
@@ -111,13 +111,13 @@ export const notifications = async (interaction: CommandInteraction) => {
 	const member = interaction.member as GuildMember;
 
 	const rolesToAdd = options.filter(
-		(option) => !member.roles.cache.has(notificationsOptions[option].role)
+		option => !member.roles.cache.has(notificationsOptions[option].role),
 	);
-	const rolesToRemove = options.filter((option) =>
-		member.roles.cache.has(notificationsOptions[option].role)
+	const rolesToRemove = options.filter(option =>
+		member.roles.cache.has(notificationsOptions[option].role),
 	);
 
-	rolesToAdd.forEach(async (option) => {
+	rolesToAdd.forEach(async option => {
 		const role = notificationsOptions[option].role;
 
 		await member.roles.add(role);
@@ -126,7 +126,7 @@ export const notifications = async (interaction: CommandInteraction) => {
 		await sleep(0.2);
 	});
 
-	rolesToRemove.forEach(async (option) => {
+	rolesToRemove.forEach(async option => {
 		const role = notificationsOptions[option].role;
 
 		await member.roles.remove(role);
@@ -136,10 +136,10 @@ export const notifications = async (interaction: CommandInteraction) => {
 	});
 
 	const rolesAddedDescription = `**Roles adicionadas:** ${rolesToAdd
-		.map((option) => `\`${option}\``)
+		.map(option => `\`${option}\``)
 		.join(", ")}`;
 	const rolesRemovedDescription = `**Roles removidas:** ${rolesToRemove
-		.map((option) => `\`${option}\``)
+		.map(option => `\`${option}\``)
 		.join(", ")}`;
 
 	await interaction.editReply({
