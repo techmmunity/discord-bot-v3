@@ -17,7 +17,7 @@ const makeCommand = () => {
     const command = new builders_1.SlashCommandBuilder()
         .setName((0, get_command_name_1.getCommandName)("send-pre-defined-messages"))
         .setDescription("Send pre-defined messages to specific channels")
-        .setDefaultPermission(true);
+        .setDefaultPermission(false);
     messagesOptions.forEach(([key, value]) => {
         command.addBooleanOption(option => option.setName(key).setDescription(value));
     });
