@@ -15,42 +15,49 @@ const suggest_1 = require("./suggest");
 const welcome_img_1 = require("./welcome-img");
 const qce_1 = require("./qce");
 const minecraft_1 = require("./minecraft");
+const youtube_1 = require("./youtube");
+const get_command_name_1 = require("../utils/get-command-name");
+const mentorship_1 = require("./mentorship");
 const setInteractions = (client) => {
     client.on("ready", () => {
         console.log("Bot is ready!");
     });
-    client.on("interactionCreate", (interaction) => {
+    client.on("interactionCreate", interaction => {
         if (!interaction.isCommand())
             return;
         switch (interaction.commandName) {
-            case "create-challenge":
+            case (0, get_command_name_1.getCommandName)("create-challenge"):
                 return (0, create_challenge_1.createChallenge)(interaction);
-            case "ping":
+            case (0, get_command_name_1.getCommandName)("ping"):
                 return (0, ping_1.ping)(interaction);
-            case "ram":
+            case (0, get_command_name_1.getCommandName)("ram"):
                 return (0, ram_1.ram)(interaction);
-            case "get-random-challenge":
+            case (0, get_command_name_1.getCommandName)("get-random-challenge"):
                 return (0, random_challenge_1.getRandomChallenge)(interaction);
-            case "welcome-image":
+            case (0, get_command_name_1.getCommandName)("welcome-image"):
                 return (0, welcome_img_1.welcomeImg)(interaction);
-            case "suggest":
+            case (0, get_command_name_1.getCommandName)("suggest"):
                 return (0, suggest_1.suggest)(interaction);
-            case "notifications":
+            case (0, get_command_name_1.getCommandName)("notifications"):
                 return (0, notifications_1.notifications)(interaction);
-            case "send-pre-defined-messages":
+            case (0, get_command_name_1.getCommandName)("send-pre-defined-messages"):
                 return (0, send_pre_defined_messages_1.sendPreDefinedMessages)(interaction);
-            case "get-job":
+            case (0, get_command_name_1.getCommandName)("get-job"):
                 return (0, get_job_1.getJob)(interaction);
-            case "send-embed":
+            case (0, get_command_name_1.getCommandName)("send-embed"):
                 return (0, send_embed_1.sendEmbed)(interaction);
-            case "get-tech-tip":
+            case (0, get_command_name_1.getCommandName)("get-tech-tip"):
                 return (0, get_tech_tip_1.getTechTip)(interaction);
-            case "clean":
+            case (0, get_command_name_1.getCommandName)("clean"):
                 return (0, clean_1.clean)(interaction);
-            case "qce":
+            case (0, get_command_name_1.getCommandName)("qce"):
                 return (0, qce_1.qce)(interaction);
-            case "minecraft":
+            case (0, get_command_name_1.getCommandName)("minecraft"):
                 return (0, minecraft_1.minecraft)(interaction);
+            case (0, get_command_name_1.getCommandName)("youtube"):
+                return (0, youtube_1.youtube)(interaction);
+            case (0, get_command_name_1.getCommandName)("mentorship"):
+                return (0, mentorship_1.mentorship)(interaction);
             default:
                 return;
         }
@@ -72,4 +79,6 @@ exports.commands = [
     clean_1.cleanCommand,
     qce_1.qceCommand,
     minecraft_1.minecraftCommand,
+    youtube_1.youtubeCommand,
+    mentorship_1.mentorshipCommand,
 ];

@@ -10,4 +10,5 @@ exports.COLORS = {
     twitch: "#9146FF",
     codewars: "#b33319",
     pink: "#ff73fa",
+    youtube: "#FF0000",
 };

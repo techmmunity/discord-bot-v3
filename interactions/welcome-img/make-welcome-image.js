@@ -35,7 +35,7 @@ const makeWelcomeImg = async (member) => {
     });
     const canvas = (0, canvas_1.createCanvas)(canvasWidth, canvasHeight);
     const context = canvas.getContext("2d");
-    const background = await (0, canvas_1.loadImage)(images_1.Images.welcomeImageBanner);
+    const background = await (0, canvas_1.loadImage)(images_1.IMAGES.welcomeImageBanner);
     context.drawImage(background, 0, 0, canvas.width, canvas.height);
     context.fillStyle = "#ffffff";
     applyText(50, 2.5, canvas, "SEJA BEM VINDO(A)!", context);

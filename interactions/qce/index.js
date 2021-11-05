@@ -28,6 +28,6 @@ exports.qceCommand = {
     command: new builders_1.SlashCommandBuilder()
         .setName((0, get_command_name_1.getCommandName)("qce"))
         .setDescription("Question + Code + Error")
-        .addUserOption((option) => option.setName("user").setDescription("User to mention"))
+        .addUserOption(option => option.setName("user").setDescription("User to mention"))
         .setDefaultPermission(true),
 };

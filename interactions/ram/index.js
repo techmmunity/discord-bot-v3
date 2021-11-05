@@ -28,7 +28,7 @@ const ram = (interaction) => {
                 title: "I use about:",
                 color: getColor(heapTotal),
                 thumbnail: {
-                    url: images_1.Images.performance,
+                    url: images_1.IMAGES.performance,
                 },
                 fields: [
                     {

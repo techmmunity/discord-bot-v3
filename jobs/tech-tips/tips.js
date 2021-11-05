@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getTip = void 0;
 const colors_1 = require("../../assets/colors");
+const images_1 = require("../../assets/images");
 const ids_1 = require("../../config/ids");
 const notifications = {
     description: `Para receber notificações dos seus conteúdos favoritos, vá até o <#${ids_1.NOTIFICATIONS_CHANNEL_ID}> e use o comando \`/notifications\`.`,
@@ -120,7 +121,7 @@ const tips = [
 const getTip = (dayOfTheMonth) => {
     const embed = tips[dayOfTheMonth] || tips[0];
     return Object.assign(Object.assign({}, embed), { color: colors_1.COLORS.turquoise, thumbnail: {
-            url: "https://github.com/techmmunity/eslint-config/raw/master/resources/logo.gif",
+            url: images_1.IMAGES.techmmunityLogoGif,
         } });
 };
 exports.getTip = getTip;
