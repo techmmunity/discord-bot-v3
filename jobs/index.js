@@ -8,6 +8,7 @@ const node_cron_1 = __importDefault(require("node-cron"));
 const jobs_recurrence_1 = require("../config/jobs-recurrence");
 const challenges_1 = require("./challenges");
 const job_offer_1 = require("./job-offer");
+const mentorship_1 = require("./mentorship");
 const minecraft_1 = require("./minecraft");
 const tech_tips_1 = require("./tech-tips");
 const setJobs = () => {
@@ -16,5 +17,6 @@ const setJobs = () => {
     node_cron_1.default.schedule(jobs_recurrence_1.JobsRecurrence.SEND_JOBS_REACT, (0, job_offer_1.sendJobOffer)("react junior"));
     node_cron_1.default.schedule(jobs_recurrence_1.JobsRecurrence.SEND_TECH_TIP, tech_tips_1.sendTechTip);
     node_cron_1.default.schedule(jobs_recurrence_1.JobsRecurrence.SEND_MINECRAFT, minecraft_1.sendMinecraft);
+    node_cron_1.default.schedule(jobs_recurrence_1.JobsRecurrence.SEND_MENTORSHIP_ANNOUNCE, mentorship_1.sendMentorshipAnnounce);
 };
 exports.setJobs = setJobs;

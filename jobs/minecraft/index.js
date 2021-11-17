@@ -5,7 +5,7 @@ const colors_1 = require("../../assets/colors");
 const ids_1 = require("../../config/ids");
 const get_channel_1 = require("../../utils/get-channel");
 exports.MINECRAFT_EMBED = {
-    title: "<a:minecraft:765950443011965009> Bora jogar um mine? <a:minecraft:765950443011965009>",
+    title: ":joystick: Bora jogar um mine? :joystick:",
     description: "A Tech tem parceria com um servidor de Minecraft (1.17)! Lá tem varios mini-games, um sistema de RPG, skills, survival e muito mais!\n\nConfira esse incrível servidor usando o ip:\n**minecraft.techmmunity.com.br**",
     color: colors_1.COLORS.turquoise,
     thumbnail: {

@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.someoneCanHelpMe = void 0;
+const ids_1 = require("../../config/ids");
 const qce_1 = require("../../interactions/qce");
 const isSomeone = (content) => {
     const hasSomeone = content.includes("alguém") || content.includes("alguem");
@@ -15,6 +16,9 @@ const isHow = (content) => {
     return hasHow && hasI && hasSolve;
 };
 const someoneCanHelpMe = async (message) => {
+    var _a;
+    if (((_a = message.member) === null || _a === void 0 ? void 0 : _a.guild.id) !== ids_1.GUILD_ID)
+        return;
     const content = message.content.toLowerCase();
     if (isSomeone(content) || isHow(content)) {
         await message.reply({
