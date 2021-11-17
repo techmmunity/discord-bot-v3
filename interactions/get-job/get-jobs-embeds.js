@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getJobsEmbeds = void 0;
+const images_1 = require("../../assets/images");
 const getJobsEmbeds = (jobs) => jobs.map(job => ({
     title: `${job.title.slice(0, 253)}...`,
     thumbnail: {
@@ -8,6 +9,11 @@ const getJobsEmbeds = (jobs) => jobs.map(job => ({
     },
     description: job.description,
     url: job.url,
+    author: {
+        name: "Techmmunity",
+        url: "https://techmmunity.com.br",
+        iconURL: images_1.IMAGES.techmmunityLogo,
+    },
     fields: [
         {
             name: "Empresa",

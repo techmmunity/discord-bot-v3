@@ -19,6 +19,7 @@ exports.classNovember2021 = {
         {
             id: ids_1.CODERS_COMMUNITY_GUILD_ID,
             channelId: ids_1.CODERS_COMMUNITY_CHANNEL_ID,
+            role: ids_1.CODERS_COMMUNITY_ROLE_ID,
             schedule: "0 11 * * 1,4",
         },
     ],

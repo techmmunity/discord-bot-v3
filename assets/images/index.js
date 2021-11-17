@@ -10,4 +10,5 @@ exports.IMAGES = {
     treasure: "https://pngimg.com/uploads/treasure_chest/treasure_chest_PNG117.png",
     welcomeImageBanner: "https://cdn.discordapp.com/attachments/903650212596293642/903790823366344744/banner_1.png",
     techmmunityLogoGif: "https://github.com/techmmunity/eslint-config/raw/master/resources/logo.gif",
+    techmmunityLogo: "https://techmmunity-static-images.s3.amazonaws.com/logo.jpg",
 };
