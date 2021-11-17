@@ -17,7 +17,7 @@ const isHow = (content) => {
 };
 const someoneCanHelpMe = async (message) => {
     var _a;
-    if (((_a = message.member) === null || _a === void 0 ? void 0 : _a.guild.id) !== ids_1.GUILD_ID)
+    if (((_a = message.member) === null || _a === void 0 ? void 0 : _a.guild.id) !== ids_1.TECHMMUNITY_GUILD_ID)
         return;
     const content = message.content.toLowerCase();
     if (isSomeone(content) || isHow(content)) {

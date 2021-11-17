@@ -7,8 +7,12 @@ exports.classNovember2021 = {
     lastAnnounceDay: new Date(2021, 10, 26),
     servers: [
         {
-            id: ids_1.GUILD_ID,
+            id: ids_1.TECHMMUNITY_GUILD_ID,
             channelId: ids_1.COURSES_CHANNEL_ID,
+        },
+        {
+            id: ids_1.BR_DEVELOPERS_GUILD_ID,
+            channelId: ids_1.BR_DEVELOPERS_CHANNEL_ID,
         },
     ],
     embeds: [
