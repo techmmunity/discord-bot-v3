@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import { MessageEmbedOptions } from "discord.js";
+import { IMAGES } from "../../assets/images";
 import { JobsOutput } from "../../utils/google-jobs";
 
 export const getJobsEmbeds = (
@@ -12,6 +13,11 @@ export const getJobsEmbeds = (
 		},
 		description: job.description,
 		url: job.url,
+		author: {
+			name: "Techmmunity",
+			url: "https://techmmunity.com.br",
+			iconURL: IMAGES.techmmunityLogo,
+		},
 		fields: [
 			{
 				name: "Empresa",

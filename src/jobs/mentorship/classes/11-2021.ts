@@ -4,6 +4,7 @@ import {
 	BR_DEVELOPERS_GUILD_ID,
 	CODERS_COMMUNITY_CHANNEL_ID,
 	CODERS_COMMUNITY_GUILD_ID,
+	CODERS_COMMUNITY_ROLE_ID,
 	COURSES_CHANNEL_ID,
 	TECHMMUNITY_GUILD_ID,
 } from "../../../config/ids";
@@ -28,6 +29,7 @@ export const classNovember2021: Class = {
 		{
 			id: CODERS_COMMUNITY_GUILD_ID,
 			channelId: CODERS_COMMUNITY_CHANNEL_ID,
+			role: CODERS_COMMUNITY_ROLE_ID,
 			// Every Monday and Thursday, at 8AM
 			schedule: "0 11 * * 1,4",
 		},

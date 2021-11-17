@@ -6,6 +6,7 @@ export interface Class {
 		id: string;
 		channelId: string;
 		schedule: string;
+		role?: string;
 	}>;
 	content?: string;
 	embeds?: Array<MessageEmbedOptions>;
