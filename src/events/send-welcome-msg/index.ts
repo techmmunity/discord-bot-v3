@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 
 import { GuildMember } from "discord.js";
-import { GENERAL_CHANNEL_ID } from "../../config/ids";
+import { GENERAL_CHANNEL_ID, GUILD_ID } from "../../config/ids";
 import { getTextChannel } from "../../utils/get-channel";
 import { makeWelcomeImg } from "../../interactions/welcome-img/make-welcome-image";
 
 export const sendWelcomeMsg = async (member: GuildMember) => {
+	if (member.guild.id !== GUILD_ID) return;
+
 	const welcomeImg = await makeWelcomeImg(member);
 
 	const generalChannel = getTextChannel(GENERAL_CHANNEL_ID);

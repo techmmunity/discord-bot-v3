@@ -4,6 +4,7 @@ import { JobsRecurrence } from "../config/jobs-recurrence";
 
 import { sendChallenge } from "./challenges";
 import { sendJobOffer } from "./job-offer";
+import { sendMentorshipAnnounce } from "./mentorship";
 import { sendMinecraft } from "./minecraft";
 import { sendTechTip } from "./tech-tips";
 
@@ -19,4 +20,9 @@ export const setJobs = () => {
 	cron.schedule(JobsRecurrence.SEND_TECH_TIP, sendTechTip);
 
 	cron.schedule(JobsRecurrence.SEND_MINECRAFT, sendMinecraft);
+
+	cron.schedule(
+		JobsRecurrence.SEND_MENTORSHIP_ANNOUNCE,
+		sendMentorshipAnnounce,
+	);
 };

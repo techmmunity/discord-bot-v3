@@ -12,7 +12,7 @@ export const DiscordClient = new Client({
 			},
 		],
 	},
-	partials: ["MESSAGE", "REACTION", "GUILD_MEMBER", "MESSAGE"],
+	partials: ["MESSAGE", "GUILD_MEMBER"],
 	intents: [
 		Intents.FLAGS.GUILD_MESSAGES,
 		Intents.FLAGS.GUILDS,

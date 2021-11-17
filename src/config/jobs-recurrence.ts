@@ -11,4 +11,6 @@ export const JobsRecurrence = {
 	SEND_TECH_TIP: "0 15 * * *",
 	// Every Wednesday, noon
 	SEND_MINECRAFT: "0 15 * * 3",
+	// Every Monday, Wednesday and Friday, at 8AM
+	SEND_MENTORSHIP_ANNOUNCE: "0 15 * * 1,3,5",
 };
