@@ -9,10 +9,17 @@ exports.classNovember2021 = {
         {
             id: ids_1.TECHMMUNITY_GUILD_ID,
             channelId: ids_1.COURSES_CHANNEL_ID,
+            schedule: "0 11 * * 1,3,5",
         },
         {
             id: ids_1.BR_DEVELOPERS_GUILD_ID,
             channelId: ids_1.BR_DEVELOPERS_CHANNEL_ID,
+            schedule: "0 11 * * 1,3,5",
+        },
+        {
+            id: ids_1.CODERS_COMMUNITY_GUILD_ID,
+            channelId: ids_1.CODERS_COMMUNITY_CHANNEL_ID,
+            schedule: "0 11 * * 1,4",
         },
     ],
     embeds: [
