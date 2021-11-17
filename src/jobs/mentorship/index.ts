@@ -1,11 +1,14 @@
+/* eslint-disable no-await-in-loop */
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 
 import { sleep } from "@techmmunity/utils";
 import { TextChannel } from "discord.js";
+import { COLORS } from "../../assets/colors";
 import { DiscordClient } from "../../client";
+import { STAFF_BOTS_CHANNEL, TECHMMUNITY_GUILD_ID } from "../../config/ids";
 import { classes } from "./classes";
 
-export const sendMentorshipAnnounce = async () => {
+const sendMentorshipAnnounce = async () => {
 	const currentClass = classes.pop()!;
 
 	for (const server of currentClass.servers) {
@@ -18,14 +21,38 @@ export const sendMentorshipAnnounce = async () => {
 		)) as TextChannel;
 
 		if (channel) {
-			// eslint-disable-next-line no-await-in-loop
 			await channel.send({
 				content: currentClass.content,
 				embeds: currentClass.embeds,
 			});
 
-			// eslint-disable-next-line no-await-in-loop
 			await sleep(0.5);
+		} else {
+			const techmmunityGuild = await DiscordClient.guilds.fetch(
+				TECHMMUNITY_GUILD_ID,
+			);
+
+			const techmmunityChannel = (await techmmunityGuild?.channels.fetch(
+				STAFF_BOTS_CHANNEL,
+			)) as TextChannel;
+
+			await techmmunityChannel.send({
+				embeds: [
+					{
+						title: "Fail to send menthorship announce!",
+						description: `Server: ${guild ? guild.name : server.id}`,
+						color: COLORS.red,
+					},
+				],
+			});
 		}
+	}
+};
+
+export const setMentorshipJob = (cron: any) => {
+	const currentClass = classes.pop()!;
+
+	for (const server of currentClass.servers) {
+		cron.schedule(server.schedule, sendMentorshipAnnounce);
 	}
 };

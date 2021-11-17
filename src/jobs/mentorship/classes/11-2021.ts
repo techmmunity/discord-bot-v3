@@ -2,6 +2,8 @@ import { COLORS } from "../../../assets/colors";
 import {
 	BR_DEVELOPERS_CHANNEL_ID,
 	BR_DEVELOPERS_GUILD_ID,
+	CODERS_COMMUNITY_CHANNEL_ID,
+	CODERS_COMMUNITY_GUILD_ID,
 	COURSES_CHANNEL_ID,
 	TECHMMUNITY_GUILD_ID,
 } from "../../../config/ids";
@@ -14,10 +16,20 @@ export const classNovember2021: Class = {
 		{
 			id: TECHMMUNITY_GUILD_ID,
 			channelId: COURSES_CHANNEL_ID,
+			// Every Monday, Wednesday and Friday, at 8AM
+			schedule: "0 11 * * 1,3,5",
 		},
 		{
 			id: BR_DEVELOPERS_GUILD_ID,
 			channelId: BR_DEVELOPERS_CHANNEL_ID,
+			// Every Monday, Wednesday and Friday, at 8AM
+			schedule: "0 11 * * 1,3,5",
+		},
+		{
+			id: CODERS_COMMUNITY_GUILD_ID,
+			channelId: CODERS_COMMUNITY_CHANNEL_ID,
+			// Every Monday and Thursday, at 8AM
+			schedule: "0 11 * * 1,4",
 		},
 	],
 	embeds: [
