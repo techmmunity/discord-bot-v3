@@ -1,5 +1,10 @@
 import { COLORS } from "../../../assets/colors";
-import { COURSES_CHANNEL_ID, GUILD_ID } from "../../../config/ids";
+import {
+	BR_DEVELOPERS_CHANNEL_ID,
+	BR_DEVELOPERS_GUILD_ID,
+	COURSES_CHANNEL_ID,
+	TECHMMUNITY_GUILD_ID,
+} from "../../../config/ids";
 import { Class } from "../types";
 
 export const classNovember2021: Class = {
@@ -7,8 +12,12 @@ export const classNovember2021: Class = {
 	lastAnnounceDay: new Date(2021, 10, 26),
 	servers: [
 		{
-			id: GUILD_ID,
+			id: TECHMMUNITY_GUILD_ID,
 			channelId: COURSES_CHANNEL_ID,
+		},
+		{
+			id: BR_DEVELOPERS_GUILD_ID,
+			channelId: BR_DEVELOPERS_CHANNEL_ID,
 		},
 	],
 	embeds: [

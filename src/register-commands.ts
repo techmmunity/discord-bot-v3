@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { sleep } from "@techmmunity/utils";
 import { REST } from "@discordjs/rest";
-import { GUILD_ID } from "./config/ids";
+import { TECHMMUNITY_GUILD_ID } from "./config/ids";
 import { Interaction } from "./types/interactions";
 
 interface RegisterCommandsParams {
@@ -23,7 +23,7 @@ export const registerCommands = async ({
 	);
 
 	const registeredCommands = (await rest.get(
-		`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${GUILD_ID}/commands`,
+		`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${TECHMMUNITY_GUILD_ID}/commands`,
 	)) as Array<Command>;
 
 	const registeredCommandsNames = registeredCommands.map(
@@ -45,7 +45,7 @@ export const registerCommands = async ({
 		const command = registeredCommands.find(cmd => cmd.name === commandName);
 
 		await rest.delete(
-			`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${GUILD_ID}/commands/${command?.id}`,
+			`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${TECHMMUNITY_GUILD_ID}/commands/${command?.id}`,
 		);
 
 		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
@@ -58,13 +58,13 @@ export const registerCommands = async ({
 		const { permissions, command } = commandData;
 
 		const result = (await rest.post(
-			`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${GUILD_ID}/commands`,
+			`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${TECHMMUNITY_GUILD_ID}/commands`,
 			{ body: command },
 		)) as Command;
 
 		if (permissions) {
 			await rest.put(
-				`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${GUILD_ID}/commands/${result.id}/permissions`,
+				`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${TECHMMUNITY_GUILD_ID}/commands/${result.id}/permissions`,
 				{
 					body: {
 						permissions,
@@ -84,13 +84,13 @@ export const registerCommands = async ({
 		const { permissions, command } = commandData;
 
 		const result = (await rest.patch(
-			`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${GUILD_ID}/commands/${rCommand.id}`,
+			`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${TECHMMUNITY_GUILD_ID}/commands/${rCommand.id}`,
 			{ body: command },
 		)) as Command;
 
 		if (permissions) {
 			await rest.put(
-				`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${GUILD_ID}/commands/${result.id}/permissions`,
+				`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${TECHMMUNITY_GUILD_ID}/commands/${result.id}/permissions`,
 				{
 					body: {
 						permissions,

@@ -1,5 +1,5 @@
 import { Message } from "discord.js";
-import { GUILD_ID } from "../../config/ids";
+import { TECHMMUNITY_GUILD_ID } from "../../config/ids";
 import { QCE_EMBED } from "../../interactions/qce";
 
 const isSomeone = (content: string) => {
@@ -22,7 +22,7 @@ const isHow = (content: string) => {
 };
 
 export const someoneCanHelpMe = async (message: Message) => {
-	if (message.member?.guild.id !== GUILD_ID) return;
+	if (message.member?.guild.id !== TECHMMUNITY_GUILD_ID) return;
 
 	const content = message.content.toLowerCase();
 

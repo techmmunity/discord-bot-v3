@@ -2,9 +2,9 @@
 
 export const RAZAL_ID = "705572674713157684";
 
-// Guild
+// Guilds
 
-export const GUILD_ID = "784050272263471145";
+export const TECHMMUNITY_GUILD_ID = "784050272263471145";
 
 // Channels ADM
 export const STAFF_BOTS_CHANNEL = "903423069018792017";
@@ -56,3 +56,13 @@ export const INKASA_ROLE_ID = "903421428387442698";
 export const JOB_ROLE_ID = "889846830307876925";
 export const CHALLENGE_ROLE_ID = "889846828693061644";
 export const EVENT_ROLE_ID = "889846779095433257";
+
+/**
+ *
+ * Partners
+ *
+ */
+
+// BR Developers
+export const BR_DEVELOPERS_GUILD_ID = "871354770978385930";
+export const BR_DEVELOPERS_CHANNEL_ID = "910362225229852704";
