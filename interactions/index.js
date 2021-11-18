@@ -4,7 +4,6 @@ exports.commands = exports.setInteractions = void 0;
 const create_challenge_1 = require("./create-challenge");
 const get_job_1 = require("./get-job");
 const get_tech_tip_1 = require("./get-tech-tip");
-const notifications_1 = require("./notifications");
 const ping_1 = require("./ping");
 const ram_1 = require("./ram");
 const clean_1 = require("./clean");
@@ -38,8 +37,6 @@ const setInteractions = (client) => {
                 return (0, welcome_img_1.welcomeImg)(interaction);
             case (0, get_command_name_1.getCommandName)("suggest"):
                 return (0, suggest_1.suggest)(interaction);
-            case (0, get_command_name_1.getCommandName)("notifications"):
-                return (0, notifications_1.notifications)(interaction);
             case (0, get_command_name_1.getCommandName)("send-pre-defined-messages"):
                 return (0, send_pre_defined_messages_1.sendPreDefinedMessages)(interaction);
             case (0, get_command_name_1.getCommandName)("get-job"):
@@ -71,7 +68,6 @@ exports.commands = [
     random_challenge_1.getRandomChallengeCommand,
     welcome_img_1.welcomeImgCommand,
     suggest_1.suggestCommand,
-    notifications_1.notificationsCommand,
     send_pre_defined_messages_1.sendPreDefinedMessagesCommand,
     get_job_1.getJobCommand,
     send_embed_1.sendEmbedCommand,
