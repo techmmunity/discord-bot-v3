@@ -65,7 +65,7 @@ const tips = [
     },
     {
         title: "Tech Tips #17",
-        description: `Quer entrar no mundo da programação mas se sente perdido? A Techmmunity tem uma mentoria intensiva de 2 meses para te inserir na area!${"\n\n"}Não perca essa chance e candidate-se agora mesmo para a proxima turma:${"\n"}https://mentorship.techmmunity.com.br/.`,
+        description: `Quer entrar no mundo da programação mas se sente perdido? A Techmmunity tem uma mentoria intensiva de 2 meses para te inserir na area!${"\n\n"}Não perca essa chance e candidate-se agora mesmo para a proxima turma:${"\n"}https://techmmunity.com.br/.`,
     },
     {
         title: "Tech Tips #18",

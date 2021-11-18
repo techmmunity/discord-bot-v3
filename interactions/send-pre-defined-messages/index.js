@@ -9,24 +9,38 @@ const permission_type_1 = require("../../enums/permission-type");
 const booster_embed_1 = require("./booster-embed");
 const notifications_embed_1 = require("./notifications-embed");
 const get_command_name_1 = require("../../utils/get-command-name");
+const welcome_embed_1 = require("./welcome-embed");
 const messagesOptions = [
-    ["notifications", "Notifications Channel"],
-    ["booster", "Booster Benefits"],
+    {
+        id: "notifications",
+        description: "Notifications Channel",
+        func: notifications_embed_1.sendNotificationsEmbed,
+    },
+    {
+        id: "booster",
+        description: "Booster Benefits",
+        func: booster_embed_1.sendBoosterEmbed,
+    },
+    {
+        id: "welcome",
+        description: "Welcome Message",
+        func: welcome_embed_1.sendWelcomeEmbed,
+    },
 ];
 const makeCommand = () => {
     const command = new builders_1.SlashCommandBuilder()
         .setName((0, get_command_name_1.getCommandName)("send-pre-defined-messages"))
         .setDescription("Send pre-defined messages to specific channels")
         .setDefaultPermission(false);
-    messagesOptions.forEach(([key, value]) => {
-        command.addBooleanOption(option => option.setName(key).setDescription(value));
+    messagesOptions.forEach(item => {
+        command.addBooleanOption(option => option.setName(item.id).setDescription(item.description));
     });
     return command;
 };
 const getOptions = (interaction) => messagesOptions
-    .map(([key]) => {
-    if (interaction.options.getBoolean(key)) {
-        return key;
+    .map(item => {
+    if (interaction.options.getBoolean(item.id)) {
+        return item.id;
     }
 })
     .filter(Boolean);
@@ -44,11 +58,11 @@ const sendPreDefinedMessages = async (interaction) => {
         });
         return;
     }
-    if (options.includes("notifications")) {
-        await (0, notifications_embed_1.sendNotificationsEmbed)();
-    }
-    if (options.includes("booster")) {
-        await (0, booster_embed_1.sendBoosterEmbed)();
+    for (const option of options) {
+        const message = messagesOptions.find(opt => opt.id === option);
+        if (message) {
+            await message.func();
+        }
     }
     await interaction.editReply({
         embeds: [

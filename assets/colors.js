@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.COLORS = void 0;
-exports.COLORS = {
+const BASE_COLORS = {
     turquoise: "#2BA097",
     green: "#07ed1e",
     yellow: "#ffc800",
@@ -11,4 +11,6 @@ exports.COLORS = {
     codewars: "#b33319",
     pink: "#ff73fa",
     youtube: "#FF0000",
+    orange: "#e67e22",
 };
+exports.COLORS = BASE_COLORS;
