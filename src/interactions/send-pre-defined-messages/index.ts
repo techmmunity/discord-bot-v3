@@ -8,10 +8,24 @@ import { PermissionTypeEnum } from "../../enums/permission-type";
 import { sendBoosterEmbed } from "./booster-embed";
 import { sendNotificationsEmbed } from "./notifications-embed";
 import { getCommandName } from "../../utils/get-command-name";
+import { sendWelcomeEmbed } from "./welcome-embed";
 
 const messagesOptions = [
-	["notifications", "Notifications Channel"],
-	["booster", "Booster Benefits"],
+	{
+		id: "notifications",
+		description: "Notifications Channel",
+		func: sendNotificationsEmbed,
+	},
+	{
+		id: "booster",
+		description: "Booster Benefits",
+		func: sendBoosterEmbed,
+	},
+	{
+		id: "welcome",
+		description: "Welcome Message",
+		func: sendWelcomeEmbed,
+	},
 ];
 
 const makeCommand = () => {
@@ -20,9 +34,9 @@ const makeCommand = () => {
 		.setDescription("Send pre-defined messages to specific channels")
 		.setDefaultPermission(false);
 
-	messagesOptions.forEach(([key, value]) => {
+	messagesOptions.forEach(item => {
 		command.addBooleanOption(option =>
-			option.setName(key).setDescription(value),
+			option.setName(item.id).setDescription(item.description),
 		);
 	});
 
@@ -32,9 +46,9 @@ const makeCommand = () => {
 const getOptions = (interaction: CommandInteraction) =>
 	messagesOptions
 		// eslint-disable-next-line array-callback-return
-		.map(([key]) => {
-			if (interaction.options.getBoolean(key)) {
-				return key;
+		.map(item => {
+			if (interaction.options.getBoolean(item.id)) {
+				return item.id;
 			}
 		})
 		.filter(Boolean) as Array<string>;
@@ -59,12 +73,13 @@ export const sendPreDefinedMessages = async (
 		return;
 	}
 
-	if (options.includes("notifications")) {
-		await sendNotificationsEmbed();
-	}
+	for (const option of options) {
+		const message = messagesOptions.find(opt => opt.id === option);
 
-	if (options.includes("booster")) {
-		await sendBoosterEmbed();
+		if (message) {
+			// eslint-disable-next-line no-await-in-loop
+			await message.func();
+		}
 	}
 
 	await interaction.editReply({

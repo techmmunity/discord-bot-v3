@@ -42,9 +42,8 @@ const bootstrap = async () => {
 			});
 
 			setJobs();
-
-			setEvents(DiscordClient);
 		}
+		setEvents(DiscordClient);
 
 		setInteractions(DiscordClient);
 
