@@ -12,6 +12,8 @@ import {
 	COMPUTACAO_CHANNEL_ID,
 	COMPUTACAO_GUILD_ID,
 	COURSES_CHANNEL_ID,
+	LUCI_CHANNEL_ID,
+	LUCI_GUILD_ID,
 	SPECIAL_CHANNEL_TO_FOLLOW,
 	TECHMMUNITY_GUILD_ID,
 } from "../../../config/ids";
@@ -62,6 +64,11 @@ export const classNovember2021: Class = {
 			id: COMPUTACAO_GUILD_ID,
 			channelId: COMPUTACAO_CHANNEL_ID,
 			schedule: TWO_DAYS,
+		},
+		{
+			id: LUCI_GUILD_ID,
+			channelId: LUCI_CHANNEL_ID,
+			schedule: THREE_DAYS,
 		},
 	],
 	embeds: [

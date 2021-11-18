@@ -30,6 +30,7 @@ const servers = [
 		channelId: CODERS_COMMUNITY_JOBS_CHANNEL_ID,
 		role: CODERS_COMMUNITY_JOBS_ROLE_ID,
 		crosspost: true,
+		onlyMentionOnFirstMessage: true,
 	},
 	{
 		id: CODEFY_COMMUNITY_GUILD_ID,
@@ -55,9 +56,19 @@ export const sendJobOffer = (query: string) => async () => {
 			server.channelId,
 		)) as TextChannel;
 
-		for (const embed of embeds) {
+		for (const idx in embeds) {
+			const embed = embeds[idx];
+
+			// eslint-disable-next-line no-nested-ternary
+			const content = server.role
+				? (server.onlyMentionOnFirstMessage && idx === "0") ||
+				  !server.onlyMentionOnFirstMessage
+					? server.role
+					: undefined
+				: undefined;
+
 			const message = await channel.send({
-				content: server.role ? `<@&${server.role}>` : undefined,
+				content,
 				embeds: [embed],
 			});
 
