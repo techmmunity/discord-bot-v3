@@ -5,6 +5,10 @@ import { sleep } from "@techmmunity/utils";
 import { TextChannel } from "discord.js";
 import { DiscordClient } from "../../client";
 import {
+	BLUE_PHOENIX_GUILD_ID,
+	BLUE_PHOENIX_JOBS_CHANNEL_ID,
+	CODEFY_COMMUNITY_GUILD_ID,
+	CODEFY_COMMUNITY_JOBS_CHANNEL_ID,
 	CODERS_COMMUNITY_GUILD_ID,
 	CODERS_COMMUNITY_JOBS_CHANNEL_ID,
 	CODERS_COMMUNITY_JOBS_ROLE_ID,
@@ -26,6 +30,14 @@ const servers = [
 		channelId: CODERS_COMMUNITY_JOBS_CHANNEL_ID,
 		role: CODERS_COMMUNITY_JOBS_ROLE_ID,
 		crosspost: true,
+	},
+	{
+		id: CODEFY_COMMUNITY_GUILD_ID,
+		channelId: CODEFY_COMMUNITY_JOBS_CHANNEL_ID,
+	},
+	{
+		id: BLUE_PHOENIX_GUILD_ID,
+		channelId: BLUE_PHOENIX_JOBS_CHANNEL_ID,
 	},
 ];
 

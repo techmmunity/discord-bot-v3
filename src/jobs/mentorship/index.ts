@@ -5,7 +5,11 @@ import { sleep } from "@techmmunity/utils";
 import { TextChannel } from "discord.js";
 import { COLORS } from "../../assets/colors";
 import { DiscordClient } from "../../client";
-import { STAFF_BOTS_CHANNEL, TECHMMUNITY_GUILD_ID } from "../../config/ids";
+import {
+	RAZAL_ID,
+	STAFF_BOTS_CHANNEL,
+	TECHMMUNITY_GUILD_ID,
+} from "../../config/ids";
 import { classes } from "./classes";
 
 const sendMentorshipAnnounce = async () => {
@@ -37,6 +41,7 @@ const sendMentorshipAnnounce = async () => {
 			)) as TextChannel;
 
 			await techmmunityChannel.send({
+				content: `<@${RAZAL_ID}>`,
 				embeds: [
 					{
 						title: "Fail to send menthorship announce!",
