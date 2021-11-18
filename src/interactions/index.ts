@@ -3,7 +3,6 @@ import { Client } from "discord.js";
 import { createChallenge, createChallengeCommand } from "./create-challenge";
 import { getJob, getJobCommand } from "./get-job";
 import { getTechTip, getTechTipCommand } from "./get-tech-tip";
-import { notifications, notificationsCommand } from "./notifications";
 import { ping, pingCommand } from "./ping";
 import { ram, ramCommand } from "./ram";
 import { clean, cleanCommand } from "./clean";
@@ -46,8 +45,6 @@ export const setInteractions = (client: Client) => {
 				return welcomeImg(interaction);
 			case getCommandName("suggest"):
 				return suggest(interaction);
-			case getCommandName("notifications"):
-				return notifications(interaction);
 			case getCommandName("send-pre-defined-messages"):
 				return sendPreDefinedMessages(interaction);
 			case getCommandName("get-job"):
@@ -79,7 +76,6 @@ export const commands = [
 	getRandomChallengeCommand,
 	welcomeImgCommand,
 	suggestCommand,
-	notificationsCommand,
 	sendPreDefinedMessagesCommand,
 	getJobCommand,
 	sendEmbedCommand,

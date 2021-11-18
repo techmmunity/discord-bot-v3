@@ -1,22 +1,75 @@
+import { chunk } from "@techmmunity/utils";
+import {
+	MessageActionRow,
+	MessageButton,
+	MessageEmbedOptions,
+} from "discord.js";
 import { COLORS } from "../../assets/colors";
-import { NOTIFICATIONS_CHANNEL_ID } from "../../config/ids";
+import { DISCORD_BUTTONS_PER_ACTION_ROWS_LIMIT } from "../../config/discord-limits";
+import { NOTIFICATIONS_CHANNEL_ID, STAFF_BOTS_CHANNEL } from "../../config/ids";
+import { notificationsOptions } from "../../config/notification";
 import { getTextChannel } from "../../utils/get-channel";
-import { makeNotificationsEmbed } from "../notifications";
+
+const makeNotificationsEmbed = () => {
+	const values = Object.entries(notificationsOptions);
+
+	const fields = values.map(([key, val]) => ({
+		name: key.toUpperCase(),
+		value: `${val.emoji} ${val.description}`,
+	}));
+
+	const embed: MessageEmbedOptions = {
+		title: "Escolha quais notificações você quer receber",
+		description:
+			"E depois disso execute novamente o comando `/notifications` passando as opções que você deseja.",
+		color: COLORS.turquoise,
+		fields,
+	};
+
+	return embed;
+};
+
+export const makeNotificationButtonId = (key: string) => `NOTIFICATION#${key}`;
+
+export const getNotificationId = (key: string) =>
+	key.replace("NOTIFICATION#", "").toLowerCase();
 
 export const sendNotificationsEmbed = async () => {
 	const { fields } = makeNotificationsEmbed();
 
-	const notificationsChannel = getTextChannel(NOTIFICATIONS_CHANNEL_ID);
+	const notificationsChannel = getTextChannel(
+		process.env.NODE_ENV === "dev"
+			? STAFF_BOTS_CHANNEL
+			: NOTIFICATIONS_CHANNEL_ID,
+	);
+
+	const components = chunk(
+		Object.keys(notificationsOptions),
+		DISCORD_BUTTONS_PER_ACTION_ROWS_LIMIT,
+	).map(actionRowButtons => {
+		const actionRow = new MessageActionRow();
+
+		actionRowButtons.forEach(key => {
+			actionRow.addComponents(
+				new MessageButton()
+					.setCustomId(makeNotificationButtonId(key))
+					.setLabel(key.toUpperCase())
+					.setStyle(key === "techmmunity" ? "PRIMARY" : "SECONDARY"),
+			);
+		});
+
+		return actionRow;
+	});
 
 	await notificationsChannel.send({
 		embeds: [
 			{
 				title: "Escolha as notificações que você quer receber!",
-				description:
-					"Para receber as notificacoes, basta usar o comando `/notitifications` e passar as as opções como `True`.\n\nPara saber mais sobre como usar os comandos, assista o video abaixo:\nhttps://www.youtube.com/watch?v=4XxcpBxSCiU&t=44s\n\n**Notificações disponiveis:**",
+				description: "Clique nos botões abaixo para receber notificações.",
 				color: COLORS.turquoise,
 				fields,
 			},
 		],
+		components,
 	});
 };

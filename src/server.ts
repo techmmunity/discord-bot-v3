@@ -36,15 +36,15 @@ const bootstrap = async () => {
 
 		setGlobalConnection(connection);
 
-		registerCommands({
-			commands,
-		});
-
 		if (process.env.NODE_ENV !== "dev") {
-			setJobs();
-		}
+			registerCommands({
+				commands,
+			});
 
-		setEvents(DiscordClient);
+			setJobs();
+
+			setEvents(DiscordClient);
+		}
 
 		setInteractions(DiscordClient);
 

@@ -1020,6 +1020,11 @@
   resolved "https://registry.yarnpkg.com/@techmmunity/utils/-/utils-1.5.0.tgz#2a5014536fc553206ab1a1aec11bb4b78a58a922"
   integrity sha512-kZWJsXfpm+c/3SOw7C5BiEpGeuIEIfIuGSIXszOqOah8ne6uXQPlf3V20f5EY3jX9aWZfOCz7L5SV80wHdng+g==
 
+"@techmmunity/utils@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@techmmunity/utils/-/utils-1.9.0.tgz#53575ba16bf487b599e313c1bb0dc784eb5743b9"
+  integrity sha512-9aW9t6b06uOrEkM8rVS92YufqPoqizgbXM8Izx/FStpFlnj49usO4k/c0Q2TWddtacfriuwudIGfwEsFL51H9A==
+
 "@types/json-schema@^7.0.9":
   version "7.0.9"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
