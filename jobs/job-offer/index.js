@@ -17,6 +17,7 @@ const servers = [
         channelId: ids_1.CODERS_COMMUNITY_JOBS_CHANNEL_ID,
         role: ids_1.CODERS_COMMUNITY_JOBS_ROLE_ID,
         crosspost: true,
+        onlyMentionOnFirstMessage: true,
     },
     {
         id: ids_1.CODEFY_COMMUNITY_GUILD_ID,
@@ -33,9 +34,16 @@ const sendJobOffer = (query) => async () => {
     for (const server of servers) {
         const guild = await client_1.DiscordClient.guilds.fetch(server.id);
         const channel = (await (guild === null || guild === void 0 ? void 0 : guild.channels.fetch(server.channelId)));
-        for (const embed of embeds) {
+        for (const idx in embeds) {
+            const embed = embeds[idx];
+            const content = server.role
+                ? (server.onlyMentionOnFirstMessage && idx === "0") ||
+                    !server.onlyMentionOnFirstMessage
+                    ? server.role
+                    : undefined
+                : undefined;
             const message = await channel.send({
-                content: server.role ? `<@&${server.role}>` : undefined,
+                content,
                 embeds: [embed],
             });
             if (server.crosspost) {
