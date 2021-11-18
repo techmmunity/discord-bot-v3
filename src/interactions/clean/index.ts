@@ -19,7 +19,11 @@ export const clean = async (interaction: CommandInteraction) => {
 
 	const messagesToDelete = messages.filter(message => !message.pinned);
 
-	await channel.bulkDelete(messagesToDelete);
+	try {
+		await channel.bulkDelete(messagesToDelete);
+	} catch (err: any) {
+		console.error(err);
+	}
 };
 
 export const cleanCommand: Interaction = {
