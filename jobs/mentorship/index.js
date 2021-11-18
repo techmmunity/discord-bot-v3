@@ -22,6 +22,7 @@ const sendMentorshipAnnounce = async () => {
             const techmmunityGuild = await client_1.DiscordClient.guilds.fetch(ids_1.TECHMMUNITY_GUILD_ID);
             const techmmunityChannel = (await (techmmunityGuild === null || techmmunityGuild === void 0 ? void 0 : techmmunityGuild.channels.fetch(ids_1.STAFF_BOTS_CHANNEL)));
             await techmmunityChannel.send({
+                content: `<@${ids_1.RAZAL_ID}>`,
                 embeds: [
                     {
                         title: "Fail to send menthorship announce!",

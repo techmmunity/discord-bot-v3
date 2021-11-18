@@ -3,24 +3,46 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.classNovember2021 = void 0;
 const colors_1 = require("../../../assets/colors");
 const ids_1 = require("../../../config/ids");
+const THREE_DAYS = "0 11 * * 1,3,5";
+const TWO_DAYS = "0 11 * * 1,4";
 exports.classNovember2021 = {
     lastAnnounceDay: new Date(2021, 10, 26),
     servers: [
         {
             id: ids_1.TECHMMUNITY_GUILD_ID,
             channelId: ids_1.COURSES_CHANNEL_ID,
-            schedule: "0 11 * * 1,3,5",
+            schedule: THREE_DAYS,
+        },
+        {
+            id: ids_1.TECHMMUNITY_GUILD_ID,
+            channelId: ids_1.SPECIAL_CHANNEL_TO_FOLLOW,
+            schedule: THREE_DAYS,
         },
         {
             id: ids_1.BR_DEVELOPERS_GUILD_ID,
             channelId: ids_1.BR_DEVELOPERS_CHANNEL_ID,
-            schedule: "0 11 * * 1,3,5",
+            schedule: THREE_DAYS,
         },
         {
             id: ids_1.CODERS_COMMUNITY_GUILD_ID,
             channelId: ids_1.CODERS_COMMUNITY_CHANNEL_ID,
             role: ids_1.CODERS_COMMUNITY_ROLE_ID,
-            schedule: "0 11 * * 1,4",
+            schedule: TWO_DAYS,
+        },
+        {
+            id: ids_1.CODEFY_COMMUNITY_GUILD_ID,
+            channelId: ids_1.CODEFY_COMMUNITY_CHANNEL_ID,
+            schedule: THREE_DAYS,
+        },
+        {
+            id: ids_1.BLUE_PHOENIX_GUILD_ID,
+            channelId: ids_1.BLUE_PHOENIX_CHANNEL_ID,
+            schedule: THREE_DAYS,
+        },
+        {
+            id: ids_1.COMPUTACAO_GUILD_ID,
+            channelId: ids_1.COMPUTACAO_CHANNEL_ID,
+            schedule: TWO_DAYS,
         },
     ],
     embeds: [

@@ -18,6 +18,14 @@ const servers = [
         role: ids_1.CODERS_COMMUNITY_JOBS_ROLE_ID,
         crosspost: true,
     },
+    {
+        id: ids_1.CODEFY_COMMUNITY_GUILD_ID,
+        channelId: ids_1.CODEFY_COMMUNITY_JOBS_CHANNEL_ID,
+    },
+    {
+        id: ids_1.BLUE_PHOENIX_GUILD_ID,
+        channelId: ids_1.BLUE_PHOENIX_JOBS_CHANNEL_ID,
+    },
 ];
 const sendJobOffer = (query) => async () => {
     const jobs = await (0, google_jobs_1.getJobs)(query, 10);
