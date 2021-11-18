@@ -106,6 +106,13 @@ const recruiterEmbed = {
             .setStyle("SECONDARY")),
     ],
 };
+const warnEmbed = {
+    embeds: [
+        {
+            title: "Suba o chat para ver todas as mensagens, elas são importantes :wink:",
+        },
+    ],
+};
 const sendWelcomeEmbed = async () => {
     const welcomeChannel = (0, get_channel_1.getTextChannel)(process.env.NODE_ENV === "dev" ? ids_1.STAFF_BOTS_CHANNEL : ids_1.WELCOME_CHANNEL_ID);
     const messages = [
@@ -114,6 +121,7 @@ const sendWelcomeEmbed = async () => {
         generalChannelEmbed,
         notificationsEmbed,
         recruiterEmbed,
+        warnEmbed,
     ];
     for (const message of messages) {
         await welcomeChannel.send(message);

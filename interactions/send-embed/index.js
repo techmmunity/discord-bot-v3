@@ -52,10 +52,7 @@ exports.sendEmbedCommand = {
         .setName("title")
         .setDescription("Title of the embed")
         .setRequired(true))
-        .addStringOption(option => option
-        .setName("description")
-        .setDescription("Description of the embed")
-        .setRequired(true))
+        .addStringOption(option => option.setName("description").setDescription("Description of the embed"))
         .addStringOption(option => option.setName("color").setDescription("Color of the embed"))
         .addStringOption(option => option.setName("thumbnail").setDescription("Thumbnail of the embed"))
         .addBooleanOption(option => option.setName("crosspost").setDescription("Crosspost message"))
