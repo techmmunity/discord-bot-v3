@@ -132,6 +132,15 @@ const recruiterEmbed: MessageOptions = {
 	],
 };
 
+const warnEmbed: MessageOptions = {
+	embeds: [
+		{
+			title:
+				"Suba o chat para ver todas as mensagens, elas são importantes :wink:",
+		},
+	],
+};
+
 export const sendWelcomeEmbed = async () => {
 	const welcomeChannel = getTextChannel(
 		process.env.NODE_ENV === "dev" ? STAFF_BOTS_CHANNEL : WELCOME_CHANNEL_ID,
@@ -143,6 +152,7 @@ export const sendWelcomeEmbed = async () => {
 		generalChannelEmbed,
 		notificationsEmbed,
 		recruiterEmbed,
+		warnEmbed,
 	];
 
 	for (const message of messages) {

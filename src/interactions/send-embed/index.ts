@@ -61,10 +61,7 @@ export const sendEmbedCommand: Interaction = {
 				.setRequired(true),
 		)
 		.addStringOption(option =>
-			option
-				.setName("description")
-				.setDescription("Description of the embed")
-				.setRequired(true),
+			option.setName("description").setDescription("Description of the embed"),
 		)
 		.addStringOption(option =>
 			option.setName("color").setDescription("Color of the embed"),
