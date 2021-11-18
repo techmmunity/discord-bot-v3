@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.cleanCommand = exports.clean = void 0;
 const builders_1 = require("@discordjs/builders");
 const utils_1 = require("@techmmunity/utils");
-const colors_1 = require("../../assets/colors");
 const ids_1 = require("../../config/ids");
 const permission_type_1 = require("../../enums/permission-type");
 const get_command_name_1 = require("../../utils/get-command-name");
@@ -12,18 +11,10 @@ const clean = async (interaction) => {
     const channel = interaction.options.getChannel("channel");
     const qtd = interaction.options.getNumber("qtd");
     const messages = await channel.messages.fetch({
-        limit: (0, utils_1.isBetween)(qtd, 0, 100) ? qtd : 100,
+        limit: (0, utils_1.isBetween)(qtd, 1, 100) ? qtd : 100,
     });
     const messagesToDelete = messages.filter(message => !message.pinned);
     await channel.bulkDelete(messagesToDelete);
-    await interaction.editReply({
-        embeds: [
-            {
-                title: "Done!",
-                color: colors_1.COLORS.green,
-            },
-        ],
-    });
 };
 exports.clean = clean;
 exports.cleanCommand = {
