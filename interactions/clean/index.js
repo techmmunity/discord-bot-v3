@@ -14,7 +14,12 @@ const clean = async (interaction) => {
         limit: (0, utils_1.isBetween)(qtd, 1, 100) ? qtd : 100,
     });
     const messagesToDelete = messages.filter(message => !message.pinned);
-    await channel.bulkDelete(messagesToDelete);
+    try {
+        await channel.bulkDelete(messagesToDelete);
+    }
+    catch (err) {
+        console.error(err);
+    }
 };
 exports.clean = clean;
 exports.cleanCommand = {
