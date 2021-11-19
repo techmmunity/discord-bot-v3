@@ -49,6 +49,11 @@ exports.classNovember2021 = {
             channelId: ids_1.LUCI_CHANNEL_ID,
             schedule: THREE_DAYS,
         },
+        {
+            id: ids_1.CABANA_DEV_GUILD_ID,
+            channelId: ids_1.CABANA_DEV_CHANNEL_ID,
+            schedule: THREE_DAYS,
+        },
     ],
     embeds: [
         {
