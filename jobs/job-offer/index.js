@@ -39,7 +39,7 @@ const sendJobOffer = (query) => async () => {
             const content = server.role
                 ? (server.onlyMentionOnFirstMessage && idx === "0") ||
                     !server.onlyMentionOnFirstMessage
-                    ? server.role
+                    ? `<@${server.role}>`
                     : undefined
                 : undefined;
             const message = await channel.send({
