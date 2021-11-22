@@ -63,7 +63,7 @@ export const sendJobOffer = (query: string) => async () => {
 			const content = server.role
 				? (server.onlyMentionOnFirstMessage && idx === "0") ||
 				  !server.onlyMentionOnFirstMessage
-					? server.role
+					? `<@${server.role}>`
 					: undefined
 				: undefined;
 
