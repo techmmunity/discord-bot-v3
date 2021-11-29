@@ -37,12 +37,15 @@ const handleNotification = async (interaction) => {
             color: colors_1.COLORS.red,
         };
     }
-    await interaction.reply({
+    const message = {
         content: `<@${interaction.user.id}>`,
         embeds: [embed],
-    });
+    };
+    await interaction.reply(message);
     await (0, utils_1.sleep)(4);
     await interaction.deleteReply();
+    const botsChannel = (0, get_channel_1.getTextChannel)(ids_1.STAFF_BOTS_CHANNEL);
+    botsChannel.send(message);
 };
 const handleRecruiter = async (interaction) => {
     const embed = {
