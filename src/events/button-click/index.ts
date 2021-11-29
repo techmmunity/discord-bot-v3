@@ -18,6 +18,7 @@ import {
 	PANELINHA_CHANNEL_ID,
 	RAZAL_ID,
 	RECRUITER_ROLE_ID,
+	STAFF_BOTS_CHANNEL,
 } from "../../config/ids";
 import { notificationsOptions } from "../../config/notification";
 import {
@@ -71,15 +72,21 @@ const handleNotification = async (interaction: ButtonInteraction) => {
 		};
 	}
 
-	await interaction.reply({
+	const message = {
 		content: `<@${interaction.user.id}>`,
 		embeds: [embed],
-	});
+	};
+
+	await interaction.reply(message);
 
 	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 	await sleep(4);
 
 	await interaction.deleteReply();
+
+	const botsChannel = getTextChannel(STAFF_BOTS_CHANNEL);
+
+	botsChannel.send(message);
 };
 
 const handleRecruiter = async (interaction: ButtonInteraction) => {
