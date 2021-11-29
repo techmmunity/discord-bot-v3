@@ -60,12 +60,12 @@ export const sendJobOffer = (query: string) => async () => {
 			const embed = embeds[idx];
 
 			// eslint-disable-next-line no-nested-ternary
-			const content = server.role
-				? (server.onlyMentionOnFirstMessage && idx === "0") ||
-				  !server.onlyMentionOnFirstMessage
+			const content =
+				server.role &&
+				((server.onlyMentionOnFirstMessage && idx === "0") ||
+					!server.onlyMentionOnFirstMessage)
 					? `<@${server.role}>`
-					: undefined
-				: undefined;
+					: undefined;
 
 			const message = await channel.send({
 				content,

@@ -47,6 +47,7 @@ export const MOD_ROLE_ID = "785116737971683368";
 // Special Roles
 
 export const TECH_BOOSTER_ROLE_ID = "801113253467127890";
+export const RECRUITER_ROLE_ID = "910612266498551840";
 
 // Seniority Roles
 

@@ -1,19 +1,42 @@
 import { sleep } from "@techmmunity/utils";
+import { APIUser, APIGuildMember } from "discord-api-types";
 import {
 	ButtonInteraction,
 	GuildMember,
 	Interaction,
+	MessageActionRow,
+	MessageButton,
 	MessageEmbedOptions,
+	MessageMentions,
 } from "discord.js";
 import { COLORS } from "../../assets/colors";
 import { IMAGES } from "../../assets/images";
-import { PANELINHA_CHANNEL_ID, RAZAL_ID } from "../../config/ids";
+import {
+	GENERAL_CHANNEL_ID,
+	JOBS_CHANNEL_ID,
+	JOB_ROLE_ID,
+	PANELINHA_CHANNEL_ID,
+	RAZAL_ID,
+	RECRUITER_ROLE_ID,
+} from "../../config/ids";
 import { notificationsOptions } from "../../config/notification";
 import {
 	getNotificationId,
 	makeNotificationButtonId,
 } from "../../interactions/send-pre-defined-messages/notifications-embed";
 import { getTextChannel } from "../../utils/get-channel";
+
+type User = APIUser & {
+	member?: Omit<APIGuildMember, "user">;
+};
+
+const getMention = (rawMentions: any): User => {
+	const mentions: Array<any> = [];
+
+	rawMentions.forEach((e: any) => mentions.push(e));
+
+	return mentions.pop()!;
+};
 
 const notificationsInteractions = Object.keys(notificationsOptions).map(
 	makeNotificationButtonId,
@@ -73,6 +96,14 @@ const handleRecruiter = async (interaction: ButtonInteraction) => {
 	await panelinhaChannel.send({
 		content: `<@${RAZAL_ID}> -> <@${interaction.user.id}>`,
 		embeds: [embed],
+		components: [
+			new MessageActionRow().addComponents(
+				new MessageButton()
+					.setCustomId("GIVE_RECRUITER_PERM")
+					.setLabel("Dar permissão")
+					.setStyle("PRIMARY"),
+			),
+		],
 	});
 
 	await interaction.reply({
@@ -92,16 +123,48 @@ const handleRecruiter = async (interaction: ButtonInteraction) => {
 	await interaction.deleteReply();
 };
 
-export const buttonClick = async (interaction: Interaction) => {
+const handleGiveRecruiterPerm = async (interaction: ButtonInteraction) => {
+	if (interaction.user.id !== RAZAL_ID) {
+		return interaction.reply("Só o razal pode.");
+	}
+
+	const generalChannel = getTextChannel(GENERAL_CHANNEL_ID);
+
+	const mention = getMention(
+		(interaction.message.mentions as MessageMentions).users,
+	);
+
+	await (await interaction.guild?.fetch())?.members.cache
+		.get(mention.id)
+		?.roles.add(RECRUITER_ROLE_ID);
+
+	await generalChannel.send({
+		content: `<@${mention?.id}>`,
+		embeds: [
+			{
+				title: `Parabéns ${mention?.username}, agora você é um(a) recrutador(a)!`,
+				description: `Sinta-se livre para postar vagas no <#${JOBS_CHANNEL_ID}>, marcando a role <@&${JOB_ROLE_ID}> para notificar quem está procurando um emprego :wink:`,
+				color: COLORS.orange,
+				thumbnail: {
+					url: "https://media.tenor.com/images/ba9418de27ce10de6f7f7109bc2f84c2/tenor.gif",
+				},
+			},
+		],
+	});
+};
+
+export const buttonClick = (interaction: Interaction) => {
 	if (!interaction.isButton()) return;
 
 	if (notificationsInteractions.includes(interaction.customId)) {
-		await handleNotification(interaction);
-
-		return;
+		return handleNotification(interaction);
 	}
 
 	if (interaction.customId === "IM_RECRUITER") {
-		await handleRecruiter(interaction);
+		return handleRecruiter(interaction);
+	}
+
+	if (interaction.customId === "GIVE_RECRUITER_PERM") {
+		return handleGiveRecruiterPerm(interaction);
 	}
 };
