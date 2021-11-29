@@ -36,11 +36,10 @@ const sendJobOffer = (query) => async () => {
         const channel = (await (guild === null || guild === void 0 ? void 0 : guild.channels.fetch(server.channelId)));
         for (const idx in embeds) {
             const embed = embeds[idx];
-            const content = server.role
-                ? (server.onlyMentionOnFirstMessage && idx === "0") ||
-                    !server.onlyMentionOnFirstMessage
-                    ? `<@${server.role}>`
-                    : undefined
+            const content = server.role &&
+                ((server.onlyMentionOnFirstMessage && idx === "0") ||
+                    !server.onlyMentionOnFirstMessage)
+                ? `<@${server.role}>`
                 : undefined;
             const message = await channel.send({
                 content,
