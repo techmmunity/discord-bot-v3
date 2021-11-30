@@ -12,7 +12,7 @@ const get_channel_1 = require("../../utils/get-channel");
 const getMention = (rawMentions) => {
     const mentions = [];
     rawMentions.forEach((e) => mentions.push(e));
-    return mentions.pop();
+    return mentions.shift();
 };
 const notificationsInteractions = Object.keys(notification_1.notificationsOptions).map(notifications_embed_1.makeNotificationButtonId);
 const handleNotification = async (interaction) => {
