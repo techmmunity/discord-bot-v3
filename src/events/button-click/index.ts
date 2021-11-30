@@ -36,7 +36,7 @@ const getMention = (rawMentions: any): User => {
 
 	rawMentions.forEach((e: any) => mentions.push(e));
 
-	return mentions.pop()!;
+	return mentions.shift()!;
 };
 
 const notificationsInteractions = Object.keys(notificationsOptions).map(
