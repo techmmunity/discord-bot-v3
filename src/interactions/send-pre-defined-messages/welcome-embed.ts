@@ -18,7 +18,7 @@ import { getTextChannel } from "../../utils/get-channel";
 import { getChannelUrl } from "../../utils/get-channel-url";
 
 // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-const sleep = () => sleepUtil(0.3);
+const sleep = () => sleepUtil(0.5);
 
 const welcomeEmbed: MessageOptions = {
 	embeds: [
@@ -113,6 +113,25 @@ const notificationsEmbed: MessageOptions = {
 	],
 };
 
+const professorEmbed: MessageOptions = {
+	embeds: [
+		{
+			title: "Dê aulas",
+			description:
+				"Quer ensinar algo pra galera? Fique a vontade para marcar eventos e usar o `Tech Class` para dar aulas o quanto quiser!",
+			color: COLORS.purple,
+		},
+	],
+	components: [
+		new MessageActionRow().addComponents(
+			new MessageButton()
+				.setCustomId("IM_PROFESSOR")
+				.setLabel("QUERO ENSINAR")
+				.setStyle("SECONDARY"),
+		),
+	],
+};
+
 const recruiterEmbed: MessageOptions = {
 	embeds: [
 		{
@@ -151,6 +170,7 @@ export const sendWelcomeEmbed = async () => {
 		introduceYourselfEmbed,
 		generalChannelEmbed,
 		notificationsEmbed,
+		professorEmbed,
 		recruiterEmbed,
 		warnEmbed,
 	];

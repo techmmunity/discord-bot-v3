@@ -10,7 +10,9 @@ const BASE_COLORS = {
 	codewars: "#b33319",
 	pink: "#ff73fa",
 	youtube: "#FF0000",
+	telegram: "#26A5E4",
 	orange: "#e67e22",
+	purple: "#a20ec2",
 };
 
 export const COLORS = BASE_COLORS as Record<

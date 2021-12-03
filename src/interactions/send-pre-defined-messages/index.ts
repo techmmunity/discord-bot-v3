@@ -9,6 +9,7 @@ import { sendBoosterEmbed } from "./booster-embed";
 import { sendNotificationsEmbed } from "./notifications-embed";
 import { getCommandName } from "../../utils/get-command-name";
 import { sendWelcomeEmbed } from "./welcome-embed";
+import { sendTelegramEmbed } from "./telegram";
 
 const messagesOptions = [
 	{
@@ -25,6 +26,11 @@ const messagesOptions = [
 		id: "welcome",
 		description: "Welcome Message",
 		func: sendWelcomeEmbed,
+	},
+	{
+		id: "telegram",
+		description: "Join Telegram",
+		func: sendTelegramEmbed,
 	},
 ];
 

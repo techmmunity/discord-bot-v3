@@ -16,6 +16,7 @@ import {
 	JOBS_CHANNEL_ID,
 	JOB_ROLE_ID,
 	PANELINHA_CHANNEL_ID,
+	PROFESSOR_ROLE_ID,
 	RAZAL_ID,
 	RECRUITER_ROLE_ID,
 	STAFF_BOTS_CHANNEL,
@@ -160,6 +161,78 @@ const handleGiveRecruiterPerm = async (interaction: ButtonInteraction) => {
 	});
 };
 
+const handleProfessor = async (interaction: ButtonInteraction) => {
+	const embed: MessageEmbedOptions = {
+		title: "Novo(a) professor(a)!",
+		color: COLORS.purple,
+		thumbnail: {
+			url: interaction.user.avatarURL() || IMAGES.techmmunityLogo,
+		},
+	};
+
+	const panelinhaChannel = getTextChannel(PANELINHA_CHANNEL_ID);
+
+	await panelinhaChannel.send({
+		content: `<@${RAZAL_ID}> -> <@${interaction.user.id}>`,
+		embeds: [embed],
+		components: [
+			new MessageActionRow().addComponents(
+				new MessageButton()
+					.setCustomId("GIVE_PROFESSOR_PERM")
+					.setLabel("Dar permissão")
+					.setStyle("PRIMARY"),
+			),
+		],
+	});
+
+	await interaction.reply({
+		embeds: [
+			{
+				title: "Pronto!",
+				description:
+					"Os administradores foram avisados e te darão os privilégios assim que possível 😉",
+				color: COLORS.green,
+			},
+		],
+	});
+
+	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+	await sleep(5);
+
+	await interaction.deleteReply();
+};
+
+const handleGiveProfessorPerm = async (interaction: ButtonInteraction) => {
+	if (interaction.user.id !== RAZAL_ID) {
+		return interaction.reply("Só o razal pode.");
+	}
+
+	const generalChannel = getTextChannel(GENERAL_CHANNEL_ID);
+
+	const mention = getMention(
+		(interaction.message.mentions as MessageMentions).users,
+	);
+
+	await (await interaction.guild?.fetch())?.members.cache
+		.get(mention.id)
+		?.roles.add(PROFESSOR_ROLE_ID);
+
+	await generalChannel.send({
+		content: `<@${mention?.id}>`,
+		embeds: [
+			{
+				title: `Parabéns ${mention?.username}, agora você pode dar aulas!`,
+				description:
+					"Sinta-se livre para criar eventos e usar o `Tech Class` o quanto quiser :wink",
+				color: COLORS.orange,
+				thumbnail: {
+					url: "https://media1.tenor.com/images/3e16351fae83925ef8cc0f21a7f194f7/tenor.gif?itemid=4811486",
+				},
+			},
+		],
+	});
+};
+
 export const buttonClick = (interaction: Interaction) => {
 	if (!interaction.isButton()) return;
 
@@ -173,5 +246,13 @@ export const buttonClick = (interaction: Interaction) => {
 
 	if (interaction.customId === "GIVE_RECRUITER_PERM") {
 		return handleGiveRecruiterPerm(interaction);
+	}
+
+	if (interaction.customId === "IM_PROFESSOR") {
+		return handleProfessor(interaction);
+	}
+
+	if (interaction.customId === "GIVE_PROFESSOR_PERM") {
+		return handleGiveProfessorPerm(interaction);
 	}
 };

@@ -13,8 +13,8 @@ import {
 	GIT_CHANNEL_ID,
 	I_DID_IT_CHANNEL_ID,
 	JOBS_CHANNEL_ID,
+	NETWORKING_CHANNEL_ID,
 	NOTIFICATIONS_CHANNEL_ID,
-	SUGGESTIONS_CHANNEL_ID,
 	SYMBIOSIS_CHANNEL_ID,
 	TECHMMUNITY_CHANNEL_ID,
 	VIDEOS_CHANNEL_ID,
@@ -31,7 +31,7 @@ const tips: Array<MessageEmbedOptions> = [
 	},
 	{
 		title: "Tech Tips #2",
-		description: `Dê ideias para melhorar a comunidade usando o comando \`/suggest\` no canal <#${SUGGESTIONS_CHANNEL_ID}> ou <#${BOTS_CHANNEL_ID}>.`,
+		description: `Dê ideias para melhorar a comunidade usando o comando \`/suggest\` no canal <#${BOTS_CHANNEL_ID}>.`,
 	},
 	{
 		title: "Tech Tips #3",
@@ -93,7 +93,7 @@ const tips: Array<MessageEmbedOptions> = [
 	},
 	{
 		title: "Tech Tips #17",
-		description: `Quer entrar no mundo da programação mas se sente perdido? A Techmmunity tem uma mentoria intensiva de 2 meses para te inserir na area!${"\n\n"}Não perca essa chance e candidate-se agora mesmo para a proxima turma:${"\n"}https://techmmunity.com.br/.`,
+		description: `Se apresente no canal <#${NETWORKING_CHANNEL_ID}>.`,
 	},
 	{
 		title: "Tech Tips #18",
@@ -129,7 +129,7 @@ const tips: Array<MessageEmbedOptions> = [
 	{
 		title: "Tech Tips #25",
 		description:
-			"Lembre-se de separar corretamente suas `dependencies` das suas `devDependencies`.\n\nSaiba mais em:\nhttps://pt.stackoverflow.com/questions/163785/qual-a-diferen%C3%A7a-entre-dependencies-e-devdependencies",
+			"Lembre-se de separar corretamente suas `dependencies` das suas `devDependencies`.\n\nSaiba mais em:\nhttps://blog.techmmunity.com.br/dependencies-vs-dev-dependencies/",
 	},
 	{
 		title: "Tech Tips #26",
@@ -139,7 +139,7 @@ const tips: Array<MessageEmbedOptions> = [
 	{
 		title: "Tech Tips #27",
 		description:
-			"Prefira sempre trabalhar com **TypeScript**!\n\nSaiba mais em:\nhttps://blog.rocketseat.com.br/typescript-vantagens-mitos-conceitos/",
+			"Prefira sempre trabalhar com **TypeScript**!\n\nSaiba mais em:\nhttps://blog.techmmunity.com.br/porque-usar-typescript/",
 	},
 	{
 		title: "Tech Tips #28",
@@ -157,7 +157,8 @@ const tips: Array<MessageEmbedOptions> = [
 	},
 	{
 		title: "Tech Tips #31",
-		description: "Foque em apenas uma linguagem! Quem tudo quer nada tem.",
+		description:
+			"Foque em apenas uma linguagem!\n`Quem tudo quer nada tem.` _~Lispector, Clárice_",
 	},
 ];
 
