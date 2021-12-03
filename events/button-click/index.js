@@ -100,6 +100,59 @@ const handleGiveRecruiterPerm = async (interaction) => {
         ],
     });
 };
+const handleProfessor = async (interaction) => {
+    const embed = {
+        title: "Novo(a) professor(a)!",
+        color: colors_1.COLORS.purple,
+        thumbnail: {
+            url: interaction.user.avatarURL() || images_1.IMAGES.techmmunityLogo,
+        },
+    };
+    const panelinhaChannel = (0, get_channel_1.getTextChannel)(ids_1.PANELINHA_CHANNEL_ID);
+    await panelinhaChannel.send({
+        content: `<@${ids_1.RAZAL_ID}> -> <@${interaction.user.id}>`,
+        embeds: [embed],
+        components: [
+            new discord_js_1.MessageActionRow().addComponents(new discord_js_1.MessageButton()
+                .setCustomId("GIVE_PROFESSOR_PERM")
+                .setLabel("Dar permissão")
+                .setStyle("PRIMARY")),
+        ],
+    });
+    await interaction.reply({
+        embeds: [
+            {
+                title: "Pronto!",
+                description: "Os administradores foram avisados e te darão os privilégios assim que possível 😉",
+                color: colors_1.COLORS.green,
+            },
+        ],
+    });
+    await (0, utils_1.sleep)(5);
+    await interaction.deleteReply();
+};
+const handleGiveProfessorPerm = async (interaction) => {
+    var _a, _b, _c;
+    if (interaction.user.id !== ids_1.RAZAL_ID) {
+        return interaction.reply("Só o razal pode.");
+    }
+    const generalChannel = (0, get_channel_1.getTextChannel)(ids_1.GENERAL_CHANNEL_ID);
+    const mention = getMention(interaction.message.mentions.users);
+    await ((_c = (_b = (await ((_a = interaction.guild) === null || _a === void 0 ? void 0 : _a.fetch()))) === null || _b === void 0 ? void 0 : _b.members.cache.get(mention.id)) === null || _c === void 0 ? void 0 : _c.roles.add(ids_1.PROFESSOR_ROLE_ID));
+    await generalChannel.send({
+        content: `<@${mention === null || mention === void 0 ? void 0 : mention.id}>`,
+        embeds: [
+            {
+                title: `Parabéns ${mention === null || mention === void 0 ? void 0 : mention.username}, agora você pode dar aulas!`,
+                description: "Sinta-se livre para criar eventos e usar o `Tech Class` o quanto quiser :wink",
+                color: colors_1.COLORS.orange,
+                thumbnail: {
+                    url: "https://media1.tenor.com/images/3e16351fae83925ef8cc0f21a7f194f7/tenor.gif?itemid=4811486",
+                },
+            },
+        ],
+    });
+};
 const buttonClick = (interaction) => {
     if (!interaction.isButton())
         return;
@@ -111,6 +164,12 @@ const buttonClick = (interaction) => {
     }
     if (interaction.customId === "GIVE_RECRUITER_PERM") {
         return handleGiveRecruiterPerm(interaction);
+    }
+    if (interaction.customId === "IM_PROFESSOR") {
+        return handleProfessor(interaction);
+    }
+    if (interaction.customId === "GIVE_PROFESSOR_PERM") {
+        return handleGiveProfessorPerm(interaction);
     }
 };
 exports.buttonClick = buttonClick;

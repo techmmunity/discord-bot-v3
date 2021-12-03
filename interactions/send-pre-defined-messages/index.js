@@ -10,6 +10,7 @@ const booster_embed_1 = require("./booster-embed");
 const notifications_embed_1 = require("./notifications-embed");
 const get_command_name_1 = require("../../utils/get-command-name");
 const welcome_embed_1 = require("./welcome-embed");
+const telegram_1 = require("./telegram");
 const messagesOptions = [
     {
         id: "notifications",
@@ -25,6 +26,11 @@ const messagesOptions = [
         id: "welcome",
         description: "Welcome Message",
         func: welcome_embed_1.sendWelcomeEmbed,
+    },
+    {
+        id: "telegram",
+        description: "Join Telegram",
+        func: telegram_1.sendTelegramEmbed,
     },
 ];
 const makeCommand = () => {

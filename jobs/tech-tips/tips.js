@@ -11,7 +11,7 @@ const tips = [
     Object.assign(Object.assign({}, notifications), { title: "Tech Tips #1" }),
     {
         title: "Tech Tips #2",
-        description: `Dê ideias para melhorar a comunidade usando o comando \`/suggest\` no canal <#${ids_1.SUGGESTIONS_CHANNEL_ID}> ou <#${ids_1.BOTS_CHANNEL_ID}>.`,
+        description: `Dê ideias para melhorar a comunidade usando o comando \`/suggest\` no canal <#${ids_1.BOTS_CHANNEL_ID}>.`,
     },
     {
         title: "Tech Tips #3",
@@ -65,7 +65,7 @@ const tips = [
     },
     {
         title: "Tech Tips #17",
-        description: `Quer entrar no mundo da programação mas se sente perdido? A Techmmunity tem uma mentoria intensiva de 2 meses para te inserir na area!${"\n\n"}Não perca essa chance e candidate-se agora mesmo para a proxima turma:${"\n"}https://techmmunity.com.br/.`,
+        description: `Se apresente no canal <#${ids_1.NETWORKING_CHANNEL_ID}>.`,
     },
     {
         title: "Tech Tips #18",
@@ -94,7 +94,7 @@ const tips = [
     },
     {
         title: "Tech Tips #25",
-        description: "Lembre-se de separar corretamente suas `dependencies` das suas `devDependencies`.\n\nSaiba mais em:\nhttps://pt.stackoverflow.com/questions/163785/qual-a-diferen%C3%A7a-entre-dependencies-e-devdependencies",
+        description: "Lembre-se de separar corretamente suas `dependencies` das suas `devDependencies`.\n\nSaiba mais em:\nhttps://blog.techmmunity.com.br/dependencies-vs-dev-dependencies/",
     },
     {
         title: "Tech Tips #26",
@@ -102,7 +102,7 @@ const tips = [
     },
     {
         title: "Tech Tips #27",
-        description: "Prefira sempre trabalhar com **TypeScript**!\n\nSaiba mais em:\nhttps://blog.rocketseat.com.br/typescript-vantagens-mitos-conceitos/",
+        description: "Prefira sempre trabalhar com **TypeScript**!\n\nSaiba mais em:\nhttps://blog.techmmunity.com.br/porque-usar-typescript/",
     },
     {
         title: "Tech Tips #28",
@@ -115,7 +115,7 @@ const tips = [
     },
     {
         title: "Tech Tips #31",
-        description: "Foque em apenas uma linguagem! Quem tudo quer nada tem.",
+        description: "Foque em apenas uma linguagem!\n`Quem tudo quer nada tem.` _~Lispector, Clárice_",
     },
 ];
 const getTip = (dayOfTheMonth) => {

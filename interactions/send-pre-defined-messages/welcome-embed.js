@@ -7,7 +7,7 @@ const colors_1 = require("../../assets/colors");
 const ids_1 = require("../../config/ids");
 const get_channel_1 = require("../../utils/get-channel");
 const get_channel_url_1 = require("../../utils/get-channel-url");
-const sleep = () => (0, utils_1.sleep)(0.3);
+const sleep = () => (0, utils_1.sleep)(0.5);
 const welcomeEmbed = {
     embeds: [
         {
@@ -91,6 +91,21 @@ const notificationsEmbed = {
             .setURL((0, get_channel_url_1.getChannelUrl)(ids_1.NOTIFICATIONS_CHANNEL_ID))),
     ],
 };
+const professorEmbed = {
+    embeds: [
+        {
+            title: "Dê aulas",
+            description: "Quer ensinar algo pra galera? Fique a vontade para marcar eventos e usar o `Tech Class` para dar aulas o quanto quiser!",
+            color: colors_1.COLORS.purple,
+        },
+    ],
+    components: [
+        new discord_js_1.MessageActionRow().addComponents(new discord_js_1.MessageButton()
+            .setCustomId("IM_PROFESSOR")
+            .setLabel("QUERO ENSINAR")
+            .setStyle("SECONDARY")),
+    ],
+};
 const recruiterEmbed = {
     embeds: [
         {
@@ -120,6 +135,7 @@ const sendWelcomeEmbed = async () => {
         introduceYourselfEmbed,
         generalChannelEmbed,
         notificationsEmbed,
+        professorEmbed,
         recruiterEmbed,
         warnEmbed,
     ];
