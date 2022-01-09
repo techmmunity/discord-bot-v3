@@ -19,8 +19,7 @@ export const sendWelcomeMsg = async (member: GuildMember) => {
 		embeds: [
 			{
 				...QCE_EMBED,
-				title:
-					"Seja bem vindo(a)! Aqui está nosso tutorial sobre como fazer perguntas:",
+				title: "Aqui está nosso tutorial sobre como fazer perguntas:",
 			},
 		],
 	});
