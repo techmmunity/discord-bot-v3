@@ -160,7 +160,7 @@ const handleRecruiter = async (interaction) => {
             url: interaction.user.avatarURL() || images_1.IMAGES.techmmunityLogo,
         },
     };
-    const panelinhaChannel = (0, get_channel_1.getTextChannel)(ids_1.PANELINHA_CHANNEL_ID);
+    const panelinhaChannel = (0, get_channel_1.getTextChannel)(ids_1.STAFF_BOTS_CHANNEL);
     await panelinhaChannel.send({
         content: `<@${ids_1.RAZAL_ID}> -> <@${interaction.user.id}>`,
         embeds: [embed],
@@ -205,37 +205,6 @@ const handleGiveRecruiterPerm = async (interaction) => {
         ],
     });
 };
-const handleProfessor = async (interaction) => {
-    const embed = {
-        title: "Novo(a) professor(a)!",
-        color: colors_1.COLORS.purple,
-        thumbnail: {
-            url: interaction.user.avatarURL() || images_1.IMAGES.techmmunityLogo,
-        },
-    };
-    const panelinhaChannel = (0, get_channel_1.getTextChannel)(ids_1.PANELINHA_CHANNEL_ID);
-    await panelinhaChannel.send({
-        content: `<@${ids_1.RAZAL_ID}> -> <@${interaction.user.id}>`,
-        embeds: [embed],
-        components: [
-            new discord_js_1.MessageActionRow().addComponents(new discord_js_1.MessageButton()
-                .setCustomId("GIVE_PROFESSOR_PERM")
-                .setLabel("Dar permissão")
-                .setStyle("PRIMARY")),
-        ],
-    });
-    await interaction.reply({
-        embeds: [
-            {
-                title: "Pronto!",
-                description: "Os administradores foram avisados e te darão os privilégios assim que possível 😉",
-                color: colors_1.COLORS.green,
-            },
-        ],
-    });
-    await (0, utils_1.sleep)(5);
-    await interaction.deleteReply();
-};
 const buttonClick = (interaction) => {
     var _a, _b, _c, _d;
     if (!interaction.isButton())
@@ -257,9 +226,6 @@ const buttonClick = (interaction) => {
     }
     if (interaction.customId === "GIVE_RECRUITER_PERM") {
         return handleGiveRecruiterPerm(interaction);
-    }
-    if (interaction.customId === "IM_PROFESSOR") {
-        return handleProfessor(interaction);
     }
 };
 exports.buttonClick = buttonClick;
