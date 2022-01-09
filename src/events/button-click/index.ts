@@ -20,7 +20,6 @@ import {
 	GENERAL_CHANNEL_ID,
 	JOBS_CHANNEL_ID,
 	JOB_ROLE_ID,
-	PANELINHA_CHANNEL_ID,
 	RAZAL_ID,
 	RECRUITER_ROLE_ID,
 	STAFF_BOTS_CHANNEL,
@@ -245,7 +244,7 @@ const handleRecruiter = async (interaction: ButtonInteraction) => {
 		},
 	};
 
-	const panelinhaChannel = getTextChannel(PANELINHA_CHANNEL_ID);
+	const panelinhaChannel = getTextChannel(STAFF_BOTS_CHANNEL);
 
 	await panelinhaChannel.send({
 		content: `<@${RAZAL_ID}> -> <@${interaction.user.id}>`,
@@ -309,47 +308,6 @@ const handleGiveRecruiterPerm = async (interaction: ButtonInteraction) => {
 	});
 };
 
-const handleProfessor = async (interaction: ButtonInteraction) => {
-	const embed: MessageEmbedOptions = {
-		title: "Novo(a) professor(a)!",
-		color: COLORS.purple,
-		thumbnail: {
-			url: interaction.user.avatarURL() || IMAGES.techmmunityLogo,
-		},
-	};
-
-	const panelinhaChannel = getTextChannel(PANELINHA_CHANNEL_ID);
-
-	await panelinhaChannel.send({
-		content: `<@${RAZAL_ID}> -> <@${interaction.user.id}>`,
-		embeds: [embed],
-		components: [
-			new MessageActionRow().addComponents(
-				new MessageButton()
-					.setCustomId("GIVE_PROFESSOR_PERM")
-					.setLabel("Dar permissão")
-					.setStyle("PRIMARY"),
-			),
-		],
-	});
-
-	await interaction.reply({
-		embeds: [
-			{
-				title: "Pronto!",
-				description:
-					"Os administradores foram avisados e te darão os privilégios assim que possível 😉",
-				color: COLORS.green,
-			},
-		],
-	});
-
-	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-	await sleep(5);
-
-	await interaction.deleteReply();
-};
-
 export const buttonClick = (interaction: Interaction) => {
 	if (!interaction.isButton()) return;
 
@@ -375,9 +333,5 @@ export const buttonClick = (interaction: Interaction) => {
 
 	if (interaction.customId === "GIVE_RECRUITER_PERM") {
 		return handleGiveRecruiterPerm(interaction);
-	}
-
-	if (interaction.customId === "IM_PROFESSOR") {
-		return handleProfessor(interaction);
 	}
 };
