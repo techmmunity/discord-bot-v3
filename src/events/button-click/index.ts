@@ -1,3 +1,5 @@
+/* eslint-disable sonarjs/no-duplicate-string */
+
 import { sleep } from "@techmmunity/utils";
 import { APIUser, APIGuildMember } from "discord-api-types";
 import {
@@ -11,21 +13,23 @@ import {
 } from "discord.js";
 import { COLORS } from "../../assets/colors";
 import { IMAGES } from "../../assets/images";
+import { agesOptions } from "../../config/ages";
 import {
+	CAPTIS_BACKEND_ROLE_ID,
+	CAPTIS_DISCORD_BOT_ROLE_ID,
 	GENERAL_CHANNEL_ID,
 	JOBS_CHANNEL_ID,
 	JOB_ROLE_ID,
 	PANELINHA_CHANNEL_ID,
-	PROFESSOR_ROLE_ID,
 	RAZAL_ID,
 	RECRUITER_ROLE_ID,
 	STAFF_BOTS_CHANNEL,
 } from "../../config/ids";
+import { langsOptions } from "../../config/langs";
 import { notificationsOptions } from "../../config/notification";
-import {
-	getNotificationId,
-	makeNotificationButtonId,
-} from "../../interactions/send-pre-defined-messages/notifications-embed";
+import { getAgeId } from "../../interactions/send-pre-defined-messages/age-embed";
+import { getLangId } from "../../interactions/send-pre-defined-messages/languages-embed";
+import { getNotificationId } from "../../interactions/send-pre-defined-messages/notifications-embed";
 import { getTextChannel } from "../../utils/get-channel";
 
 type User = APIUser & {
@@ -37,12 +41,8 @@ const getMention = (rawMentions: any): User => {
 
 	rawMentions.forEach((e: any) => mentions.push(e));
 
-	return mentions.shift()!;
+	return mentions.filter(m => m.id !== RAZAL_ID).shift()!;
 };
-
-const notificationsInteractions = Object.keys(notificationsOptions).map(
-	makeNotificationButtonId,
-);
 
 const handleNotification = async (interaction: ButtonInteraction) => {
 	const notification = getNotificationId(interaction.customId);
@@ -90,6 +90,152 @@ const handleNotification = async (interaction: ButtonInteraction) => {
 	botsChannel.send(message);
 };
 
+const handleLang = async (interaction: ButtonInteraction) => {
+	const lang = getLangId(interaction.customId);
+
+	const member = interaction.member as GuildMember;
+
+	const langOpt = langsOptions.find(l => l.id === lang)!;
+	const roleId = langOpt.role;
+
+	const shouldAddRole = !member.roles.cache.has(roleId);
+
+	let embed: MessageEmbedOptions;
+
+	if (shouldAddRole) {
+		await member.roles.add(roleId);
+
+		embed = {
+			title: "Role adicionada!",
+			description: `Você agora tem a role **${langOpt.description}** 🥳`,
+			color: COLORS.green,
+		};
+	} else {
+		await member.roles.remove(roleId);
+
+		embed = {
+			title: "Role removida!",
+			description: `Você não tem mais a role **${langOpt.description}** 😔`,
+			color: COLORS.red,
+		};
+	}
+
+	const message = {
+		content: `<@${interaction.user.id}>`,
+		embeds: [embed],
+	};
+
+	await interaction.reply(message);
+
+	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+	await sleep(4);
+
+	await interaction.deleteReply();
+
+	const botsChannel = getTextChannel(STAFF_BOTS_CHANNEL);
+
+	return botsChannel.send(message);
+};
+
+const handleAge = async (interaction: ButtonInteraction) => {
+	const age = getAgeId(interaction.customId);
+
+	const member = interaction.member as GuildMember;
+
+	const ageOpt = agesOptions.find(a => a.id === age)!;
+	const roleId = ageOpt.role;
+
+	const shouldAddRole = !member.roles.cache.has(roleId);
+
+	let embed: MessageEmbedOptions;
+
+	if (shouldAddRole) {
+		await member.roles.add(roleId);
+
+		embed = {
+			title: "Role adicionada!",
+			description: `Você agora tem a role **${ageOpt.description}** 🥳`,
+			color: COLORS.green,
+		};
+	} else {
+		await member.roles.remove(roleId);
+
+		embed = {
+			title: "Role removida!",
+			description: `Você não tem mais a role **${ageOpt.description}** 😔`,
+			color: COLORS.red,
+		};
+	}
+
+	const message = {
+		content: `<@${interaction.user.id}>`,
+		embeds: [embed],
+	};
+
+	await interaction.reply(message);
+
+	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+	await sleep(4);
+
+	await interaction.deleteReply();
+
+	const botsChannel = getTextChannel(STAFF_BOTS_CHANNEL);
+
+	return botsChannel.send(message);
+};
+
+const handleCaptis = async (interaction: ButtonInteraction) => {
+	const isBackend = interaction.customId.endsWith("backend");
+
+	const member = interaction.member as GuildMember;
+
+	const roleId = isBackend
+		? CAPTIS_BACKEND_ROLE_ID
+		: CAPTIS_DISCORD_BOT_ROLE_ID;
+
+	const shouldAddRole = !member.roles.cache.has(roleId);
+
+	let embed: MessageEmbedOptions;
+
+	if (shouldAddRole) {
+		await member.roles.add(roleId);
+
+		const role = member.roles.cache.get(roleId);
+
+		embed = {
+			title: "Role adicionada!",
+			description: `Você agora tem a role **${role?.name}** 🥳`,
+			color: COLORS.green,
+		};
+	} else {
+		const role = member.roles.cache.get(roleId);
+
+		await member.roles.remove(roleId);
+
+		embed = {
+			title: "Role removida!",
+			description: `Você não tem mais a role **${role?.name}** 😔`,
+			color: COLORS.red,
+		};
+	}
+
+	const message = {
+		content: `<@${interaction.user.id}>`,
+		embeds: [embed],
+	};
+
+	await interaction.reply(message);
+
+	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+	await sleep(4);
+
+	await interaction.deleteReply();
+
+	const botsChannel = getTextChannel(STAFF_BOTS_CHANNEL);
+
+	return botsChannel.send(message);
+};
+
 const handleRecruiter = async (interaction: ButtonInteraction) => {
 	const embed: MessageEmbedOptions = {
 		title: "Novo(a) recrutador(a)!",
@@ -133,7 +279,9 @@ const handleRecruiter = async (interaction: ButtonInteraction) => {
 
 const handleGiveRecruiterPerm = async (interaction: ButtonInteraction) => {
 	if (interaction.user.id !== RAZAL_ID) {
-		return interaction.reply("Só o razal pode.");
+		return interaction.user.send(
+			"Tira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.",
+		);
 	}
 
 	const generalChannel = getTextChannel(GENERAL_CHANNEL_ID);
@@ -202,42 +350,23 @@ const handleProfessor = async (interaction: ButtonInteraction) => {
 	await interaction.deleteReply();
 };
 
-const handleGiveProfessorPerm = async (interaction: ButtonInteraction) => {
-	if (interaction.user.id !== RAZAL_ID) {
-		return interaction.reply("Só o razal pode.");
-	}
-
-	const generalChannel = getTextChannel(GENERAL_CHANNEL_ID);
-
-	const mention = getMention(
-		(interaction.message.mentions as MessageMentions).users,
-	);
-
-	await (await interaction.guild?.fetch())?.members.cache
-		.get(mention.id)
-		?.roles.add(PROFESSOR_ROLE_ID);
-
-	await generalChannel.send({
-		content: `<@${mention?.id}>`,
-		embeds: [
-			{
-				title: `Parabéns ${mention?.username}, agora você pode dar aulas!`,
-				description:
-					"Sinta-se livre para criar eventos e usar o `Tech Class` o quanto quiser :wink",
-				color: COLORS.orange,
-				thumbnail: {
-					url: "https://media1.tenor.com/images/3e16351fae83925ef8cc0f21a7f194f7/tenor.gif?itemid=4811486",
-				},
-			},
-		],
-	});
-};
-
 export const buttonClick = (interaction: Interaction) => {
 	if (!interaction.isButton()) return;
 
-	if (notificationsInteractions.includes(interaction.customId)) {
+	if (interaction.customId?.startsWith("NOTIFICATION#")) {
 		return handleNotification(interaction);
+	}
+
+	if (interaction.customId?.startsWith("LANG#")) {
+		return handleLang(interaction);
+	}
+
+	if (interaction.customId?.startsWith("AGE#")) {
+		return handleAge(interaction);
+	}
+
+	if (interaction.customId?.startsWith("CAPTIS#")) {
+		return handleCaptis(interaction);
 	}
 
 	if (interaction.customId === "IM_RECRUITER") {
@@ -250,9 +379,5 @@ export const buttonClick = (interaction: Interaction) => {
 
 	if (interaction.customId === "IM_PROFESSOR") {
 		return handleProfessor(interaction);
-	}
-
-	if (interaction.customId === "GIVE_PROFESSOR_PERM") {
-		return handleGiveProfessorPerm(interaction);
 	}
 };

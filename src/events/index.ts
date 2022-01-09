@@ -11,5 +11,5 @@ export const setEvents = (client: Client) => {
 
 	client.on("messageCreate", someoneCanHelpMe);
 
-	client.on("interactionCreate", buttonClick);
+	client.on("interactionCreate", buttonClick as any);
 };

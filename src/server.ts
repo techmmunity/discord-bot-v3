@@ -36,11 +36,10 @@ const bootstrap = async () => {
 
 		setGlobalConnection(connection);
 
+		registerCommands({
+			commands,
+		});
 		if (process.env.NODE_ENV !== "dev") {
-			registerCommands({
-				commands,
-			});
-
 			setJobs();
 		}
 

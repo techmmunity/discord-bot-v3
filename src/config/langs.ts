@@ -1,0 +1,103 @@
+import {
+	BLOCKCHAIN_ROLE_ID,
+	C_FAMILY_ROLE_ID,
+	DATABASE_ROLE_ID,
+	FLUTTER_ROLE_ID,
+	GOLANG_ROLE_ID,
+	HTML_CSS_ROLE_ID,
+	INFRA_ROLE_ID,
+	JAVASCRIPT_ROLE_ID,
+	JAVA_ROLE_ID,
+	LUA_ROLE_ID,
+	NODEJS_ROLE_ID,
+	PYTHON_ROLE_ID,
+	REACTJS_ROLE_ID,
+	RUST_ROLE_ID,
+} from "./ids";
+
+export const langsOptions = [
+	{
+		id: "nodejs",
+		description: "NodeJS",
+		emoji: ":green_square:",
+		role: NODEJS_ROLE_ID,
+	},
+	{
+		id: "reactjs",
+		description: "ReactJS",
+		emoji: ":diamond_shape_with_a_dot_inside:",
+		role: REACTJS_ROLE_ID,
+	},
+	{
+		id: "javascript",
+		description: "JavaScript",
+		emoji: ":yellow_square:",
+		role: JAVASCRIPT_ROLE_ID,
+	},
+	{
+		id: "html_css",
+		description: "HTML & CSS",
+		emoji: ":orange_square:",
+		role: HTML_CSS_ROLE_ID,
+	},
+	{
+		id: "blockchain",
+		description: "Blockchain",
+		emoji: ":chains:",
+		role: BLOCKCHAIN_ROLE_ID,
+	},
+	{
+		id: "flutter",
+		description: "Flutter",
+		emoji: ":bird:",
+		role: FLUTTER_ROLE_ID,
+	},
+	{
+		id: "lua",
+		description: "Lua",
+		emoji: ":last_quarter_moon_with_face:",
+		role: LUA_ROLE_ID,
+	},
+	{
+		id: "python",
+		description: "Python",
+		emoji: ":snake:",
+		role: PYTHON_ROLE_ID,
+	},
+	{
+		id: "java",
+		description: "Java",
+		emoji: ":coffe:",
+		role: JAVA_ROLE_ID,
+	},
+	{
+		id: "c_family",
+		description: "C Family",
+		emoji: ":magnet:",
+		role: C_FAMILY_ROLE_ID,
+	},
+	{
+		id: "rust",
+		description: "Rust",
+		emoji: ":gear:",
+		role: RUST_ROLE_ID,
+	},
+	{
+		id: "golang",
+		description: "Golang",
+		emoji: ":mouse:",
+		role: GOLANG_ROLE_ID,
+	},
+	{
+		id: "database",
+		description: "Database",
+		emoji: ":floppy_disk:",
+		role: DATABASE_ROLE_ID,
+	},
+	{
+		id: "infra",
+		description: "Infra",
+		emoji: ":globe_with_meridians:",
+		role: INFRA_ROLE_ID,
+	},
+];

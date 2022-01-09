@@ -113,22 +113,29 @@ const notificationsEmbed: MessageOptions = {
 	],
 };
 
-const professorEmbed: MessageOptions = {
+const captisEmbed: MessageOptions = {
 	embeds: [
 		{
-			title: "Dê aulas",
+			title: "Estude para as vagas da Captis!",
 			description:
-				"Quer ensinar algo pra galera? Fique a vontade para marcar eventos e usar o `Tech Class` para dar aulas o quanto quiser!",
-			color: COLORS.purple,
+				"Já sonhou em trabalhar em uma rede social para gamers **canadense** sem saber inglês fluênte? Saiba que você pode! A Captis sempre tem novas vagas abertas para diversas áreas, e adoram contratar Júniors e treina-los em casa! Para se preparar para trabalhar na Captis, sempre são postados conteúdos aqui, e para ser notificado quando novos conteúdos forem postados, basta clicar nos botões abaixo:",
+			color: COLORS.captis,
 		},
 	],
 	components: [
-		new MessageActionRow().addComponents(
-			new MessageButton()
-				.setCustomId("IM_PROFESSOR")
-				.setLabel("QUERO ENSINAR")
-				.setStyle("SECONDARY"),
-		),
+		new MessageActionRow()
+			.addComponents(
+				new MessageButton()
+					.setCustomId("CAPTIS#backend")
+					.setLabel("BACKEND")
+					.setStyle("SECONDARY"),
+			)
+			.addComponents(
+				new MessageButton()
+					.setCustomId("CAPTIS#discord_bot")
+					.setLabel("DISCORD BOT")
+					.setStyle("SECONDARY"),
+			),
 	],
 };
 
@@ -170,7 +177,7 @@ export const sendWelcomeEmbed = async () => {
 		introduceYourselfEmbed,
 		generalChannelEmbed,
 		notificationsEmbed,
-		professorEmbed,
+		captisEmbed,
 		recruiterEmbed,
 		warnEmbed,
 	];

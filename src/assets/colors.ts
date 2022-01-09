@@ -13,6 +13,7 @@ const BASE_COLORS = {
 	telegram: "#26A5E4",
 	orange: "#e67e22",
 	purple: "#a20ec2",
+	captis: "#2563e7",
 };
 
 export const COLORS = BASE_COLORS as Record<

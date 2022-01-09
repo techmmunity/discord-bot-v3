@@ -18,7 +18,6 @@ import {
 import { suggest, suggestCommand } from "./suggest";
 import { welcomeImg, welcomeImgCommand } from "./welcome-img";
 import { qce, qceCommand } from "./qce";
-import { minecraft, minecraftCommand } from "./minecraft";
 import { youtube, youtubeCommand } from "./youtube";
 import { getCommandName } from "../utils/get-command-name";
 import { mentorship, mentorshipCommand } from "./mentorship";
@@ -57,8 +56,6 @@ export const setInteractions = (client: Client) => {
 				return clean(interaction);
 			case getCommandName("qce"):
 				return qce(interaction);
-			case getCommandName("minecraft"):
-				return minecraft(interaction);
 			case getCommandName("youtube"):
 				return youtube(interaction);
 			case getCommandName("mentorship"):
@@ -82,7 +79,6 @@ export const commands = [
 	getTechTipCommand,
 	cleanCommand,
 	qceCommand,
-	minecraftCommand,
 	youtubeCommand,
 	mentorshipCommand,
 ];

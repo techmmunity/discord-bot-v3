@@ -21,7 +21,7 @@ import {
 } from "../../config/ids";
 
 const notifications = {
-	description: `Para receber notificações dos seus conteúdos favoritos, vá até o <#${NOTIFICATIONS_CHANNEL_ID}> e use o comando \`/notifications\`.`,
+	description: `Para receber notificações dos seus conteúdos favoritos, vá até o <#${NOTIFICATIONS_CHANNEL_ID}>.`,
 };
 
 const tips: Array<MessageEmbedOptions> = [
@@ -40,7 +40,7 @@ const tips: Array<MessageEmbedOptions> = [
 	},
 	{
 		title: "Tech Tips #4",
-		description: `Fique atendo as vagas de empregos enviadas no canal <#${JOBS_CHANNEL_ID}>.${"\n\n"}Todas as **segundas** enviamos 10 vagas de **Desenvolvedor TypeScript Júnior** e todas as **quintas** enviamos 10 vagas de **Desenvolvedor React Júnior**.`,
+		description: `Fique atendo as vagas de empregos enviadas no canal <#${JOBS_CHANNEL_ID}>.`,
 	},
 	{
 		title: "Tech Tips #5",
@@ -158,7 +158,7 @@ const tips: Array<MessageEmbedOptions> = [
 	{
 		title: "Tech Tips #31",
 		description:
-			"Foque em apenas uma linguagem!\n`Quem tudo quer nada tem.` _~Lispector, Clárice_",
+			"Foque em apenas uma linguagem!\n`Quem tudo quer nada tem.` _~Lispector, Clarice_",
 	},
 ];
 
