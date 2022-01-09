@@ -32,10 +32,10 @@ const bootstrap = async () => {
         }).load();
         await connection.connect();
         (0, symbiosis_1.setGlobalConnection)(connection);
+        (0, register_commands_1.registerCommands)({
+            commands: interactions_1.commands,
+        });
         if (process.env.NODE_ENV !== "dev") {
-            (0, register_commands_1.registerCommands)({
-                commands: interactions_1.commands,
-            });
             (0, jobs_1.setJobs)();
         }
         (0, events_1.setEvents)(client_1.DiscordClient);

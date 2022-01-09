@@ -13,7 +13,6 @@ const send_pre_defined_messages_1 = require("./send-pre-defined-messages");
 const suggest_1 = require("./suggest");
 const welcome_img_1 = require("./welcome-img");
 const qce_1 = require("./qce");
-const minecraft_1 = require("./minecraft");
 const youtube_1 = require("./youtube");
 const get_command_name_1 = require("../utils/get-command-name");
 const mentorship_1 = require("./mentorship");
@@ -49,8 +48,6 @@ const setInteractions = (client) => {
                 return (0, clean_1.clean)(interaction);
             case (0, get_command_name_1.getCommandName)("qce"):
                 return (0, qce_1.qce)(interaction);
-            case (0, get_command_name_1.getCommandName)("minecraft"):
-                return (0, minecraft_1.minecraft)(interaction);
             case (0, get_command_name_1.getCommandName)("youtube"):
                 return (0, youtube_1.youtube)(interaction);
             case (0, get_command_name_1.getCommandName)("mentorship"):
@@ -74,7 +71,6 @@ exports.commands = [
     get_tech_tip_1.getTechTipCommand,
     clean_1.cleanCommand,
     qce_1.qceCommand,
-    minecraft_1.minecraftCommand,
     youtube_1.youtubeCommand,
     mentorship_1.mentorshipCommand,
 ];

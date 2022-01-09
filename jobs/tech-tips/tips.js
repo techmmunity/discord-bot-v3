@@ -5,7 +5,7 @@ const colors_1 = require("../../assets/colors");
 const images_1 = require("../../assets/images");
 const ids_1 = require("../../config/ids");
 const notifications = {
-    description: `Para receber notificações dos seus conteúdos favoritos, vá até o <#${ids_1.NOTIFICATIONS_CHANNEL_ID}> e use o comando \`/notifications\`.`,
+    description: `Para receber notificações dos seus conteúdos favoritos, vá até o <#${ids_1.NOTIFICATIONS_CHANNEL_ID}>.`,
 };
 const tips = [
     Object.assign(Object.assign({}, notifications), { title: "Tech Tips #1" }),
@@ -19,7 +19,7 @@ const tips = [
     },
     {
         title: "Tech Tips #4",
-        description: `Fique atendo as vagas de empregos enviadas no canal <#${ids_1.JOBS_CHANNEL_ID}>.${"\n\n"}Todas as **segundas** enviamos 10 vagas de **Desenvolvedor TypeScript Júnior** e todas as **quintas** enviamos 10 vagas de **Desenvolvedor React Júnior**.`,
+        description: `Fique atendo as vagas de empregos enviadas no canal <#${ids_1.JOBS_CHANNEL_ID}>.`,
     },
     {
         title: "Tech Tips #5",
@@ -115,7 +115,7 @@ const tips = [
     },
     {
         title: "Tech Tips #31",
-        description: "Foque em apenas uma linguagem!\n`Quem tudo quer nada tem.` _~Lispector, Clárice_",
+        description: "Foque em apenas uma linguagem!\n`Quem tudo quer nada tem.` _~Lispector, Clarice_",
     },
 ];
 const getTip = (dayOfTheMonth) => {
