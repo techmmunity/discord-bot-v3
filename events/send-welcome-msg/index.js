@@ -14,7 +14,7 @@ const sendWelcomeMsg = async (member) => {
         content: `<@${member.user.id}>`,
         files: [welcomeImg],
         embeds: [
-            Object.assign(Object.assign({}, qce_1.QCE_EMBED), { title: "Seja bem vindo(a)! Aqui está nosso tutorial sobre como fazer perguntas:" }),
+            Object.assign(Object.assign({}, qce_1.QCE_EMBED), { title: "Aqui está nosso tutorial sobre como fazer perguntas:" }),
         ],
     });
 };

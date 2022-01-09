@@ -38,12 +38,6 @@ const welcomeEmbed = {
 
 
 
-	**=== 📦 TECHMMUNITY ===**
-
-	<:techmmunity:890749408755449856> Ferramentas oficiais da Techmmunity! <:techmmunity:890749408755449856>
-
-
-
 	**=== ❓ TOPICS ===**
 
 	**❓ Canais para fazer perguntas ❓**`,
@@ -97,6 +91,9 @@ const captisEmbed = {
             title: "Estude para as vagas da Captis!",
             description: "Já sonhou em trabalhar em uma rede social para gamers **canadense** sem saber inglês fluênte? Saiba que você pode! A Captis sempre tem novas vagas abertas para diversas áreas, e adoram contratar Júniors e treina-los em casa! Para se preparar para trabalhar na Captis, sempre são postados conteúdos aqui, e para ser notificado quando novos conteúdos forem postados, basta clicar nos botões abaixo:",
             color: colors_1.COLORS.captis,
+            thumbnail: {
+                url: "https://cdn.discordapp.com/attachments/903650212596293642/929832754361798686/CAPTIS_LOGO_UPDATED.png",
+            },
         },
     ],
     components: [
