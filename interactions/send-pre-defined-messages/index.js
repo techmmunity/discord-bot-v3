@@ -5,13 +5,13 @@ const builders_1 = require("@discordjs/builders");
 const utils_1 = require("@techmmunity/utils");
 const colors_1 = require("../../assets/colors");
 const ids_1 = require("../../config/ids");
-const permission_type_1 = require("../../enums/permission-type");
 const booster_embed_1 = require("./booster-embed");
 const notifications_embed_1 = require("./notifications-embed");
 const get_command_name_1 = require("../../utils/get-command-name");
 const welcome_embed_1 = require("./welcome-embed");
 const languages_embed_1 = require("./languages-embed");
 const age_embed_1 = require("./age-embed");
+const verify_one_of_roles_1 = require("../../utils/verify-one-of-roles");
 const messagesOptions = [
     {
         id: "notifications",
@@ -57,6 +57,18 @@ const getOptions = (interaction) => messagesOptions
 })
     .filter(Boolean);
 const sendPreDefinedMessages = async (interaction) => {
+    if (!(0, verify_one_of_roles_1.verifyOneOfRoles)(interaction, [ids_1.STAFF_ROLE_ID, ids_1.MOD_ROLE_ID])) {
+        await interaction.reply({
+            embeds: [
+                {
+                    title: "Error!",
+                    description: "You don't have permission to execute this command!",
+                    color: colors_1.COLORS.red,
+                },
+            ],
+        });
+        return;
+    }
     await interaction.deferReply();
     const options = getOptions(interaction);
     if ((0, utils_1.isEmptyArray)(options)) {
@@ -88,16 +100,4 @@ const sendPreDefinedMessages = async (interaction) => {
 exports.sendPreDefinedMessages = sendPreDefinedMessages;
 exports.sendPreDefinedMessagesCommand = {
     command: makeCommand(),
-    permissions: [
-        {
-            id: ids_1.STAFF_ROLE_ID,
-            type: permission_type_1.PermissionTypeEnum.ROLE,
-            permission: true,
-        },
-        {
-            id: ids_1.MOD_ROLE_ID,
-            type: permission_type_1.PermissionTypeEnum.ROLE,
-            permission: true,
-        },
-    ],
 };

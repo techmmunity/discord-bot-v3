@@ -7,11 +7,23 @@ const utils_1 = require("@techmmunity/utils");
 const colors_1 = require("../../assets/colors");
 const ids_1 = require("../../config/ids");
 const challenge_1 = require("../../entities/challenge");
-const permission_type_1 = require("../../enums/permission-type");
 const get_title_1 = require("../../utils/get-title");
 const make_embed_1 = require("./make-embed");
 const get_command_name_1 = require("../../utils/get-command-name");
+const verify_one_of_roles_1 = require("../../utils/verify-one-of-roles");
 const createChallenge = async (interaction) => {
+    if (!(0, verify_one_of_roles_1.verifyOneOfRoles)(interaction, [ids_1.STAFF_ROLE_ID, ids_1.MOD_ROLE_ID])) {
+        await interaction.reply({
+            embeds: [
+                {
+                    title: "Error!",
+                    description: "You don't have permission to execute this command!",
+                    color: colors_1.COLORS.red,
+                },
+            ],
+        });
+        return;
+    }
     const url = interaction.options.getString("url");
     if (!url.startsWith("https://www.codewars.com/kata/")) {
         await interaction.reply({
@@ -89,16 +101,4 @@ exports.createChallengeCommand = {
         .setDescription("CodeWars Challenge Level")
         .setRequired(true))
         .setDefaultPermission(false),
-    permissions: [
-        {
-            id: ids_1.STAFF_ROLE_ID,
-            type: permission_type_1.PermissionTypeEnum.ROLE,
-            permission: true,
-        },
-        {
-            id: ids_1.MOD_ROLE_ID,
-            type: permission_type_1.PermissionTypeEnum.ROLE,
-            permission: true,
-        },
-    ],
 };

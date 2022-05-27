@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.registerCommands = void 0;
-const utils_1 = require("@techmmunity/utils");
 const rest_1 = require("@discordjs/rest");
+const utils_1 = require("@techmmunity/utils");
+const v10_1 = require("discord-api-types/v10");
 const ids_1 = require("./config/ids");
 const registerCommands = async ({ commands, }) => {
     const rest = new rest_1.REST({ version: "9" }).setToken(process.env.DISCORD_BOT_TOKEN);
@@ -19,29 +20,15 @@ const registerCommands = async ({ commands, }) => {
     }
     for (const commandName of newCommands) {
         const commandData = commands.find(cmd => cmd.command.name === commandName);
-        const { permissions, command } = commandData;
-        const result = (await rest.post(`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${ids_1.TECHMMUNITY_GUILD_ID}/commands`, { body: command }));
-        if (permissions) {
-            await rest.put(`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${ids_1.TECHMMUNITY_GUILD_ID}/commands/${result.id}/permissions`, {
-                body: {
-                    permissions,
-                },
-            });
-        }
+        const { command } = commandData;
+        await rest.post(v10_1.Routes.applicationGuildCommands(process.env.DISCORD_CLIENT_ID, ids_1.TECHMMUNITY_GUILD_ID), { body: command });
         await (0, utils_1.sleep)(0.2);
     }
     for (const commandName of updatedCommands) {
         const rCommand = registeredCommands.find(cmd => cmd.name === commandName);
         const commandData = commands.find(cmd => cmd.command.name === commandName);
-        const { permissions, command } = commandData;
-        const result = (await rest.patch(`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${ids_1.TECHMMUNITY_GUILD_ID}/commands/${rCommand.id}`, { body: command }));
-        if (permissions) {
-            await rest.put(`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${ids_1.TECHMMUNITY_GUILD_ID}/commands/${result.id}/permissions`, {
-                body: {
-                    permissions,
-                },
-            });
-        }
+        const { command } = commandData;
+        await rest.patch(`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${ids_1.TECHMMUNITY_GUILD_ID}/commands/${rCommand.id}`, { body: command });
         await (0, utils_1.sleep)(0.2);
     }
 };

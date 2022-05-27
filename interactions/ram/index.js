@@ -5,8 +5,8 @@ const builders_1 = require("@discordjs/builders");
 const colors_1 = require("../../assets/colors");
 const images_1 = require("../../assets/images");
 const ids_1 = require("../../config/ids");
-const permission_type_1 = require("../../enums/permission-type");
 const get_command_name_1 = require("../../utils/get-command-name");
+const verify_one_of_roles_1 = require("../../utils/verify-one-of-roles");
 const calcMemory = (memory) => Math.round((memory / 1024 / 1024) * 100) / 100;
 const getColor = (memoryUsage) => {
     if (memoryUsage < 30)
@@ -15,7 +15,19 @@ const getColor = (memoryUsage) => {
         return colors_1.COLORS.yellow;
     return colors_1.COLORS.red;
 };
-const ram = (interaction) => {
+const ram = async (interaction) => {
+    if (!(0, verify_one_of_roles_1.verifyOneOfRoles)(interaction, [ids_1.STAFF_ROLE_ID, ids_1.MOD_ROLE_ID])) {
+        await interaction.reply({
+            embeds: [
+                {
+                    title: "Error!",
+                    description: "You don't have permission to execute this command!",
+                    color: colors_1.COLORS.red,
+                },
+            ],
+        });
+        return;
+    }
     const memoryUsage = process.memoryUsage();
     const rss = calcMemory(memoryUsage.rss);
     const heapTotal = calcMemory(memoryUsage.heapTotal);
@@ -67,16 +79,4 @@ exports.ramCommand = {
         .setName((0, get_command_name_1.getCommandName)("ram"))
         .setDescription("Checks the bot ram usage")
         .setDefaultPermission(false),
-    permissions: [
-        {
-            id: ids_1.STAFF_ROLE_ID,
-            type: permission_type_1.PermissionTypeEnum.ROLE,
-            permission: true,
-        },
-        {
-            id: ids_1.MOD_ROLE_ID,
-            type: permission_type_1.PermissionTypeEnum.ROLE,
-            permission: true,
-        },
-    ],
 };

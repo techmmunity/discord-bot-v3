@@ -4,9 +4,21 @@ exports.sendEmbedCommand = exports.sendEmbed = void 0;
 const builders_1 = require("@discordjs/builders");
 const colors_1 = require("../../assets/colors");
 const ids_1 = require("../../config/ids");
-const permission_type_1 = require("../../enums/permission-type");
 const get_command_name_1 = require("../../utils/get-command-name");
+const verify_one_of_roles_1 = require("../../utils/verify-one-of-roles");
 const sendEmbed = async (interaction) => {
+    if (!(0, verify_one_of_roles_1.verifyOneOfRoles)(interaction, [ids_1.STAFF_ROLE_ID, ids_1.MOD_ROLE_ID])) {
+        await interaction.reply({
+            embeds: [
+                {
+                    title: "Error!",
+                    description: "You don't have permission to execute this command!",
+                    color: colors_1.COLORS.red,
+                },
+            ],
+        });
+        return;
+    }
     const channel = interaction.options.getChannel("channel");
     const title = interaction.options.getString("title");
     const description = interaction.options.getString("description");
@@ -58,16 +70,4 @@ exports.sendEmbedCommand = {
         .addBooleanOption(option => option.setName("crosspost").setDescription("Crosspost message"))
         .addRoleOption(option => option.setName("notification").setDescription("Role to notify"))
         .setDefaultPermission(false),
-    permissions: [
-        {
-            id: ids_1.STAFF_ROLE_ID,
-            type: permission_type_1.PermissionTypeEnum.ROLE,
-            permission: true,
-        },
-        {
-            id: ids_1.MOD_ROLE_ID,
-            type: permission_type_1.PermissionTypeEnum.ROLE,
-            permission: true,
-        },
-    ],
 };
