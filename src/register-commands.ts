@@ -1,7 +1,8 @@
 /* eslint-disable no-await-in-loop */
-/* eslint-disable @typescript-eslint/naming-convention */
-import { sleep } from "@techmmunity/utils";
+
 import { REST } from "@discordjs/rest";
+import { sleep } from "@techmmunity/utils";
+import { Routes } from "discord-api-types/v10";
 import { TECHMMUNITY_GUILD_ID } from "./config/ids";
 import { Interaction } from "./types/interactions";
 
@@ -55,23 +56,15 @@ export const registerCommands = async ({
 	for (const commandName of newCommands) {
 		const commandData = commands.find(cmd => cmd.command.name === commandName)!;
 
-		const { permissions, command } = commandData;
+		const { command } = commandData;
 
-		const result = (await rest.post(
-			`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${TECHMMUNITY_GUILD_ID}/commands`,
+		await rest.post(
+			Routes.applicationGuildCommands(
+				process.env.DISCORD_CLIENT_ID,
+				TECHMMUNITY_GUILD_ID,
+			),
 			{ body: command },
-		)) as Command;
-
-		if (permissions) {
-			await rest.put(
-				`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${TECHMMUNITY_GUILD_ID}/commands/${result.id}/permissions`,
-				{
-					body: {
-						permissions,
-					},
-				},
-			);
-		}
+		);
 
 		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 		await sleep(0.2);
@@ -81,23 +74,12 @@ export const registerCommands = async ({
 		const rCommand = registeredCommands.find(cmd => cmd.name === commandName)!;
 		const commandData = commands.find(cmd => cmd.command.name === commandName)!;
 
-		const { permissions, command } = commandData;
+		const { command } = commandData;
 
-		const result = (await rest.patch(
+		await rest.patch(
 			`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${TECHMMUNITY_GUILD_ID}/commands/${rCommand.id}`,
 			{ body: command },
-		)) as Command;
-
-		if (permissions) {
-			await rest.put(
-				`/applications/${process.env.DISCORD_CLIENT_ID}/guilds/${TECHMMUNITY_GUILD_ID}/commands/${result.id}/permissions`,
-				{
-					body: {
-						permissions,
-					},
-				},
-			);
-		}
+		);
 
 		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 		await sleep(0.2);

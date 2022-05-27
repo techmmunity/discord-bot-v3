@@ -1,12 +1,31 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { isBetween } from "@techmmunity/utils";
 import { CommandInteraction, TextChannel } from "discord.js";
-import { RAZAL_ID } from "../../config/ids";
+import { STAFF_ROLE_ID } from "../../config/ids";
 import { Interaction } from "../../types/interactions";
-import { PermissionTypeEnum } from "../../enums/permission-type";
 import { getCommandName } from "../../utils/get-command-name";
+import { COLORS } from "../../assets/colors";
+import { verifyOneOfRoles } from "../../utils/verify-one-of-roles";
 
 export const clean = async (interaction: CommandInteraction) => {
+	if (!verifyOneOfRoles(interaction, [STAFF_ROLE_ID])) {
+		await interaction.reply({
+			embeds: [
+				{
+					title: "Error!",
+					description: "You don't have permission to execute this command!",
+					color: COLORS.red,
+				},
+			],
+		});
+
+		return;
+	}
+
+	/**
+	 * --------------------------------------------------------------------
+	 */
+
 	await interaction.deferReply();
 
 	const channel = interaction.options.getChannel("channel")! as TextChannel;
@@ -43,11 +62,4 @@ export const cleanCommand: Interaction = {
 				.setRequired(true),
 		)
 		.setDefaultPermission(false),
-	permissions: [
-		{
-			id: RAZAL_ID,
-			type: PermissionTypeEnum.USER,
-			permission: true,
-		},
-	],
 };

@@ -6,8 +6,8 @@ import { COLORS } from "../../assets/colors";
 import { IMAGES } from "../../assets/images";
 import { MOD_ROLE_ID, STAFF_ROLE_ID } from "../../config/ids";
 import { Interaction } from "../../types/interactions";
-import { PermissionTypeEnum } from "../../enums/permission-type";
 import { getCommandName } from "../../utils/get-command-name";
+import { verifyOneOfRoles } from "../../utils/verify-one-of-roles";
 
 const calcMemory = (memory: number) =>
 	Math.round((memory / 1024 / 1024) * 100) / 100;
@@ -20,7 +20,25 @@ const getColor = (memoryUsage: number) => {
 	return COLORS.red;
 };
 
-export const ram = (interaction: CommandInteraction) => {
+export const ram = async (interaction: CommandInteraction) => {
+	if (!verifyOneOfRoles(interaction, [STAFF_ROLE_ID, MOD_ROLE_ID])) {
+		await interaction.reply({
+			embeds: [
+				{
+					title: "Error!",
+					description: "You don't have permission to execute this command!",
+					color: COLORS.red,
+				},
+			],
+		});
+
+		return;
+	}
+
+	/**
+	 * --------------------------------------------------------------------
+	 */
+
 	const memoryUsage = process.memoryUsage();
 
 	const rss = calcMemory(memoryUsage.rss);
@@ -74,16 +92,4 @@ export const ramCommand: Interaction = {
 		.setName(getCommandName("ram"))
 		.setDescription("Checks the bot ram usage")
 		.setDefaultPermission(false),
-	permissions: [
-		{
-			id: STAFF_ROLE_ID, // Staff
-			type: PermissionTypeEnum.ROLE,
-			permission: true,
-		},
-		{
-			id: MOD_ROLE_ID, // Mod
-			type: PermissionTypeEnum.ROLE,
-			permission: true,
-		},
-	],
 };

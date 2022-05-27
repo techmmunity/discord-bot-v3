@@ -1,7 +1,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
 import { sleep } from "@techmmunity/utils";
-import { APIUser, APIGuildMember } from "discord-api-types";
+import { APIUser, APIGuildMember } from "discord-api-types/v10";
 import {
 	ButtonInteraction,
 	GuildMember,

@@ -39,6 +39,7 @@ const bootstrap = async () => {
 		registerCommands({
 			commands,
 		});
+
 		if (process.env.NODE_ENV !== "dev") {
 			setJobs();
 		}

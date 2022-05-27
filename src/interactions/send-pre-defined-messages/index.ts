@@ -4,13 +4,13 @@ import { CommandInteraction } from "discord.js";
 import { COLORS } from "../../assets/colors";
 import { STAFF_ROLE_ID, MOD_ROLE_ID } from "../../config/ids";
 import { Interaction } from "../../types/interactions";
-import { PermissionTypeEnum } from "../../enums/permission-type";
 import { sendBoosterEmbed } from "./booster-embed";
 import { sendNotificationsEmbed } from "./notifications-embed";
 import { getCommandName } from "../../utils/get-command-name";
 import { sendWelcomeEmbed } from "./welcome-embed";
 import { sendLangsEmbed } from "./languages-embed";
 import { sendAgeEmbed } from "./age-embed";
+import { verifyOneOfRoles } from "../../utils/verify-one-of-roles";
 
 const messagesOptions = [
 	{
@@ -68,6 +68,24 @@ const getOptions = (interaction: CommandInteraction) =>
 export const sendPreDefinedMessages = async (
 	interaction: CommandInteraction,
 ) => {
+	if (!verifyOneOfRoles(interaction, [STAFF_ROLE_ID, MOD_ROLE_ID])) {
+		await interaction.reply({
+			embeds: [
+				{
+					title: "Error!",
+					description: "You don't have permission to execute this command!",
+					color: COLORS.red,
+				},
+			],
+		});
+
+		return;
+	}
+
+	/**
+	 * --------------------------------------------------------------------
+	 */
+
 	await interaction.deferReply();
 
 	const options = getOptions(interaction);
@@ -106,16 +124,4 @@ export const sendPreDefinedMessages = async (
 
 export const sendPreDefinedMessagesCommand: Interaction = {
 	command: makeCommand(),
-	permissions: [
-		{
-			id: STAFF_ROLE_ID, // Staff
-			type: PermissionTypeEnum.ROLE,
-			permission: true,
-		},
-		{
-			id: MOD_ROLE_ID, // Mod
-			type: PermissionTypeEnum.ROLE,
-			permission: true,
-		},
-	],
 };

@@ -4,10 +4,28 @@ import { CommandInteraction, TextChannel } from "discord.js";
 import { COLORS } from "../../assets/colors";
 import { STAFF_ROLE_ID, MOD_ROLE_ID } from "../../config/ids";
 import { Interaction } from "../../types/interactions";
-import { PermissionTypeEnum } from "../../enums/permission-type";
 import { getCommandName } from "../../utils/get-command-name";
+import { verifyOneOfRoles } from "../../utils/verify-one-of-roles";
 
 export const sendEmbed = async (interaction: CommandInteraction) => {
+	if (!verifyOneOfRoles(interaction, [STAFF_ROLE_ID, MOD_ROLE_ID])) {
+		await interaction.reply({
+			embeds: [
+				{
+					title: "Error!",
+					description: "You don't have permission to execute this command!",
+					color: COLORS.red,
+				},
+			],
+		});
+
+		return;
+	}
+
+	/**
+	 * --------------------------------------------------------------------
+	 */
+
 	const channel = interaction.options.getChannel("channel")! as TextChannel;
 	const title = interaction.options.getString("title")!;
 	const description = interaction.options.getString("description")!;
@@ -76,16 +94,4 @@ export const sendEmbedCommand: Interaction = {
 			option.setName("notification").setDescription("Role to notify"),
 		)
 		.setDefaultPermission(false),
-	permissions: [
-		{
-			id: STAFF_ROLE_ID,
-			type: PermissionTypeEnum.ROLE,
-			permission: true,
-		},
-		{
-			id: MOD_ROLE_ID,
-			type: PermissionTypeEnum.ROLE,
-			permission: true,
-		},
-	],
 };
