@@ -39,7 +39,8 @@ export const GIT_CHANNEL_ID = "883483106076688414";
 
 // Bots
 
-export const BOT_ID = "874389051581554718";
+export const TECHMMUNITY_BOT_ID = "874389051581554718";
+export const DISBOARD_BOT_ID = "980863064788316260";
 
 // Staff Roles
 
