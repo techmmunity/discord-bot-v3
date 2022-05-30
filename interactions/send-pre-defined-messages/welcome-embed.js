@@ -85,29 +85,6 @@ const notificationsEmbed = {
             .setURL((0, get_channel_url_1.getChannelUrl)(ids_1.NOTIFICATIONS_CHANNEL_ID))),
     ],
 };
-const captisEmbed = {
-    embeds: [
-        {
-            title: "Estude para as vagas da Captis!",
-            description: "Já sonhou em trabalhar em uma rede social para gamers **canadense** sem saber inglês fluênte? Saiba que você pode! A Captis sempre tem novas vagas abertas para diversas áreas, e adoram contratar Júniors e treina-los em casa! Para se preparar para trabalhar na Captis, sempre são postados conteúdos aqui, e para ser notificado quando novos conteúdos forem postados, basta clicar nos botões abaixo:",
-            color: colors_1.COLORS.captis,
-            thumbnail: {
-                url: "https://cdn.discordapp.com/attachments/903650212596293642/929832754361798686/CAPTIS_LOGO_UPDATED.png",
-            },
-        },
-    ],
-    components: [
-        new discord_js_1.MessageActionRow()
-            .addComponents(new discord_js_1.MessageButton()
-            .setCustomId("CAPTIS#backend")
-            .setLabel("BACKEND")
-            .setStyle("SECONDARY"))
-            .addComponents(new discord_js_1.MessageButton()
-            .setCustomId("CAPTIS#discord_bot")
-            .setLabel("DISCORD BOT")
-            .setStyle("SECONDARY")),
-    ],
-};
 const recruiterEmbed = {
     embeds: [
         {
@@ -137,7 +114,6 @@ const sendWelcomeEmbed = async () => {
         introduceYourselfEmbed,
         generalChannelEmbed,
         notificationsEmbed,
-        captisEmbed,
         recruiterEmbed,
         warnEmbed,
     ];

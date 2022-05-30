@@ -116,42 +116,6 @@ const handleAge = async (interaction) => {
     const botsChannel = (0, get_channel_1.getTextChannel)(ids_1.STAFF_BOTS_CHANNEL);
     return botsChannel.send(message);
 };
-const handleCaptis = async (interaction) => {
-    const isBackend = interaction.customId.endsWith("backend");
-    const member = interaction.member;
-    const roleId = isBackend
-        ? ids_1.CAPTIS_BACKEND_ROLE_ID
-        : ids_1.CAPTIS_DISCORD_BOT_ROLE_ID;
-    const shouldAddRole = !member.roles.cache.has(roleId);
-    let embed;
-    if (shouldAddRole) {
-        await member.roles.add(roleId);
-        const role = member.roles.cache.get(roleId);
-        embed = {
-            title: "Role adicionada!",
-            description: `Você agora tem a role **${role === null || role === void 0 ? void 0 : role.name}** 🥳`,
-            color: colors_1.COLORS.green,
-        };
-    }
-    else {
-        const role = member.roles.cache.get(roleId);
-        await member.roles.remove(roleId);
-        embed = {
-            title: "Role removida!",
-            description: `Você não tem mais a role **${role === null || role === void 0 ? void 0 : role.name}** 😔`,
-            color: colors_1.COLORS.red,
-        };
-    }
-    const message = {
-        content: `<@${interaction.user.id}>`,
-        embeds: [embed],
-    };
-    await interaction.reply(message);
-    await (0, utils_1.sleep)(4);
-    await interaction.deleteReply();
-    const botsChannel = (0, get_channel_1.getTextChannel)(ids_1.STAFF_BOTS_CHANNEL);
-    return botsChannel.send(message);
-};
 const handleRecruiter = async (interaction) => {
     const embed = {
         title: "Novo(a) recrutador(a)!",
@@ -206,7 +170,7 @@ const handleGiveRecruiterPerm = async (interaction) => {
     });
 };
 const buttonClick = (interaction) => {
-    var _a, _b, _c, _d;
+    var _a, _b, _c;
     if (!interaction.isButton())
         return;
     if ((_a = interaction.customId) === null || _a === void 0 ? void 0 : _a.startsWith("NOTIFICATION#")) {
@@ -217,9 +181,6 @@ const buttonClick = (interaction) => {
     }
     if ((_c = interaction.customId) === null || _c === void 0 ? void 0 : _c.startsWith("AGE#")) {
         return handleAge(interaction);
-    }
-    if ((_d = interaction.customId) === null || _d === void 0 ? void 0 : _d.startsWith("CAPTIS#")) {
-        return handleCaptis(interaction);
     }
     if (interaction.customId === "IM_RECRUITER") {
         return handleRecruiter(interaction);
