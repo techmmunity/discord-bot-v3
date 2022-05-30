@@ -39,6 +39,7 @@
 		"husky": "^7.0.4",
 		"lint-staged": "^11.2.6",
 		"prettier": "^2.4.1",
+		"ts-node": "^10.8.0",
 		"ts-node-dev": "^1.1.8",
 		"typescript": "^4.4.4"
 	},
@@ -48,7 +49,7 @@
 		"build": "",
 		"pipe": "yarn clear && yarn build",
 		"start": "node server.js",
-		"start:dev": "env-cmd node dist/server.js",
+		"start:dev": "yarn build && env-cmd node dist/server.js",
 		"dev": "env-cmd tsnd --respawn -T --ignore-watch node_modules --no-notify src/server.ts",
 		"format": "eslint . --fix --quiet",
 		"lint": "eslint . --quiet",
