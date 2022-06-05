@@ -1,6 +1,5 @@
 import {
 	TECHMMUNITY_ROLE_ID,
-	INKASA_ROLE_ID,
 	EVENT_ROLE_ID,
 	CHALLENGE_ROLE_ID,
 	JOB_ROLE_ID,
@@ -11,11 +10,6 @@ export const notificationsOptions = {
 		description: "Notificações oficiais da Techmmunity",
 		emoji: "<:techmmunity:890749408755449856>",
 		role: TECHMMUNITY_ROLE_ID,
-	},
-	inkasa: {
-		description: "Videos Inkasa Dev",
-		emoji: ":punch:",
-		role: INKASA_ROLE_ID,
 	},
 	events: {
 		description: "Eventos sobre a área tech",

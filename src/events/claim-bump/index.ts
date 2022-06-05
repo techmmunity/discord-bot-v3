@@ -11,15 +11,30 @@ import { BumpEntity } from "../../entities/bump";
 import { getTextChannel } from "../../utils/get-channel";
 
 export const claimBump = async (message: Message) => {
+	const panelinhaChannel = getTextChannel(PANELINHA_CHANNEL_ID);
+
 	try {
 		if (message.member?.guild.id !== TECHMMUNITY_GUILD_ID) return;
 		if (message.channel.id !== BUMP_CHANNEL_ID) return;
 		if (message.member?.user.id !== DISBOARD_BOT_ID) return;
+
+		if (message.interaction) {
+			await panelinhaChannel.send({
+				content: `Interaction: ${JSON.stringify(message.interaction)}`,
+			});
+		}
+
 		if (!message.interaction?.user.id) return;
 
 		const [disboardResponse] = message.embeds;
 
-		if (!disboardResponse?.description?.includes("Bump done!")) return;
+		if (!disboardResponse?.description?.includes("Bump done!")) {
+			await panelinhaChannel.send({
+				content: "Not bump",
+			});
+
+			return;
+		}
 
 		const bumpRepository = getGlobalRepository(
 			BumpEntity,
@@ -33,9 +48,11 @@ export const claimBump = async (message: Message) => {
 			// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 			count: Plus(1),
 		});
-	} catch (err: any) {
-		const panelinhaChannel = getTextChannel(PANELINHA_CHANNEL_ID);
 
+		await panelinhaChannel.send({
+			content: "Bump count incremented",
+		});
+	} catch (err: any) {
 		console.error(err);
 
 		await panelinhaChannel.send({

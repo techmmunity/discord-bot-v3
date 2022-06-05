@@ -10,6 +10,7 @@ import {
 	JAVA_ROLE_ID,
 	LUA_ROLE_ID,
 	NODEJS_ROLE_ID,
+	PHP_ROLE_ID,
 	PYTHON_ROLE_ID,
 	REACTJS_ROLE_ID,
 	RUST_ROLE_ID,
@@ -39,6 +40,12 @@ export const langsOptions = [
 		description: "HTML & CSS",
 		emoji: ":orange_square:",
 		role: HTML_CSS_ROLE_ID,
+	},
+	{
+		id: "php",
+		description: "PHP",
+		emoji: ":elephant:",
+		role: PHP_ROLE_ID,
 	},
 	{
 		id: "blockchain",

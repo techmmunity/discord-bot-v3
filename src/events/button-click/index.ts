@@ -21,6 +21,7 @@ import {
 	RAZAL_ID,
 	RECRUITER_ROLE_ID,
 	STAFF_BOTS_CHANNEL,
+	STARTER_ROLE_ID,
 } from "../../config/ids";
 import { langsOptions } from "../../config/langs";
 import { notificationsOptions } from "../../config/notification";
@@ -235,9 +236,12 @@ const handleGiveRecruiterPerm = async (interaction: ButtonInteraction) => {
 		(interaction.message.mentions as MessageMentions).users,
 	);
 
-	await (await interaction.guild?.fetch())?.members.cache
-		.get(mention.id)
-		?.roles.add(RECRUITER_ROLE_ID);
+	const member = (await interaction.guild?.fetch())?.members.cache.get(
+		mention.id,
+	);
+
+	await member?.roles.remove(STARTER_ROLE_ID);
+	await member?.roles.add(RECRUITER_ROLE_ID);
 
 	await generalChannel.send({
 		content: `<@${mention?.id}>`,
