@@ -15,12 +15,12 @@ exports.agesOptions = [
     },
     {
         id: "almost_adult",
-        description: "24~32",
+        description: "25~32",
         role: ids_1.ALMOST_ADULT_AGE_ROLE_ID,
     },
     {
         id: "adult",
-        description: "32~50",
+        description: "33~49",
         role: ids_1.ADULT_AGE_ROLE_ID,
     },
     {

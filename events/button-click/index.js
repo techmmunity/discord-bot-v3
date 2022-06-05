@@ -148,13 +148,15 @@ const handleRecruiter = async (interaction) => {
     await interaction.deleteReply();
 };
 const handleGiveRecruiterPerm = async (interaction) => {
-    var _a, _b, _c;
+    var _a, _b;
     if (interaction.user.id !== ids_1.RAZAL_ID) {
         return interaction.user.send("Tira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.\nTira o abacaxi do cu, corno!.");
     }
     const generalChannel = (0, get_channel_1.getTextChannel)(ids_1.GENERAL_CHANNEL_ID);
     const mention = getMention(interaction.message.mentions.users);
-    await ((_c = (_b = (await ((_a = interaction.guild) === null || _a === void 0 ? void 0 : _a.fetch()))) === null || _b === void 0 ? void 0 : _b.members.cache.get(mention.id)) === null || _c === void 0 ? void 0 : _c.roles.add(ids_1.RECRUITER_ROLE_ID));
+    const member = (_b = (await ((_a = interaction.guild) === null || _a === void 0 ? void 0 : _a.fetch()))) === null || _b === void 0 ? void 0 : _b.members.cache.get(mention.id);
+    await (member === null || member === void 0 ? void 0 : member.roles.remove(ids_1.STARTER_ROLE_ID));
+    await (member === null || member === void 0 ? void 0 : member.roles.add(ids_1.RECRUITER_ROLE_ID));
     await generalChannel.send({
         content: `<@${mention === null || mention === void 0 ? void 0 : mention.id}>`,
         embeds: [

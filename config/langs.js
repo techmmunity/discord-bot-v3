@@ -28,6 +28,12 @@ exports.langsOptions = [
         role: ids_1.HTML_CSS_ROLE_ID,
     },
     {
+        id: "php",
+        description: "PHP",
+        emoji: ":elephant:",
+        role: ids_1.PHP_ROLE_ID,
+    },
+    {
         id: "blockchain",
         description: "Blockchain",
         emoji: ":chains:",

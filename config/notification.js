@@ -8,11 +8,6 @@ exports.notificationsOptions = {
         emoji: "<:techmmunity:890749408755449856>",
         role: ids_1.TECHMMUNITY_ROLE_ID,
     },
-    inkasa: {
-        description: "Videos Inkasa Dev",
-        emoji: ":punch:",
-        role: ids_1.INKASA_ROLE_ID,
-    },
     events: {
         description: "Eventos sobre a área tech",
         emoji: ":circus_tent:",
