@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.buttonClick = void 0;
-const utils_1 = require("@techmmunity/utils");
 const discord_js_1 = require("discord.js");
 const colors_1 = require("../../assets/colors");
 const images_1 = require("../../assets/images");
@@ -37,9 +36,8 @@ const handleRecruiter = async (interaction) => {
                 color: colors_1.COLORS.green,
             },
         ],
+        ephemeral: true,
     });
-    await (0, utils_1.sleep)(5);
-    await interaction.deleteReply();
 };
 const handleGiveRecruiterPerm = async (interaction) => {
     var _a, _b;
