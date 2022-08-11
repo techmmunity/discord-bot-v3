@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.welcomeImgCommand = exports.welcomeImg = void 0;
 const builders_1 = require("@discordjs/builders");
-const ids_1 = require("../../config/ids");
+const colors_1 = require("../../assets/colors");
 const make_welcome_image_1 = require("./make-welcome-image");
 const get_command_name_1 = require("../../utils/get-command-name");
-const colors_1 = require("../../assets/colors");
 const verify_one_of_roles_1 = require("../../utils/verify-one-of-roles");
+const ids_1 = require("../../config/ids");
 const welcomeImg = async (interaction) => {
     if (!(0, verify_one_of_roles_1.verifyOneOfRoles)(interaction, [ids_1.STAFF_ROLE_ID, ids_1.MOD_ROLE_ID])) {
         await interaction.reply({

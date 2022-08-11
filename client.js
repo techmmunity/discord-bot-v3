@@ -7,15 +7,15 @@ exports.DiscordClient = new discord_js_1.Client({
         status: "online",
         activities: [
             {
-                name: "techmmunity.com.br",
+                name: "Faça perguntas no ❓┊forum",
                 type: 0,
             },
         ],
     },
-    partials: ["MESSAGE", "GUILD_MEMBER"],
+    partials: [discord_js_1.Partials.Message, discord_js_1.Partials.GuildMember],
     intents: [
-        discord_js_1.Intents.FLAGS.GUILD_MESSAGES,
-        discord_js_1.Intents.FLAGS.GUILDS,
-        discord_js_1.Intents.FLAGS.GUILD_MEMBERS,
+        discord_js_1.GatewayIntentBits.GuildMessages,
+        discord_js_1.GatewayIntentBits.Guilds,
+        discord_js_1.GatewayIntentBits.GuildMembers,
     ],
 });

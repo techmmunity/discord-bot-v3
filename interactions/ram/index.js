@@ -4,9 +4,9 @@ exports.ramCommand = exports.ram = void 0;
 const builders_1 = require("@discordjs/builders");
 const colors_1 = require("../../assets/colors");
 const images_1 = require("../../assets/images");
-const ids_1 = require("../../config/ids");
 const get_command_name_1 = require("../../utils/get-command-name");
 const verify_one_of_roles_1 = require("../../utils/verify-one-of-roles");
+const ids_1 = require("../../config/ids");
 const calcMemory = (memory) => Math.round((memory / 1024 / 1024) * 100) / 100;
 const getColor = (memoryUsage) => {
     if (memoryUsage < 30)

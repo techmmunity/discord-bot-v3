@@ -4,39 +4,15 @@ exports.sendPreDefinedMessagesCommand = exports.sendPreDefinedMessages = void 0;
 const builders_1 = require("@discordjs/builders");
 const utils_1 = require("@techmmunity/utils");
 const colors_1 = require("../../assets/colors");
-const ids_1 = require("../../config/ids");
-const booster_embed_1 = require("./booster-embed");
-const notifications_embed_1 = require("./notifications-embed");
-const get_command_name_1 = require("../../utils/get-command-name");
 const welcome_embed_1 = require("./welcome-embed");
-const languages_embed_1 = require("./languages-embed");
-const age_embed_1 = require("./age-embed");
+const get_command_name_1 = require("../../utils/get-command-name");
 const verify_one_of_roles_1 = require("../../utils/verify-one-of-roles");
+const ids_1 = require("../../config/ids");
 const messagesOptions = [
-    {
-        id: "notifications",
-        description: "Notifications Channel",
-        func: notifications_embed_1.sendNotificationsEmbed,
-    },
-    {
-        id: "booster",
-        description: "Booster Benefits",
-        func: booster_embed_1.sendBoosterEmbed,
-    },
     {
         id: "welcome",
         description: "Welcome Message",
         func: welcome_embed_1.sendWelcomeEmbed,
-    },
-    {
-        id: "langs",
-        description: "Select Langs",
-        func: languages_embed_1.sendLangsEmbed,
-    },
-    {
-        id: "age",
-        description: "Select Age",
-        func: age_embed_1.sendAgeEmbed,
     },
 ];
 const makeCommand = () => {
@@ -51,7 +27,8 @@ const makeCommand = () => {
 };
 const getOptions = (interaction) => messagesOptions
     .map(item => {
-    if (interaction.options.getBoolean(item.id)) {
+    var _a;
+    if ((_a = interaction.options.get(item.id)) === null || _a === void 0 ? void 0 : _a.value) {
         return item.id;
     }
 })

@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendWelcomeMsg = void 0;
-const ids_1 = require("../../config/ids");
-const get_channel_1 = require("../../utils/get-channel");
 const make_welcome_image_1 = require("../../interactions/welcome-img/make-welcome-image");
+const get_channel_1 = require("../../utils/get-channel");
+const ids_1 = require("../../config/ids");
 const sendWelcomeMsg = async (member) => {
     if (member.guild.id !== ids_1.TECHMMUNITY_GUILD_ID)
         return;

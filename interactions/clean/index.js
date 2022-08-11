@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.cleanCommand = exports.clean = void 0;
 const builders_1 = require("@discordjs/builders");
 const utils_1 = require("@techmmunity/utils");
-const ids_1 = require("../../config/ids");
-const get_command_name_1 = require("../../utils/get-command-name");
 const colors_1 = require("../../assets/colors");
+const get_command_name_1 = require("../../utils/get-command-name");
 const verify_one_of_roles_1 = require("../../utils/verify-one-of-roles");
+const ids_1 = require("../../config/ids");
 const clean = async (interaction) => {
     if (!(0, verify_one_of_roles_1.verifyOneOfRoles)(interaction, [ids_1.STAFF_ROLE_ID])) {
         await interaction.reply({
@@ -21,8 +21,8 @@ const clean = async (interaction) => {
         return;
     }
     await interaction.deferReply();
-    const channel = interaction.options.getChannel("channel");
-    const qtd = interaction.options.getNumber("qtd");
+    const channel = interaction.options.get("channel").channel;
+    const qtd = interaction.options.get("qtd").value;
     const messages = await channel.messages.fetch({
         limit: (0, utils_1.isBetween)(qtd, 1, 100) ? qtd : 100,
     });

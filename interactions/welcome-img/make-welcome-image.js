@@ -50,7 +50,7 @@ const makeWelcomeImg = async (member) => {
     const userImgUrl = (0, get_member_img_1.getMemberImgUrl)(member);
     const userImg = await (0, canvas_1.loadImage)(userImgUrl);
     context.drawImage(userImg, userImgMargin, userImgMargin, userImgSize, userImgSize);
-    const welcomeImg = new discord_js_1.MessageAttachment(canvas.toBuffer(), "welcome.png");
+    const welcomeImg = new discord_js_1.AttachmentBuilder(canvas.toBuffer()).setName("welcome.png");
     return welcomeImg;
 };
 exports.makeWelcomeImg = makeWelcomeImg;

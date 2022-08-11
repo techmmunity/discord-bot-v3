@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.claimBump = void 0;
 const symbiosis_1 = require("@techmmunity/symbiosis");
-const ids_1 = require("../../config/ids");
 const bump_1 = require("../../entities/bump");
 const get_channel_1 = require("../../utils/get-channel");
+const ids_1 = require("../../config/ids");
 const claimBump = async (message) => {
     var _a, _b, _c, _d;
     const panelinhaChannel = (0, get_channel_1.getTextChannel)(ids_1.PANELINHA_CHANNEL_ID);

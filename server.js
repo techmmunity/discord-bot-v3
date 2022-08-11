@@ -4,11 +4,11 @@ require("reflect-metadata");
 const symbiosis_1 = require("@techmmunity/symbiosis");
 const symbiosis_dynamodb_1 = require("@techmmunity/symbiosis-dynamodb");
 const client_1 = require("./client");
+const challenge_1 = require("./entities/challenge");
+const events_1 = require("./events");
 const interactions_1 = require("./interactions");
 const jobs_1 = require("./jobs");
-const challenge_1 = require("./entities/challenge");
 const register_commands_1 = require("./register-commands");
-const events_1 = require("./events");
 const bootstrap = async () => {
     try {
         const connection = await new symbiosis_dynamodb_1.Connection({

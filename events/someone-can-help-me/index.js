@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.someoneCanHelpMe = void 0;
-const ids_1 = require("../../config/ids");
 const qce_1 = require("../../interactions/qce");
+const ids_1 = require("../../config/ids");
 const isSomeone = (content) => {
     const hasSomeone = content.includes("alguém") || content.includes("alguem");
     const hasHelp = content.includes("ajuda");

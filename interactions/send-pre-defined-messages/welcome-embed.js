@@ -1,88 +1,65 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendWelcomeEmbed = void 0;
+const builders_1 = require("@discordjs/builders");
 const utils_1 = require("@techmmunity/utils");
 const discord_js_1 = require("discord.js");
 const colors_1 = require("../../assets/colors");
-const ids_1 = require("../../config/ids");
 const get_channel_1 = require("../../utils/get-channel");
 const get_channel_url_1 = require("../../utils/get-channel-url");
+const ids_1 = require("../../config/ids");
 const sleep = () => (0, utils_1.sleep)(0.5);
 const welcomeEmbed = {
     embeds: [
         {
             title: "Seja bem vindo(a)!",
-            description: `Salve jovem! Seja bem vindo(a) a Techmmunity, uma comunidade de desenvolvedores TypeScript!
+            description: `Salve jovem! Seja bem vindo(a) a Techmmunity, uma comunidade de desenvolvedores!
 
-	Ficamos muito felizes em ter vc aqui conosco! Venha comigo, vou te dar um pequeno tour pela nossa comunidade :wink:
-
-
-
-	**=== 📢 COMMUNITY ===**
-
-	<#${ids_1.JOBS_CHANNEL_ID}> - Vagas de emprego
-
-	<#${ids_1.EVENTS_CHANNEL_ID}> - Eventos do server
-
-	<#${ids_1.I_DID_IT_CHANNEL_ID}> - Compartilhe suas criações
-
-	<#${ids_1.SUGGESTIONS_CHANNEL_ID}> - Vote nas sugestões para melhorarmos a comunidade
-
-	<#${ids_1.BUMP_CHANNEL_ID}> - Ajude a divulgar o servidor
-
-
-
-	**=== 📚 CONTENTS ===**
-
-	Encontre e compartilhe conteúdos interessantes aqui
-
-
-
-	**=== ❓ TOPICS ===**
-
-	**❓ Canais para fazer perguntas ❓**`,
+	Ficamos muito felizes em ter vc aqui conosco! Venha comigo, vou te dar um pequeno tour pela nossa comunidade :wink:`,
             color: colors_1.COLORS.turquoise,
         },
     ],
 };
-const introduceYourselfEmbed = {
+const forumChannelEmbed = {
     embeds: [
         {
-            title: "Apresente-se aqui! 😄",
-            color: colors_1.COLORS.blue,
+            title: "Conheça nosso fórum! ❓",
+            color: colors_1.COLORS.purple,
         },
     ],
     components: [
-        new discord_js_1.MessageActionRow().addComponents(new discord_js_1.MessageButton()
-            .setLabel("QUERO ME APRESENTAR")
-            .setStyle("LINK")
-            .setURL((0, get_channel_url_1.getChannelUrl)(ids_1.NETWORKING_CHANNEL_ID))),
+        new discord_js_1.ActionRowBuilder().addComponents(new builders_1.ButtonBuilder()
+            .setLabel("TIRE SUAS DÚVIDAS!")
+            .setStyle(discord_js_1.ButtonStyle.Link)
+            .setURL((0, get_channel_url_1.getChannelUrl)(ids_1.FORUM_CHANNEL_ID))),
     ],
 };
 const generalChannelEmbed = {
     embeds: [
         {
             title: "Converse com a galera! 🤯",
+            color: colors_1.COLORS.turquoise,
         },
     ],
     components: [
-        new discord_js_1.MessageActionRow().addComponents(new discord_js_1.MessageButton()
+        new discord_js_1.ActionRowBuilder().addComponents(new builders_1.ButtonBuilder()
             .setLabel("CONVERSAR COM O PESSOAL")
-            .setStyle("LINK")
+            .setStyle(discord_js_1.ButtonStyle.Link)
             .setURL((0, get_channel_url_1.getChannelUrl)(ids_1.GENERAL_CHANNEL_ID))),
     ],
 };
-const notificationsEmbed = {
+const jobsChannelEmbed = {
     embeds: [
         {
-            title: "Receba notificações",
+            title: "Consiga um emprego! 💼",
+            color: colors_1.COLORS.yellow,
         },
     ],
     components: [
-        new discord_js_1.MessageActionRow().addComponents(new discord_js_1.MessageButton()
-            .setLabel("RECEBER NOTIFICAÇÕES")
-            .setStyle("LINK")
-            .setURL((0, get_channel_url_1.getChannelUrl)(ids_1.NOTIFICATIONS_CHANNEL_ID))),
+        new discord_js_1.ActionRowBuilder().addComponents(new builders_1.ButtonBuilder()
+            .setLabel("VER EMPREGOS")
+            .setStyle(discord_js_1.ButtonStyle.Link)
+            .setURL((0, get_channel_url_1.getChannelUrl)(ids_1.JOBS_CHANNEL_ID))),
     ],
 };
 const recruiterEmbed = {
@@ -94,28 +71,20 @@ const recruiterEmbed = {
         },
     ],
     components: [
-        new discord_js_1.MessageActionRow().addComponents(new discord_js_1.MessageButton()
+        new discord_js_1.ActionRowBuilder().addComponents(new builders_1.ButtonBuilder()
             .setCustomId("IM_RECRUITER")
             .setLabel("SOU RECRUTADOR(A)")
-            .setStyle("SECONDARY")),
-    ],
-};
-const warnEmbed = {
-    embeds: [
-        {
-            title: "Suba o chat para ver todas as mensagens, elas são importantes :wink:",
-        },
+            .setStyle(discord_js_1.ButtonStyle.Secondary)),
     ],
 };
 const sendWelcomeEmbed = async () => {
     const welcomeChannel = (0, get_channel_1.getTextChannel)(process.env.NODE_ENV === "dev" ? ids_1.STAFF_BOTS_CHANNEL : ids_1.WELCOME_CHANNEL_ID);
     const messages = [
         welcomeEmbed,
-        introduceYourselfEmbed,
+        forumChannelEmbed,
         generalChannelEmbed,
-        notificationsEmbed,
+        jobsChannelEmbed,
         recruiterEmbed,
-        warnEmbed,
     ];
     for (const message of messages) {
         await welcomeChannel.send(message);

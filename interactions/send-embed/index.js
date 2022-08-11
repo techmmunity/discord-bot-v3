@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendEmbedCommand = exports.sendEmbed = void 0;
 const builders_1 = require("@discordjs/builders");
 const colors_1 = require("../../assets/colors");
-const ids_1 = require("../../config/ids");
 const get_command_name_1 = require("../../utils/get-command-name");
 const verify_one_of_roles_1 = require("../../utils/verify-one-of-roles");
+const ids_1 = require("../../config/ids");
 const sendEmbed = async (interaction) => {
     if (!(0, verify_one_of_roles_1.verifyOneOfRoles)(interaction, [ids_1.STAFF_ROLE_ID, ids_1.MOD_ROLE_ID])) {
         await interaction.reply({
@@ -19,13 +19,13 @@ const sendEmbed = async (interaction) => {
         });
         return;
     }
-    const channel = interaction.options.getChannel("channel");
-    const title = interaction.options.getString("title");
-    const description = interaction.options.getString("description");
-    const thumbnail = interaction.options.getString("thumbnail");
-    const color = interaction.options.getString("color");
-    const crosspost = interaction.options.getBoolean("crosspost");
-    const notification = interaction.options.getRole("notification");
+    const channel = interaction.options.get("channel").channel;
+    const title = interaction.options.get("title").value;
+    const description = interaction.options.get("description").value;
+    const thumbnail = interaction.options.get("thumbnail").value;
+    const color = interaction.options.get("color").value;
+    const crosspost = interaction.options.get("crosspost").value;
+    const notification = interaction.options.get("notification").role;
     const message = await channel.send({
         content: notification ? `<@&${notification.id}>` : undefined,
         embeds: [

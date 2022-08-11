@@ -3,11 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getTechTipCommand = exports.getTechTip = void 0;
 const builders_1 = require("@discordjs/builders");
 const colors_1 = require("../../assets/colors");
-const ids_1 = require("../../config/ids");
 const tips_1 = require("../../jobs/tech-tips/tips");
 const get_command_name_1 = require("../../utils/get-command-name");
 const verify_one_of_roles_1 = require("../../utils/verify-one-of-roles");
+const ids_1 = require("../../config/ids");
 const getTechTip = async (interaction) => {
+    var _a;
     if (!(0, verify_one_of_roles_1.verifyOneOfRoles)(interaction, [ids_1.STAFF_ROLE_ID, ids_1.MOD_ROLE_ID])) {
         await interaction.reply({
             embeds: [
@@ -20,7 +21,7 @@ const getTechTip = async (interaction) => {
         });
         return;
     }
-    const day = interaction.options.getNumber("day-of-month");
+    const day = (_a = interaction.options.get("day-of-month")) === null || _a === void 0 ? void 0 : _a.value;
     const idx = (day || new Date().getDate()) - 1;
     const tip = (0, tips_1.getTip)(idx);
     await interaction.reply({
