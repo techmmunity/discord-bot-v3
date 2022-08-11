@@ -23,7 +23,7 @@ const handleRecruiter = async (interaction) => {
                 .setThumbnail(interaction.user.avatarURL() || images_1.IMAGES.techmmunityLogo),
         ],
         components: [
-            new ActionRowBuilder().addComponents(new discord_js_1.ButtonBuilder()
+            new discord_js_1.ActionRowBuilder().addComponents(new discord_js_1.ButtonBuilder()
                 .setLabel("Dar permissão")
                 .setStyle(discord_js_1.ButtonStyle.Primary)
                 .setCustomId("GIVE_RECRUITER_PERM")),
