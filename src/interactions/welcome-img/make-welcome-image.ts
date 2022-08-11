@@ -1,15 +1,13 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 
-import {
-	Canvas,
-	createCanvas,
-	loadImage,
-	NodeCanvasRenderingContext2D,
-	registerFont,
-} from "canvas";
-import { GuildMember, MessageAttachment } from "discord.js";
+import type { Canvas, CanvasRenderingContext2D } from "canvas";
+import { createCanvas, loadImage, registerFont } from "canvas";
+import type { GuildMember } from "discord.js";
+import { AttachmentBuilder } from "discord.js";
 import { resolve } from "path";
+
 import { IMAGES } from "../../assets/images";
+
 import { getMemberImgUrl } from "../../utils/get-member-img";
 
 const canvasWidth = 1015;
@@ -24,7 +22,7 @@ const applyText = (
 	height: number,
 	canvas: Canvas,
 	text: string,
-	originalContext: NodeCanvasRenderingContext2D,
+	originalContext: CanvasRenderingContext2D,
 ) => {
 	const context = canvas.getContext("2d");
 
@@ -91,7 +89,9 @@ export const makeWelcomeImg = async (member: GuildMember) => {
 		userImgSize,
 	);
 
-	const welcomeImg = new MessageAttachment(canvas.toBuffer(), "welcome.png");
+	const welcomeImg = new AttachmentBuilder(canvas.toBuffer()).setName(
+		"welcome.png",
+	);
 
 	return welcomeImg;
 };

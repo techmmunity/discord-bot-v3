@@ -1,14 +1,18 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { isBetween } from "@techmmunity/utils";
-import { CommandInteraction, TextChannel } from "discord.js";
-import { STAFF_ROLE_ID } from "../../config/ids";
-import { Interaction } from "../../types/interactions";
-import { getCommandName } from "../../utils/get-command-name";
+import type { CommandInteraction, TextChannel } from "discord.js";
+
 import { COLORS } from "../../assets/colors";
+
+import { getCommandName } from "../../utils/get-command-name";
 import { verifyOneOfRoles } from "../../utils/verify-one-of-roles";
 
+import { STAFF_ROLE_ID } from "../../config/ids";
+
+import type { Interaction } from "../../types/interactions";
+
 export const clean = async (interaction: CommandInteraction) => {
-	if (!verifyOneOfRoles(interaction, [STAFF_ROLE_ID])) {
+	if (!verifyOneOfRoles(interaction as any, [STAFF_ROLE_ID])) {
 		await interaction.reply({
 			embeds: [
 				{
@@ -28,8 +32,8 @@ export const clean = async (interaction: CommandInteraction) => {
 
 	await interaction.deferReply();
 
-	const channel = interaction.options.getChannel("channel")! as TextChannel;
-	const qtd = interaction.options.getNumber("qtd")!;
+	const channel = interaction.options.get("channel")!.channel as TextChannel;
+	const qtd = interaction.options.get("qtd")!.value as number;
 
 	const messages = await channel.messages.fetch({
 		// eslint-disable-next-line @typescript-eslint/no-magic-numbers

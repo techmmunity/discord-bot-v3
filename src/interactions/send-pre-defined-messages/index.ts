@@ -1,42 +1,23 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { isEmptyArray } from "@techmmunity/utils";
-import { CommandInteraction } from "discord.js";
+import type { CommandInteraction } from "discord.js";
+
 import { COLORS } from "../../assets/colors";
-import { STAFF_ROLE_ID, MOD_ROLE_ID } from "../../config/ids";
-import { Interaction } from "../../types/interactions";
-import { sendBoosterEmbed } from "./booster-embed";
-import { sendNotificationsEmbed } from "./notifications-embed";
-import { getCommandName } from "../../utils/get-command-name";
+
 import { sendWelcomeEmbed } from "./welcome-embed";
-import { sendLangsEmbed } from "./languages-embed";
-import { sendAgeEmbed } from "./age-embed";
+
+import { getCommandName } from "../../utils/get-command-name";
 import { verifyOneOfRoles } from "../../utils/verify-one-of-roles";
 
+import { STAFF_ROLE_ID, MOD_ROLE_ID } from "../../config/ids";
+
+import type { Interaction } from "../../types/interactions";
+
 const messagesOptions = [
-	{
-		id: "notifications",
-		description: "Notifications Channel",
-		func: sendNotificationsEmbed,
-	},
-	{
-		id: "booster",
-		description: "Booster Benefits",
-		func: sendBoosterEmbed,
-	},
 	{
 		id: "welcome",
 		description: "Welcome Message",
 		func: sendWelcomeEmbed,
-	},
-	{
-		id: "langs",
-		description: "Select Langs",
-		func: sendLangsEmbed,
-	},
-	{
-		id: "age",
-		description: "Select Age",
-		func: sendAgeEmbed,
 	},
 ];
 
@@ -59,7 +40,7 @@ const getOptions = (interaction: CommandInteraction) =>
 	messagesOptions
 		// eslint-disable-next-line array-callback-return
 		.map(item => {
-			if (interaction.options.getBoolean(item.id)) {
+			if (interaction.options.get(item.id)?.value) {
 				return item.id;
 			}
 		})
@@ -68,7 +49,7 @@ const getOptions = (interaction: CommandInteraction) =>
 export const sendPreDefinedMessages = async (
 	interaction: CommandInteraction,
 ) => {
-	if (!verifyOneOfRoles(interaction, [STAFF_ROLE_ID, MOD_ROLE_ID])) {
+	if (!verifyOneOfRoles(interaction as any, [STAFF_ROLE_ID, MOD_ROLE_ID])) {
 		await interaction.reply({
 			embeds: [
 				{

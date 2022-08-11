@@ -1,4 +1,4 @@
-import { GuildMemberRoleManager, Interaction } from "discord.js";
+import type { GuildMemberRoleManager, Interaction } from "discord.js";
 
 export const verifyOneOfRoles = (
 	interaction: Interaction,

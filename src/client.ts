@@ -1,4 +1,5 @@
-import { Client, Intents } from "discord.js";
+import { Client, GatewayIntentBits, Partials } from "discord.js";
+
 import { ActivityTypesEnum } from "./enums/activity-type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -7,15 +8,15 @@ export const DiscordClient = new Client({
 		status: "online",
 		activities: [
 			{
-				name: "techmmunity.com.br",
+				name: "Faça perguntas no ❓┊forum",
 				type: ActivityTypesEnum.PLAYING as any,
 			},
 		],
 	},
-	partials: ["MESSAGE", "GUILD_MEMBER"],
+	partials: [Partials.Message, Partials.GuildMember],
 	intents: [
-		Intents.FLAGS.GUILD_MESSAGES,
-		Intents.FLAGS.GUILDS,
-		Intents.FLAGS.GUILD_MEMBERS,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMembers,
 	],
 });

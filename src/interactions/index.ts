@@ -1,26 +1,19 @@
-import { Client } from "discord.js";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import type { Client } from "discord.js";
 
-import { createChallenge, createChallengeCommand } from "./create-challenge";
-import { getJob, getJobCommand } from "./get-job";
+import { clean, cleanCommand } from "./clean";
 import { getTechTip, getTechTipCommand } from "./get-tech-tip";
 import { ping, pingCommand } from "./ping";
+import { qce, qceCommand } from "./qce";
 import { ram, ramCommand } from "./ram";
-import { clean, cleanCommand } from "./clean";
-import {
-	getRandomChallenge,
-	getRandomChallengeCommand,
-} from "./random-challenge";
 import { sendEmbed, sendEmbedCommand } from "./send-embed";
 import {
 	sendPreDefinedMessages,
 	sendPreDefinedMessagesCommand,
 } from "./send-pre-defined-messages";
-import { suggest, suggestCommand } from "./suggest";
 import { welcomeImg, welcomeImgCommand } from "./welcome-img";
-import { qce, qceCommand } from "./qce";
-import { youtube, youtubeCommand } from "./youtube";
+
 import { getCommandName } from "../utils/get-command-name";
-import { mentorship, mentorshipCommand } from "./mentorship";
 
 export const setInteractions = (client: Client) => {
 	client.on("ready", () => {
@@ -28,26 +21,19 @@ export const setInteractions = (client: Client) => {
 		console.log("Bot is ready!");
 	});
 
+	//@ts-ignore
 	client.on("interactionCreate", interaction => {
 		if (!interaction.isCommand()) return;
 
 		switch (interaction.commandName) {
-			case getCommandName("create-challenge"):
-				return createChallenge(interaction);
 			case getCommandName("ping"):
 				return ping(interaction);
 			case getCommandName("ram"):
 				return ram(interaction);
-			case getCommandName("get-random-challenge"):
-				return getRandomChallenge(interaction);
 			case getCommandName("welcome-image"):
 				return welcomeImg(interaction);
-			case getCommandName("suggest"):
-				return suggest(interaction);
 			case getCommandName("send-pre-defined-messages"):
 				return sendPreDefinedMessages(interaction);
-			case getCommandName("get-job"):
-				return getJob(interaction);
 			case getCommandName("send-embed"):
 				return sendEmbed(interaction);
 			case getCommandName("get-tech-tip"):
@@ -56,10 +42,6 @@ export const setInteractions = (client: Client) => {
 				return clean(interaction);
 			case getCommandName("qce"):
 				return qce(interaction);
-			case getCommandName("youtube"):
-				return youtube(interaction);
-			case getCommandName("mentorship"):
-				return mentorship(interaction);
 			default:
 				return;
 		}
@@ -67,18 +49,12 @@ export const setInteractions = (client: Client) => {
 };
 
 export const commands = [
-	createChallengeCommand,
 	pingCommand,
 	ramCommand,
-	getRandomChallengeCommand,
 	welcomeImgCommand,
-	suggestCommand,
 	sendPreDefinedMessagesCommand,
-	getJobCommand,
 	sendEmbedCommand,
 	getTechTipCommand,
 	cleanCommand,
 	qceCommand,
-	youtubeCommand,
-	mentorshipCommand,
 ];

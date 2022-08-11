@@ -1,6 +1,8 @@
-import { Message } from "discord.js";
-import { TECHMMUNITY_GUILD_ID } from "../../config/ids";
+import type { Message } from "discord.js";
+
 import { QCE_EMBED } from "../../interactions/qce";
+
+import { TECHMMUNITY_GUILD_ID } from "../../config/ids";
 
 const isSomeone = (content: string) => {
 	const hasSomeone = content.includes("alguém") || content.includes("alguem");

@@ -1,14 +1,17 @@
 import { getGlobalRepository, Plus } from "@techmmunity/symbiosis";
-import { Repository } from "@techmmunity/symbiosis-dynamodb";
-import { Message } from "discord.js";
+import type { Repository } from "@techmmunity/symbiosis-dynamodb";
+import type { Message } from "discord.js";
+
+import { BumpEntity } from "../../entities/bump";
+
+import { getTextChannel } from "../../utils/get-channel";
+
 import {
 	TECHMMUNITY_GUILD_ID,
 	DISBOARD_BOT_ID,
 	BUMP_CHANNEL_ID,
 	PANELINHA_CHANNEL_ID,
 } from "../../config/ids";
-import { BumpEntity } from "../../entities/bump";
-import { getTextChannel } from "../../utils/get-channel";
 
 export const claimBump = async (message: Message) => {
 	const panelinhaChannel = getTextChannel(PANELINHA_CHANNEL_ID);
