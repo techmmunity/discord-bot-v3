@@ -1,4 +1,4 @@
-import { GuildMember, Message, PartialGuildMember } from "discord.js";
+import type { GuildMember, Message, PartialGuildMember } from "discord.js";
 
 type IHandler<T> = (param: T) => Promise<void>;
 

@@ -1,4 +1,5 @@
-import { Client } from "discord.js";
+import type { Client } from "discord.js";
+
 import { addDefaultRoles } from "./add-default-roles";
 import { buttonClick } from "./button-click";
 import { claimBump } from "./claim-bump";

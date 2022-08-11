@@ -1,13 +1,17 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { CommandInteraction } from "discord.js";
+import type { CommandInteraction } from "discord.js";
+
 import { COLORS } from "../../assets/colors";
 import { IMAGES } from "../../assets/images";
-import { MOD_ROLE_ID, STAFF_ROLE_ID } from "../../config/ids";
-import { Interaction } from "../../types/interactions";
+
 import { getCommandName } from "../../utils/get-command-name";
 import { verifyOneOfRoles } from "../../utils/verify-one-of-roles";
+
+import { MOD_ROLE_ID, STAFF_ROLE_ID } from "../../config/ids";
+
+import type { Interaction } from "../../types/interactions";
 
 const calcMemory = (memory: number) =>
 	Math.round((memory / 1024 / 1024) * 100) / 100;
@@ -21,7 +25,7 @@ const getColor = (memoryUsage: number) => {
 };
 
 export const ram = async (interaction: CommandInteraction) => {
-	if (!verifyOneOfRoles(interaction, [STAFF_ROLE_ID, MOD_ROLE_ID])) {
+	if (!verifyOneOfRoles(interaction as any, [STAFF_ROLE_ID, MOD_ROLE_ID])) {
 		await interaction.reply({
 			embeds: [
 				{

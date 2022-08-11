@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryColumn } from "@techmmunity/symbiosis";
-import { Repository } from "@techmmunity/symbiosis-dynamodb";
+import type { Repository } from "@techmmunity/symbiosis-dynamodb";
 
 @Entity("techmmunity-bot-bump-counter")
 export class BumpEntity {

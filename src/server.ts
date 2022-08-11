@@ -2,13 +2,13 @@ import "reflect-metadata";
 
 import { setGlobalConnection } from "@techmmunity/symbiosis";
 import { Connection } from "@techmmunity/symbiosis-dynamodb";
+
 import { DiscordClient } from "./client";
+import { ChallengeEntity } from "./entities/challenge";
+import { setEvents } from "./events";
 import { commands, setInteractions } from "./interactions";
 import { setJobs } from "./jobs";
-
-import { ChallengeEntity } from "./entities/challenge";
 import { registerCommands } from "./register-commands";
-import { setEvents } from "./events";
 
 const bootstrap = async () => {
 	try {

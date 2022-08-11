@@ -1,5 +1,7 @@
-import { Guild, TextChannel } from "discord.js";
+import type { Guild, TextChannel } from "discord.js";
+
 import { DiscordClient } from "../client";
+
 import { TECHMMUNITY_GUILD_ID } from "../config/ids";
 
 export const getTextChannel = (channelId: string) =>

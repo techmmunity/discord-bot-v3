@@ -1,21 +1,23 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable no-await-in-loop */
+
+import { ButtonBuilder } from "@discordjs/builders";
 import { sleep as sleepUtil } from "@techmmunity/utils";
-import { MessageActionRow, MessageButton, MessageOptions } from "discord.js";
+import type { MessageOptions } from "discord.js";
+import { ActionRowBuilder, ButtonStyle } from "discord.js";
+
 import { COLORS } from "../../assets/colors";
-import {
-	BUMP_CHANNEL_ID,
-	EVENTS_CHANNEL_ID,
-	GENERAL_CHANNEL_ID,
-	I_DID_IT_CHANNEL_ID,
-	JOBS_CHANNEL_ID,
-	NETWORKING_CHANNEL_ID,
-	NOTIFICATIONS_CHANNEL_ID,
-	STAFF_BOTS_CHANNEL,
-	SUGGESTIONS_CHANNEL_ID,
-	WELCOME_CHANNEL_ID,
-} from "../../config/ids";
+
 import { getTextChannel } from "../../utils/get-channel";
 import { getChannelUrl } from "../../utils/get-channel-url";
+
+import {
+	FORUM_CHANNEL_ID,
+	GENERAL_CHANNEL_ID,
+	JOBS_CHANNEL_ID,
+	STAFF_BOTS_CHANNEL,
+	WELCOME_CHANNEL_ID,
+} from "../../config/ids";
 
 // eslint-disable-next-line @typescript-eslint/no-magic-numbers
 const sleep = () => sleepUtil(0.5);
@@ -24,53 +26,28 @@ const welcomeEmbed: MessageOptions = {
 	embeds: [
 		{
 			title: "Seja bem vindo(a)!",
-			description: `Salve jovem! Seja bem vindo(a) a Techmmunity, uma comunidade de desenvolvedores TypeScript!
+			description: `Salve jovem! Seja bem vindo(a) a Techmmunity, uma comunidade de desenvolvedores!
 
-	Ficamos muito felizes em ter vc aqui conosco! Venha comigo, vou te dar um pequeno tour pela nossa comunidade :wink:
-
-
-
-	**=== 📢 COMMUNITY ===**
-
-	<#${JOBS_CHANNEL_ID}> - Vagas de emprego
-
-	<#${EVENTS_CHANNEL_ID}> - Eventos do server
-
-	<#${I_DID_IT_CHANNEL_ID}> - Compartilhe suas criações
-
-	<#${SUGGESTIONS_CHANNEL_ID}> - Vote nas sugestões para melhorarmos a comunidade
-
-	<#${BUMP_CHANNEL_ID}> - Ajude a divulgar o servidor
-
-
-
-	**=== 📚 CONTENTS ===**
-
-	Encontre e compartilhe conteúdos interessantes aqui
-
-
-
-	**=== ❓ TOPICS ===**
-
-	**❓ Canais para fazer perguntas ❓**`,
+	Ficamos muito felizes em ter vc aqui conosco! Venha comigo, vou te dar um pequeno tour pela nossa comunidade :wink:`,
 			color: COLORS.turquoise,
 		},
 	],
 };
 
-const introduceYourselfEmbed: MessageOptions = {
+const forumChannelEmbed: MessageOptions = {
 	embeds: [
 		{
-			title: "Apresente-se aqui! 😄",
-			color: COLORS.blue,
+			title: "Conheça nosso fórum! ❓",
+			color: COLORS.purple,
 		},
 	],
 	components: [
-		new MessageActionRow().addComponents(
-			new MessageButton()
-				.setLabel("QUERO ME APRESENTAR")
-				.setStyle("LINK")
-				.setURL(getChannelUrl(NETWORKING_CHANNEL_ID)),
+		//@ts-ignore
+		new ActionRowBuilder().addComponents(
+			new ButtonBuilder()
+				.setLabel("TIRE SUAS DÚVIDAS!")
+				.setStyle(ButtonStyle.Link)
+				.setURL(getChannelUrl(FORUM_CHANNEL_ID)),
 		),
 	],
 };
@@ -79,30 +56,34 @@ const generalChannelEmbed: MessageOptions = {
 	embeds: [
 		{
 			title: "Converse com a galera! 🤯",
+			color: COLORS.turquoise,
 		},
 	],
 	components: [
-		new MessageActionRow().addComponents(
-			new MessageButton()
+		//@ts-ignore
+		new ActionRowBuilder().addComponents(
+			new ButtonBuilder()
 				.setLabel("CONVERSAR COM O PESSOAL")
-				.setStyle("LINK")
+				.setStyle(ButtonStyle.Link)
 				.setURL(getChannelUrl(GENERAL_CHANNEL_ID)),
 		),
 	],
 };
 
-const notificationsEmbed: MessageOptions = {
+const jobsChannelEmbed: MessageOptions = {
 	embeds: [
 		{
-			title: "Receba notificações",
+			title: "Consiga um emprego! 💼",
+			color: COLORS.yellow,
 		},
 	],
 	components: [
-		new MessageActionRow().addComponents(
-			new MessageButton()
-				.setLabel("RECEBER NOTIFICAÇÕES")
-				.setStyle("LINK")
-				.setURL(getChannelUrl(NOTIFICATIONS_CHANNEL_ID)),
+		//@ts-ignore
+		new ActionRowBuilder().addComponents(
+			new ButtonBuilder()
+				.setLabel("VER EMPREGOS")
+				.setStyle(ButtonStyle.Link)
+				.setURL(getChannelUrl(JOBS_CHANNEL_ID)),
 		),
 	],
 };
@@ -117,21 +98,13 @@ const recruiterEmbed: MessageOptions = {
 		},
 	],
 	components: [
-		new MessageActionRow().addComponents(
-			new MessageButton()
+		//@ts-ignore
+		new ActionRowBuilder().addComponents(
+			new ButtonBuilder()
 				.setCustomId("IM_RECRUITER")
 				.setLabel("SOU RECRUTADOR(A)")
-				.setStyle("SECONDARY"),
+				.setStyle(ButtonStyle.Secondary),
 		),
-	],
-};
-
-const warnEmbed: MessageOptions = {
-	embeds: [
-		{
-			title:
-				"Suba o chat para ver todas as mensagens, elas são importantes :wink:",
-		},
 	],
 };
 
@@ -142,11 +115,10 @@ export const sendWelcomeEmbed = async () => {
 
 	const messages = [
 		welcomeEmbed,
-		introduceYourselfEmbed,
+		forumChannelEmbed,
 		generalChannelEmbed,
-		notificationsEmbed,
+		jobsChannelEmbed,
 		recruiterEmbed,
-		warnEmbed,
 	];
 
 	for (const message of messages) {

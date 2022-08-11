@@ -3,8 +3,10 @@
 import { REST } from "@discordjs/rest";
 import { sleep } from "@techmmunity/utils";
 import { Routes } from "discord-api-types/v10";
+
 import { TECHMMUNITY_GUILD_ID } from "./config/ids";
-import { Interaction } from "./types/interactions";
+
+import type { Interaction } from "./types/interactions";
 
 interface RegisterCommandsParams {
 	commands: Array<Interaction>;

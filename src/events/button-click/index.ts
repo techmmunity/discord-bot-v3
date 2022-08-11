@@ -1,19 +1,20 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable sonarjs/no-duplicate-string */
 
 import { sleep } from "@techmmunity/utils";
-import { APIUser, APIGuildMember } from "discord-api-types/v10";
-import {
+import type { APIUser, APIGuildMember } from "discord-api-types/v10";
+import type {
 	ButtonInteraction,
-	GuildMember,
 	Interaction,
-	MessageActionRow,
-	MessageButton,
-	MessageEmbedOptions,
 	MessageMentions,
 } from "discord.js";
+import { ButtonBuilder, ButtonStyle, EmbedBuilder } from "discord.js";
+
 import { COLORS } from "../../assets/colors";
 import { IMAGES } from "../../assets/images";
-import { agesOptions } from "../../config/ages";
+
+import { getTextChannel } from "../../utils/get-channel";
+
 import {
 	GENERAL_CHANNEL_ID,
 	JOBS_CHANNEL_ID,
@@ -23,12 +24,6 @@ import {
 	STAFF_BOTS_CHANNEL,
 	STARTER_ROLE_ID,
 } from "../../config/ids";
-import { langsOptions } from "../../config/langs";
-import { notificationsOptions } from "../../config/notification";
-import { getAgeId } from "../../interactions/send-pre-defined-messages/age-embed";
-import { getLangId } from "../../interactions/send-pre-defined-messages/languages-embed";
-import { getNotificationId } from "../../interactions/send-pre-defined-messages/notifications-embed";
-import { getTextChannel } from "../../utils/get-channel";
 
 type User = APIUser & {
 	member?: Omit<APIGuildMember, "user">;
@@ -42,166 +37,24 @@ const getMention = (rawMentions: any): User => {
 	return mentions.filter(m => m.id !== RAZAL_ID).shift()!;
 };
 
-const handleNotification = async (interaction: ButtonInteraction) => {
-	const notification = getNotificationId(interaction.customId);
-
-	const member = interaction.member as GuildMember;
-
-	const roleId = notificationsOptions[notification].role;
-
-	const shouldAddRole = !member.roles.cache.has(roleId);
-
-	let embed: MessageEmbedOptions;
-
-	if (shouldAddRole) {
-		await member.roles.add(roleId);
-
-		embed = {
-			title: "Role adicionada!",
-			description: `Você passará a receber notificações para **${notification}** a partir de agora 🥳`,
-			color: COLORS.green,
-		};
-	} else {
-		await member.roles.remove(roleId);
-
-		embed = {
-			title: "Role removida!",
-			description: `Você deixará a receber notificações para **${notification}** a partir de agora 😔`,
-			color: COLORS.red,
-		};
-	}
-
-	const message = {
-		content: `<@${interaction.user.id}>`,
-		embeds: [embed],
-	};
-
-	await interaction.reply(message);
-
-	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-	await sleep(4);
-
-	await interaction.deleteReply();
-
-	const botsChannel = getTextChannel(STAFF_BOTS_CHANNEL);
-
-	botsChannel.send(message);
-};
-
-const handleLang = async (interaction: ButtonInteraction) => {
-	const lang = getLangId(interaction.customId);
-
-	const member = interaction.member as GuildMember;
-
-	const langOpt = langsOptions.find(l => l.id === lang)!;
-	const roleId = langOpt.role;
-
-	const shouldAddRole = !member.roles.cache.has(roleId);
-
-	let embed: MessageEmbedOptions;
-
-	if (shouldAddRole) {
-		await member.roles.add(roleId);
-
-		embed = {
-			title: "Role adicionada!",
-			description: `Você agora tem a role **${langOpt.description}** 🥳`,
-			color: COLORS.green,
-		};
-	} else {
-		await member.roles.remove(roleId);
-
-		embed = {
-			title: "Role removida!",
-			description: `Você não tem mais a role **${langOpt.description}** 😔`,
-			color: COLORS.red,
-		};
-	}
-
-	const message = {
-		content: `<@${interaction.user.id}>`,
-		embeds: [embed],
-	};
-
-	await interaction.reply(message);
-
-	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-	await sleep(4);
-
-	await interaction.deleteReply();
-
-	const botsChannel = getTextChannel(STAFF_BOTS_CHANNEL);
-
-	return botsChannel.send(message);
-};
-
-const handleAge = async (interaction: ButtonInteraction) => {
-	const age = getAgeId(interaction.customId);
-
-	const member = interaction.member as GuildMember;
-
-	const ageOpt = agesOptions.find(a => a.id === age)!;
-	const roleId = ageOpt.role;
-
-	const shouldAddRole = !member.roles.cache.has(roleId);
-
-	let embed: MessageEmbedOptions;
-
-	if (shouldAddRole) {
-		await member.roles.add(roleId);
-
-		embed = {
-			title: "Role adicionada!",
-			description: `Você agora tem a role **${ageOpt.description}** 🥳`,
-			color: COLORS.green,
-		};
-	} else {
-		await member.roles.remove(roleId);
-
-		embed = {
-			title: "Role removida!",
-			description: `Você não tem mais a role **${ageOpt.description}** 😔`,
-			color: COLORS.red,
-		};
-	}
-
-	const message = {
-		content: `<@${interaction.user.id}>`,
-		embeds: [embed],
-	};
-
-	await interaction.reply(message);
-
-	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-	await sleep(4);
-
-	await interaction.deleteReply();
-
-	const botsChannel = getTextChannel(STAFF_BOTS_CHANNEL);
-
-	return botsChannel.send(message);
-};
-
 const handleRecruiter = async (interaction: ButtonInteraction) => {
-	const embed: MessageEmbedOptions = {
-		title: "Novo(a) recrutador(a)!",
-		color: COLORS.orange,
-		thumbnail: {
-			url: interaction.user.avatarURL() || IMAGES.techmmunityLogo,
-		},
-	};
-
 	const panelinhaChannel = getTextChannel(STAFF_BOTS_CHANNEL);
 
 	await panelinhaChannel.send({
 		content: `<@${RAZAL_ID}> -> <@${interaction.user.id}>`,
-		embeds: [embed],
+		embeds: [
+			new EmbedBuilder()
+				.setTitle("Novo(a) recrutador(a)!")
+				.setColor(COLORS.orange)
+				.setThumbnail(interaction.user.avatarURL() || IMAGES.techmmunityLogo),
+		],
 		components: [
-			new MessageActionRow().addComponents(
-				new MessageButton()
-					.setCustomId("GIVE_RECRUITER_PERM")
+			//@ts-ignore
+			new ActionRowBuilder().addComponents(
+				new ButtonBuilder()
 					.setLabel("Dar permissão")
-					.setStyle("PRIMARY"),
+					.setStyle(ButtonStyle.Primary)
+					.setCustomId("GIVE_RECRUITER_PERM"),
 			),
 		],
 	});
@@ -256,22 +109,12 @@ const handleGiveRecruiterPerm = async (interaction: ButtonInteraction) => {
 			},
 		],
 	});
+
+	await interaction.deferReply();
 };
 
 export const buttonClick = (interaction: Interaction) => {
 	if (!interaction.isButton()) return;
-
-	if (interaction.customId?.startsWith("NOTIFICATION#")) {
-		return handleNotification(interaction);
-	}
-
-	if (interaction.customId?.startsWith("LANG#")) {
-		return handleLang(interaction);
-	}
-
-	if (interaction.customId?.startsWith("AGE#")) {
-		return handleAge(interaction);
-	}
 
 	if (interaction.customId === "IM_RECRUITER") {
 		return handleRecruiter(interaction);

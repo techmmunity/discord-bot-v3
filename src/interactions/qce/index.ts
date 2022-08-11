@@ -1,15 +1,18 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { CommandInteraction } from "discord.js";
+import type { CommandInteraction } from "discord.js";
+
 import { COLORS } from "../../assets/colors";
-import { Interaction } from "../../types/interactions";
+
 import { getCommandName } from "../../utils/get-command-name";
+
+import type { Interaction } from "../../types/interactions";
 
 export const QCE_EMBED = {
 	title: "Hey, parece que você fez uma pergunta incompleta :tired_face:",
 	description: [
 		"Aqui está o nosso tutorialzinho sobre dicas para fazer perguntas:",
+		"- **Envie suas perguntas no ❓┊forum**, seguindo o exemplo fixado no canal.",
 		'- **Faça perguntas diretas**, não perca tempo perguntando se "alguém esta dispponivel", se "alguem pode te ajudar", envie direto a **sua pergunta**, descrevendo **com detalhes** o que você quer fazer, com um **print do seu código** e um **print do erro** (caso exista)',
-		'- **Envie suas perguntas nos canais corretos**, ali na esquerda <<<< temos um tópico "❓ TOPICS", onde se encontram canais de diversas linguagens e assuntos. Sempre poste suas perguntas naqueles canais.',
 		'- **Não peça respostas prontas**, "estou com esse problema aqui, como eu resolvo?". Os membros de nossa comunidade preferem te ajudar a **entender o seu problema**, para que você consiga resolvê-lo sozinho no futuro :wink:',
 		'- **Evite fazer perguntas muito amplas**, como "Como eu faço um site?", prefira perguntas menores sobre problemas específicos, como "O que eu começo a aprender para poder fazer um site?".',
 		"- **Não envie DMs para os membros**, a maior parte da galera não gosta de receber DMs e não vai te responder, pergunte diretamente nos canais.",

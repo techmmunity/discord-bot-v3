@@ -1,5 +1,6 @@
-import { SlashCommandBuilder } from "@discordjs/builders";
-import { PermissionTypeEnum } from "../enums/permission-type";
+import type { SlashCommandBuilder } from "@discordjs/builders";
+
+import type { PermissionTypeEnum } from "../enums/permission-type";
 
 export interface Interaction {
 	command: SlashCommandBuilder;
