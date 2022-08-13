@@ -34,6 +34,10 @@ const welcomeEmbed: MessageOptions = {
 	],
 };
 
+const serverOverviewVideoEmbed: MessageOptions = {
+	content: "https://youtu.be/uArPRshh524",
+};
+
 const forumChannelEmbed: MessageOptions = {
 	embeds: [
 		{
@@ -115,6 +119,7 @@ export const sendWelcomeEmbed = async () => {
 
 	const messages = [
 		welcomeEmbed,
+		serverOverviewVideoEmbed,
 		forumChannelEmbed,
 		generalChannelEmbed,
 		jobsChannelEmbed,
