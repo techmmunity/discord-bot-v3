@@ -20,6 +20,9 @@ const welcomeEmbed = {
         },
     ],
 };
+const serverOverviewVideoEmbed = {
+    content: "https://youtu.be/uArPRshh524",
+};
 const forumChannelEmbed = {
     embeds: [
         {
@@ -81,6 +84,7 @@ const sendWelcomeEmbed = async () => {
     const welcomeChannel = (0, get_channel_1.getTextChannel)(process.env.NODE_ENV === "dev" ? ids_1.STAFF_BOTS_CHANNEL : ids_1.WELCOME_CHANNEL_ID);
     const messages = [
         welcomeEmbed,
+        serverOverviewVideoEmbed,
         forumChannelEmbed,
         generalChannelEmbed,
         jobsChannelEmbed,
